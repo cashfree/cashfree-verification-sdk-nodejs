@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "target": "ES6",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "outDir": "dist",
+    "rootDir": ".",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "ignoreDeprecations": "5.0",
+  "exclude": [
+    "dist",
+    "node_modules",
+    "tests"
+  ]
+}
