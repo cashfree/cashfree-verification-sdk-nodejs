@@ -40,22 +40,22 @@ var request = {
     "name": 'John Doe',
 }
 
-Cashfree.VRSVoterIdVerification(request).then((response) => {
+Cashfree.VrsVoterIdVerification(request).then((response) => {
     console.log('Verification Response:', response.data);
 })
-    .catch((error) => {
-    console.error('Error setting up order request:', error);
+.catch((error) => {
+    console.error('Error in verification request:', error);
 });
 ```
 
 Liveliness Check
 ```javascript
 const image = fs.createReadStream(<path-to-image>);
-Cashfree.VRSLivelinessCheck("uniqueVerificationId",image).then((response) => {
-console.log('Verification Response:', response.data);
+Cashfree.VrsLivelinessCheck("uniqueVerificationId",image).then((response) => {
+    console.log('Verification Response:', response.data);
 })
 .catch((error) => {
-    console.error('Error setting up order request:', error);
+    console.error('Error in verification request:', error);
 });
 ```
 

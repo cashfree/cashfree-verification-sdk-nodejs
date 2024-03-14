@@ -28,118 +28,149 @@ import * as crypto from "crypto";
 import FormData from 'form-data';
 
 /**
+ * Success response for Aadhaar Masking API
+ * @export
+ * @interface AadhaarMaskingResponseSchema
+ */
+export interface AadhaarMaskingResponseSchema {
+    /**
+     * It displays the status of the aadhaar information.
+     * @type {string}
+     * @memberof AadhaarMaskingResponseSchema
+     */
+    'status'?: string;
+    /**
+     * It displays the unique ID created by Cashfree Payments for reference purposes.
+     * @type {number}
+     * @memberof AadhaarMaskingResponseSchema
+     */
+    'reference_id'?: number;
+    /**
+     * It displays the unique ID you created to identify the verification request
+     * @type {string}
+     * @memberof AadhaarMaskingResponseSchema
+     */
+    'verification_id'?: string;
+    /**
+     * It displays the URL of the image.
+     * @type {string}
+     * @memberof AadhaarMaskingResponseSchema
+     */
+    'image_link'?: string;
+}
+/**
  * Request body schema for Aadhaar Verification via OCR.
  * @export
- * @interface AadhaarOCRRequestSchema
+ * @interface AadhaarOcrRequestSchema
  */
-export interface AadhaarOCRRequestSchema {
+export interface AadhaarOcrRequestSchema {
     /**
-     * It is the unique ID you create to identify the request. The maximum character limit is 50. Only alphanumeric, hyphen (-), period (.), and underscore ( _ ) are allowed.
+     * 
      * @type {string}
-     * @memberof AadhaarOCRRequestSchema
+     * @memberof AadhaarOcrRequestSchema
      */
     'verification_id': string;
     /**
      * It is the scanned image of the back of the aadhaar card. Allowed file type - JPEG/JPG/PNG. The max file size of both the files is 10MB.
      * @type {File}
-     * @memberof AadhaarOCRRequestSchema
+     * @memberof AadhaarOcrRequestSchema
      */
     'back_image'?: File;
     /**
      * It is the scanned image of the front of the aadhaar card. Allowed file type - JPEG/JPG/PNG. The max file size of both the files is 10MB.
      * @type {File}
-     * @memberof AadhaarOCRRequestSchema
+     * @memberof AadhaarOcrRequestSchema
      */
     'front_image': File;
 }
 /**
  * Success response for Aadhaar Verification via OCR
  * @export
- * @interface AadhaarOCRResponseSchema
+ * @interface AadhaarOcrResponseSchema
  */
-export interface AadhaarOCRResponseSchema {
+export interface AadhaarOcrResponseSchema {
     /**
      * It displays the name of the aadhaar card holder.
      * @type {string}
-     * @memberof AadhaarOCRResponseSchema
+     * @memberof AadhaarOcrResponseSchema
      */
     'name'?: string;
     /**
      * It displays the year of birth of the aadhaar card holder.
      * @type {string}
-     * @memberof AadhaarOCRResponseSchema
+     * @memberof AadhaarOcrResponseSchema
      */
     'yob'?: string;
     /**
      * It displays the father\'s name of the aadhaar card holder.
      * @type {string}
-     * @memberof AadhaarOCRResponseSchema
+     * @memberof AadhaarOcrResponseSchema
      */
     'father'?: string;
     /**
      * It displays the gender of the aadhaar card holder.
      * @type {string}
-     * @memberof AadhaarOCRResponseSchema
+     * @memberof AadhaarOcrResponseSchema
      */
     'gender'?: string;
     /**
      * It displays the UID information as present in the aadhaar card.
      * @type {string}
-     * @memberof AadhaarOCRResponseSchema
+     * @memberof AadhaarOcrResponseSchema
      */
     'uid'?: string;
     /**
      * It displays the name of the state as present in the aadhaar card.
      * @type {string}
-     * @memberof AadhaarOCRResponseSchema
+     * @memberof AadhaarOcrResponseSchema
      */
     'state'?: string;
     /**
      * It displays the PIN code information as present in the aadhaar card.
      * @type {string}
-     * @memberof AadhaarOCRResponseSchema
+     * @memberof AadhaarOcrResponseSchema
      */
     'pincode'?: string;
     /**
      * It displays the address information of the aadhaar card holder.
      * @type {string}
-     * @memberof AadhaarOCRResponseSchema
+     * @memberof AadhaarOcrResponseSchema
      */
     'address'?: string;
     /**
      * It displays whether the aadhaar card is valid or not.
      * @type {boolean}
-     * @memberof AadhaarOCRResponseSchema
+     * @memberof AadhaarOcrResponseSchema
      */
     'valid'?: boolean;
     /**
      * It displays the status of the aadhaar card.
      * @type {string}
-     * @memberof AadhaarOCRResponseSchema
+     * @memberof AadhaarOcrResponseSchema
      */
     'status'?: string;
     /**
      * It displays the unique ID created by Cashfree Payments for reference purposes.
      * @type {string}
-     * @memberof AadhaarOCRResponseSchema
+     * @memberof AadhaarOcrResponseSchema
      */
     'reference_id'?: string;
     /**
      * It displays the unique ID you created to identify this request.
      * @type {string}
-     * @memberof AadhaarOCRResponseSchema
+     * @memberof AadhaarOcrResponseSchema
      */
     'verification_id'?: string;
     /**
      * It displays the confidence score for this aadhaar card verification request.
      * @type {string}
-     * @memberof AadhaarOCRResponseSchema
+     * @memberof AadhaarOcrResponseSchema
      */
     'confidence_score'?: string;
     /**
      * It displays details about the success or failure of the API request.
      * @type {string}
-     * @memberof AadhaarOCRResponseSchema
+     * @memberof AadhaarOcrResponseSchema
      */
     'message'?: string;
 }
@@ -161,37 +192,6 @@ export interface Aadhaarmaskingrequestschema {
      * @memberof Aadhaarmaskingrequestschema
      */
     'verification_id': string;
-}
-/**
- * Success response for Aadhaar Masking API
- * @export
- * @interface Aadhaarmaskingsuccessschema
- */
-export interface Aadhaarmaskingsuccessschema {
-    /**
-     * It displays the status of the aadhaar information.
-     * @type {string}
-     * @memberof Aadhaarmaskingsuccessschema
-     */
-    'status'?: string;
-    /**
-     * It displays the unique ID created by Cashfree Payments for reference purposes.
-     * @type {number}
-     * @memberof Aadhaarmaskingsuccessschema
-     */
-    'reference_id'?: number;
-    /**
-     * It displays the unique ID you created to identify the verification request
-     * @type {string}
-     * @memberof Aadhaarmaskingsuccessschema
-     */
-    'verification_id'?: string;
-    /**
-     * It displays the URL of the image.
-     * @type {string}
-     * @memberof Aadhaarmaskingsuccessschema
-     */
-    'image_link'?: string;
 }
 /**
  * It contains the address information of the individual.
@@ -232,10 +232,10 @@ export interface AddressDetailsSplitAddress {
     'district'?: Array<string>;
     /**
      * It displays the name of the state.
-     * @type {Array<string>}
+     * @type {Array<Array<string>>}
      * @memberof AddressDetailsSplitAddress
      */
-    'state'?: Array<string>;
+    'state'?: Array<Array<string>>;
     /**
      * It displays the name of the city.
      * @type {Array<string>}
@@ -262,502 +262,502 @@ export interface AddressDetailsSplitAddress {
     'address_line'?: string;
 }
 /**
+ * Find the request parameters to retrieve employment infomration
+ * @export
+ * @interface AdvanceEmploymentRequestSchema
+ */
+export interface AdvanceEmploymentRequestSchema {
+    /**
+     * It is the unique ID you create to identify the API request. The maximum character limit is 50. Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.
+     * @type {string}
+     * @memberof AdvanceEmploymentRequestSchema
+     */
+    'verification_id': string;
+    /**
+     * It is the phone number of the employee. (conditonal mandatory)
+     * @type {string}
+     * @memberof AdvanceEmploymentRequestSchema
+     */
+    'phone'?: string;
+    /**
+     * It is the PAN information of the employee. (conditonal mandatory)
+     * @type {string}
+     * @memberof AdvanceEmploymentRequestSchema
+     */
+    'pan'?: string;
+    /**
+     * It is the unique number assigned to every employee contributing to the Employees\' Provident Fund (EPF).(conditonal mandatory)
+     * @type {string}
+     * @memberof AdvanceEmploymentRequestSchema
+     */
+    'uan'?: string;
+    /**
+     * It is the date of birth information of the employee. The format is YYYY-MM-DD.Employee date of birth (conditonal mandatory)
+     * @type {string}
+     * @memberof AdvanceEmploymentRequestSchema
+     */
+    'dob'?: string;
+    /**
+     * It is the name of the employee. (conditonal mandatory)
+     * @type {string}
+     * @memberof AdvanceEmploymentRequestSchema
+     */
+    'employee_name'?: string;
+    /**
+     * It is the name of the employer. (conditonal mandatory)
+     * @type {string}
+     * @memberof AdvanceEmploymentRequestSchema
+     */
+    'employer_name'?: string;
+}
+/**
  * Success response for Get Employment Details
  * @export
- * @interface AdvanceEmployment200ResponseBody
+ * @interface AdvanceEmploymentResponse
  */
-export interface AdvanceEmployment200ResponseBody {
+export interface AdvanceEmploymentResponse {
     /**
      * It displays the unique ID you created to identify the verification request.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBody
+     * @memberof AdvanceEmploymentResponse
      */
     'verification_id'?: string;
     /**
      * It displays the unique ID created by Cashfree Payments for reference purposes.
      * @type {number}
-     * @memberof AdvanceEmployment200ResponseBody
+     * @memberof AdvanceEmploymentResponse
      */
     'reference_id'?: number;
     /**
      * It displays the status of the API request.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBody
+     * @memberof AdvanceEmploymentResponse
      */
     'status'?: string;
     /**
      * 
-     * @type {AdvanceEmployment200ResponseBodyInput}
-     * @memberof AdvanceEmployment200ResponseBody
+     * @type {AdvanceEmploymentResponseInput}
+     * @memberof AdvanceEmploymentResponse
      */
-    'input'?: AdvanceEmployment200ResponseBodyInput;
+    'input'?: AdvanceEmploymentResponseInput;
     /**
      * It contains the UAN information.
-     * @type {Array<AdvanceEmployment200ResponseBodyUanDetailsInner>}
-     * @memberof AdvanceEmployment200ResponseBody
+     * @type {Array<AdvanceEmploymentResponseUanDetailsInner>}
+     * @memberof AdvanceEmploymentResponse
      */
-    'uan_details'?: Array<AdvanceEmployment200ResponseBodyUanDetailsInner>;
+    'uan_details'?: Array<AdvanceEmploymentResponseUanDetailsInner>;
     /**
      * 
-     * @type {AdvanceEmployment200ResponseBodyRecentEmploymentDetails}
-     * @memberof AdvanceEmployment200ResponseBody
+     * @type {AdvanceEmploymentResponseRecentEmploymentDetails}
+     * @memberof AdvanceEmploymentResponse
      */
-    'recent_employment_details'?: AdvanceEmployment200ResponseBodyRecentEmploymentDetails;
+    'recent_employment_details'?: AdvanceEmploymentResponseRecentEmploymentDetails;
 }
 /**
  * It contains the information entered in the API request.
  * @export
- * @interface AdvanceEmployment200ResponseBodyInput
+ * @interface AdvanceEmploymentResponseInput
  */
-export interface AdvanceEmployment200ResponseBodyInput {
+export interface AdvanceEmploymentResponseInput {
     /**
      * It displays the phone number of the employee.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyInput
+     * @memberof AdvanceEmploymentResponseInput
      */
     'phone'?: string;
     /**
      * It displays the PAN information of the employee.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyInput
+     * @memberof AdvanceEmploymentResponseInput
      */
     'pan'?: string;
     /**
      * It displays the UAN information of the employee.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyInput
+     * @memberof AdvanceEmploymentResponseInput
      */
     'uan'?: string;
     /**
      * It displays the date of birth of the employee.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyInput
+     * @memberof AdvanceEmploymentResponseInput
      */
     'dob'?: string;
     /**
      * It displays the name of the employee.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyInput
+     * @memberof AdvanceEmploymentResponseInput
      */
     'employee_name'?: string;
     /**
      * It displays the name of the employer.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyInput
+     * @memberof AdvanceEmploymentResponseInput
      */
     'employer_name'?: string;
 }
 /**
  * It contains the employment details of the individual.
  * @export
- * @interface AdvanceEmployment200ResponseBodyRecentEmploymentDetails
+ * @interface AdvanceEmploymentResponseRecentEmploymentDetails
  */
-export interface AdvanceEmployment200ResponseBodyRecentEmploymentDetails {
+export interface AdvanceEmploymentResponseRecentEmploymentDetails {
     /**
      * 
-     * @type {AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetails}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetails
+     * @type {AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetails}
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetails
      */
-    'employee_details'?: AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetails;
+    'employee_details'?: AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetails;
     /**
      * 
-     * @type {AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetails}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetails
+     * @type {AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetails}
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetails
      */
-    'employer_details'?: AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetails;
+    'employer_details'?: AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetails;
 }
 /**
  * It contains the details of the individual as an employee.
  * @export
- * @interface AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetails
+ * @interface AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetails
  */
-export interface AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetails {
+export interface AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetails {
     /**
      * It displays the unique ID assigned to an individual.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetails
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetails
      */
     'member_id'?: string;
     /**
      * It displays the last working day of the employee in the organisation.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetails
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetails
      */
     'exit_date'?: string;
     /**
      * It displays the first working day of the employee in the organisation.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetails
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetails
      */
     'joining_date'?: string;
     /**
      * It displays the Universal Account Number (UAN) information of the employee.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetails
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetails
      */
     'uan'?: string;
     /**
      * 
-     * @type {AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetailsEpfo}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetails
+     * @type {AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetailsEpfo}
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetails
      */
-    'epfo'?: AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetailsEpfo;
+    'epfo'?: AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetailsEpfo;
     /**
      * It displays whether the individual is employed.
      * @type {boolean}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetails
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetails
      */
     'employed'?: boolean;
     /**
      * It displays whether the individual\'s name matches with the name found in EPFO.
      * @type {boolean}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetails
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetails
      */
     'employee_name_match'?: boolean;
     /**
      * It displays whether the last working  
      * @type {boolean}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetails
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetails
      */
     'exit_date_marked'?: boolean;
 }
 /**
  * It contains the information found in Employees\' Provident Fund Organisation (EPFO)
  * @export
- * @interface AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetailsEpfo
+ * @interface AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetailsEpfo
  */
-export interface AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetailsEpfo {
+export interface AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetailsEpfo {
     /**
      * It displays whether the retrieved information is recent.
      * @type {boolean}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetailsEpfo
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetailsEpfo
      */
     'recent'?: boolean;
     /**
      * It displays whether the retrieved name is unique.
      * @type {boolean}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetailsEpfo
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetailsEpfo
      */
     'name_unique'?: boolean;
     /**
      * It displays whether the PF filing details are true.
      * @type {boolean}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployeeDetailsEpfo
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployeeDetailsEpfo
      */
     'pf_filings_details'?: boolean;
 }
 /**
  * 
  * @export
- * @interface AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetails
+ * @interface AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetails
  */
-export interface AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetails {
+export interface AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetails {
     /**
      * 
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetails
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetails
      */
     'establishment_id'?: string;
     /**
      * 
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetails
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetails
      */
     'establishment_name'?: string;
     /**
      * 
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetails
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetails
      */
     'setup_date'?: string;
     /**
      * 
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetails
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetails
      */
     'ownership_type'?: string;
     /**
      * 
      * @type {number}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetails
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetails
      */
     'employer_confidence_score'?: number;
     /**
      * 
      * @type {boolean}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetails
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetails
      */
     'employer_name_match'?: boolean;
     /**
      * 
-     * @type {Array<AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetailsPfFilingDetailsInner>}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetails
+     * @type {Array<AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetailsPfFilingDetailsInner>}
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetails
      */
-    'pf_filing_details'?: Array<AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetailsPfFilingDetailsInner>;
+    'pf_filing_details'?: Array<AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetailsPfFilingDetailsInner>;
 }
 /**
  * 
  * @export
- * @interface AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetailsPfFilingDetailsInner
+ * @interface AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetailsPfFilingDetailsInner
  */
-export interface AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetailsPfFilingDetailsInner {
+export interface AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetailsPfFilingDetailsInner {
     /**
      * 
      * @type {number}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetailsPfFilingDetailsInner
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetailsPfFilingDetailsInner
      */
     'total_amount'?: number;
     /**
      * 
      * @type {number}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetailsPfFilingDetailsInner
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetailsPfFilingDetailsInner
      */
     'employees_count'?: number;
     /**
      * 
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyRecentEmploymentDetailsEmployerDetailsPfFilingDetailsInner
+     * @memberof AdvanceEmploymentResponseRecentEmploymentDetailsEmployerDetailsPfFilingDetailsInner
      */
     'wage_month'?: string;
 }
 /**
  * It contains the information in individual components.
  * @export
- * @interface AdvanceEmployment200ResponseBodyUanDetailsInner
+ * @interface AdvanceEmploymentResponseUanDetailsInner
  */
-export interface AdvanceEmployment200ResponseBodyUanDetailsInner {
+export interface AdvanceEmploymentResponseUanDetailsInner {
     /**
      * It displays the Universal Account Number (UAN) information of the employee.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInner
+     * @memberof AdvanceEmploymentResponseUanDetailsInner
      */
     'uan'?: string;
     /**
      * It displays the
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInner
+     * @memberof AdvanceEmploymentResponseUanDetailsInner
      */
     'source'?: string;
     /**
      * It displays the
      * @type {number}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInner
+     * @memberof AdvanceEmploymentResponseUanDetailsInner
      */
     'source_score'?: number;
     /**
      * 
-     * @type {AdvanceEmployment200ResponseBodyUanDetailsInnerBasicDetails}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInner
+     * @type {AdvanceEmploymentResponseUanDetailsInnerBasicDetails}
+     * @memberof AdvanceEmploymentResponseUanDetailsInner
      */
-    'basic_details'?: AdvanceEmployment200ResponseBodyUanDetailsInnerBasicDetails;
+    'basic_details'?: AdvanceEmploymentResponseUanDetailsInnerBasicDetails;
     /**
      * 
-     * @type {AdvanceEmployment200ResponseBodyUanDetailsInnerEmploymentDetails}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInner
+     * @type {AdvanceEmploymentResponseUanDetailsInnerEmploymentDetails}
+     * @memberof AdvanceEmploymentResponseUanDetailsInner
      */
-    'employment_details'?: AdvanceEmployment200ResponseBodyUanDetailsInnerEmploymentDetails;
+    'employment_details'?: AdvanceEmploymentResponseUanDetailsInnerEmploymentDetails;
     /**
      * 
-     * @type {AdvanceEmployment200ResponseBodyUanDetailsInnerAdditionalDetails}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInner
+     * @type {AdvanceEmploymentResponseUanDetailsInnerAdditionalDetails}
+     * @memberof AdvanceEmploymentResponseUanDetailsInner
      */
-    'additional_details'?: AdvanceEmployment200ResponseBodyUanDetailsInnerAdditionalDetails;
+    'additional_details'?: AdvanceEmploymentResponseUanDetailsInnerAdditionalDetails;
 }
 /**
  * It contains additional information of the individual.
  * @export
- * @interface AdvanceEmployment200ResponseBodyUanDetailsInnerAdditionalDetails
+ * @interface AdvanceEmploymentResponseUanDetailsInnerAdditionalDetails
  */
-export interface AdvanceEmployment200ResponseBodyUanDetailsInnerAdditionalDetails {
+export interface AdvanceEmploymentResponseUanDetailsInnerAdditionalDetails {
     /**
      * It displays the aadhaar information of the individual.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerAdditionalDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerAdditionalDetails
      */
     'aadhaar'?: string;
     /**
      * It displays the email address of the individual.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerAdditionalDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerAdditionalDetails
      */
     'email'?: string;
     /**
      * It displays the PAN information of the individual.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerAdditionalDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerAdditionalDetails
      */
     'pan'?: string;
     /**
      * It displays the IFSC information of the individual\'s bank account.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerAdditionalDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerAdditionalDetails
      */
     'ifsc'?: string;
     /**
      * It displays the bank account number of the individual.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerAdditionalDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerAdditionalDetails
      */
     'bank_account'?: string;
     /**
      * It displays the address of the bank.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerAdditionalDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerAdditionalDetails
      */
     'bank_address'?: string;
     /**
      * It displays the realtionship of the individual with the relative.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerAdditionalDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerAdditionalDetails
      */
     'relation'?: string;
     /**
      * It displays the name of the relative.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerAdditionalDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerAdditionalDetails
      */
     'relative_name'?: string;
 }
 /**
  * It displays the basic information of the employee.
  * @export
- * @interface AdvanceEmployment200ResponseBodyUanDetailsInnerBasicDetails
+ * @interface AdvanceEmploymentResponseUanDetailsInnerBasicDetails
  */
-export interface AdvanceEmployment200ResponseBodyUanDetailsInnerBasicDetails {
+export interface AdvanceEmploymentResponseUanDetailsInnerBasicDetails {
     /**
      * It displays the gender of the employee.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerBasicDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerBasicDetails
      */
     'gender'?: string;
     /**
      * It displays the date of birth of the employee.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerBasicDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerBasicDetails
      */
     'dob'?: string;
     /**
      * It displays the confidence score for the employee.
      * @type {number}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerBasicDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerBasicDetails
      */
     'employee_confidence_score'?: number;
     /**
      * It displays the name of the employee.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerBasicDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerBasicDetails
      */
     'employee_name'?: string;
     /**
      * It displays the phone number of the employee.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerBasicDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerBasicDetails
      */
     'phone'?: string;
     /**
      * It displays where the aadhaar information of the employee is verified.
      * @type {boolean}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerBasicDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerBasicDetails
      */
     'aadhaar_verified'?: boolean;
 }
 /**
  * It contains the employement details of the individual.
  * @export
- * @interface AdvanceEmployment200ResponseBodyUanDetailsInnerEmploymentDetails
+ * @interface AdvanceEmploymentResponseUanDetailsInnerEmploymentDetails
  */
-export interface AdvanceEmployment200ResponseBodyUanDetailsInnerEmploymentDetails {
+export interface AdvanceEmploymentResponseUanDetailsInnerEmploymentDetails {
     /**
      * It displays the unique ID assigned to an individual.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerEmploymentDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerEmploymentDetails
      */
     'member_id'?: string;
     /**
      * It displays the unique ID assigned to a specific establishment or business entity.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerEmploymentDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerEmploymentDetails
      */
     'establishment_id'?: string;
     /**
      * It displays the last working day of the employee in the organisation.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerEmploymentDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerEmploymentDetails
      */
     'exit_date'?: string;
     /**
      * It displays the first working day of the employee in the organisation.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerEmploymentDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerEmploymentDetails
      */
     'joining_date'?: string;
     /**
      * It displays the reason for leaving the previous job.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerEmploymentDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerEmploymentDetails
      */
     'leave_reason'?: string;
     /**
      * It displays the name of the organisation.
      * @type {string}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerEmploymentDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerEmploymentDetails
      */
     'establishment_name'?: string;
     /**
      * It displays the
      * @type {number}
-     * @memberof AdvanceEmployment200ResponseBodyUanDetailsInnerEmploymentDetails
+     * @memberof AdvanceEmploymentResponseUanDetailsInnerEmploymentDetails
      */
     'employer_confidence_score'?: number;
-}
-/**
- * Find the request parameters to retrieve employment infomration
- * @export
- * @interface AdvanceEmploymentRequestBodySchema
- */
-export interface AdvanceEmploymentRequestBodySchema {
-    /**
-     * It is the unique ID you create to identify the API request. The maximum character limit is 50. Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.
-     * @type {string}
-     * @memberof AdvanceEmploymentRequestBodySchema
-     */
-    'verification_id': string;
-    /**
-     * It is the phone number of the employee. (conditonal mandatory)
-     * @type {string}
-     * @memberof AdvanceEmploymentRequestBodySchema
-     */
-    'phone'?: string;
-    /**
-     * It is the PAN information of the employee. (conditonal mandatory)
-     * @type {string}
-     * @memberof AdvanceEmploymentRequestBodySchema
-     */
-    'pan'?: string;
-    /**
-     * It is the unique number assigned to every employee contributing to the Employees\' Provident Fund (EPF).(conditonal mandatory)
-     * @type {string}
-     * @memberof AdvanceEmploymentRequestBodySchema
-     */
-    'uan'?: string;
-    /**
-     * It is the date of birth information of the employee. The format is YYYY-MM-DD.Employee date of birth (conditonal mandatory)
-     * @type {string}
-     * @memberof AdvanceEmploymentRequestBodySchema
-     */
-    'dob'?: string;
-    /**
-     * It is the name of the employee. (conditonal mandatory)
-     * @type {string}
-     * @memberof AdvanceEmploymentRequestBodySchema
-     */
-    'employee_name'?: string;
-    /**
-     * It is the name of the employer. (conditonal mandatory)
-     * @type {string}
-     * @memberof AdvanceEmploymentRequestBodySchema
-     */
-    'employer_name'?: string;
 }
 /**
  * It contains information regarding any badges or emblems affixed to the vehicle. These badges could indicate various things such as the vehicle\'s model, trim level, special editions, or manufacturer-specific badges.
@@ -787,247 +787,247 @@ export interface BadgeDetails {
 /**
  * Find the request parameters to verify a large number of PAN information
  * @export
- * @interface BulkPANRequestSchema
+ * @interface BulkPanRequestSchema
  */
-export interface BulkPANRequestSchema {
+export interface BulkPanRequestSchema {
     /**
      * It is the unique ID you create to identify the API request. Only alphanumeric and underscore ( _ ) are allowed.
      * @type {string}
-     * @memberof BulkPANRequestSchema
+     * @memberof BulkPanRequestSchema
      */
     'bulk_verification_id'?: string;
     /**
      * It is the array of PAN details for verification. PAN and name should be included. The name parameter is optional.
-     * @type {Array<BulkPANRequestSchemaEntriesInner>}
-     * @memberof BulkPANRequestSchema
+     * @type {Array<BulkPanRequestSchemaEntriesInner>}
+     * @memberof BulkPanRequestSchema
      */
-    'entries'?: Array<BulkPANRequestSchemaEntriesInner>;
+    'entries'?: Array<BulkPanRequestSchemaEntriesInner>;
 }
 /**
  * 
  * @export
- * @interface BulkPANRequestSchemaEntriesInner
+ * @interface BulkPanRequestSchemaEntriesInner
  */
-export interface BulkPANRequestSchemaEntriesInner {
+export interface BulkPanRequestSchemaEntriesInner {
     /**
      * It is the name of the individual as registered in the PAN information.
      * @type {string}
-     * @memberof BulkPANRequestSchemaEntriesInner
+     * @memberof BulkPanRequestSchemaEntriesInner
      */
     'name': string;
     /**
      * It is the PAN information of the individual.
      * @type {string}
-     * @memberof BulkPANRequestSchemaEntriesInner
+     * @memberof BulkPanRequestSchemaEntriesInner
      */
     'pan': string;
 }
 /**
  * Find the request parameters to retrieve CIN information
  * @export
- * @interface CinRequestBodySchema
+ * @interface CinRequestSchema
  */
-export interface CinRequestBodySchema {
+export interface CinRequestSchema {
     /**
      * It is the unique ID you create to identify the API request. The maximum character limit is 50. Alphanumeric, period (.), hyphen (-). and underscore ( _ ) are allowed.
      * @type {string}
-     * @memberof CinRequestBodySchema
+     * @memberof CinRequestSchema
      */
     'verification_id': string;
     /**
      * It is the unique alphanumeric identifier assigned to companies registered under the Ministry of Corporate Affairs, India.
      * @type {string}
-     * @memberof CinRequestBodySchema
+     * @memberof CinRequestSchema
      */
     'cin': string;
 }
 /**
  * Success response for retrieving CIN information
  * @export
- * @interface CinResponseBodySchema
+ * @interface CinResponseSchema
  */
-export interface CinResponseBodySchema {
+export interface CinResponseSchema {
     /**
      * It displays the unique ID you created to identify the API request.
      * @type {string}
-     * @memberof CinResponseBodySchema
+     * @memberof CinResponseSchema
      */
     'verification_id'?: string;
     /**
      * It displays the unique ID created by Cashfree Payments for reference purposes.
      * @type {number}
-     * @memberof CinResponseBodySchema
+     * @memberof CinResponseSchema
      */
     'reference_id'?: number;
     /**
      * It displays the status of the CIN information
      * @type {string}
-     * @memberof CinResponseBodySchema
+     * @memberof CinResponseSchema
      */
     'status'?: string;
     /**
      * It displays the entered CIN information.
      * @type {string}
-     * @memberof CinResponseBodySchema
+     * @memberof CinResponseSchema
      */
     'cin'?: string;
     /**
      * It displays the name of the company registered under the Ministry of Corporate Affaris.
      * @type {string}
-     * @memberof CinResponseBodySchema
+     * @memberof CinResponseSchema
      */
     'company_name'?: string;
     /**
      * It displays the registration number of the company.
      * @type {number}
-     * @memberof CinResponseBodySchema
+     * @memberof CinResponseSchema
      */
     'registration_number'?: number;
     /**
      * It displays the date of incorporation of the company.
      * @type {string}
-     * @memberof CinResponseBodySchema
+     * @memberof CinResponseSchema
      */
     'incorporation_date'?: string;
     /**
      * It displays the granular level status of the CIN information.
      * @type {string}
-     * @memberof CinResponseBodySchema
+     * @memberof CinResponseSchema
      */
     'cin_status'?: string;
     /**
      * It displays the email ID of the company registered under the Ministry of Company Affairs.
      * @type {string}
-     * @memberof CinResponseBodySchema
+     * @memberof CinResponseSchema
      */
     'email'?: string;
     /**
      * It displays the name of the country where the company is located.
      * @type {string}
-     * @memberof CinResponseBodySchema
+     * @memberof CinResponseSchema
      */
     'incorporation_country'?: string;
     /**
      * 
-     * @type {CinResponseBodySchemaDirectorDetails}
-     * @memberof CinResponseBodySchema
+     * @type {Array<CinResponseSchemaDirectorDetailsInner>}
+     * @memberof CinResponseSchema
      */
-    'director_details'?: CinResponseBodySchemaDirectorDetails;
+    'director_details'?: Array<CinResponseSchemaDirectorDetailsInner>;
 }
 /**
  * It displays the details of the director of the company.
  * @export
- * @interface CinResponseBodySchemaDirectorDetails
+ * @interface CinResponseSchemaDirectorDetailsInner
  */
-export interface CinResponseBodySchemaDirectorDetails {
+export interface CinResponseSchemaDirectorDetailsInner {
     /**
      * It displays the date of birth of the director.
      * @type {string}
-     * @memberof CinResponseBodySchemaDirectorDetails
+     * @memberof CinResponseSchemaDirectorDetailsInner
      */
     'dob'?: string;
     /**
      * It displays the designation of the director.
      * @type {string}
-     * @memberof CinResponseBodySchemaDirectorDetails
+     * @memberof CinResponseSchemaDirectorDetailsInner
      */
     'designation'?: string;
     /**
      * It displays the address information of the director.
      * @type {string}
-     * @memberof CinResponseBodySchemaDirectorDetails
+     * @memberof CinResponseSchemaDirectorDetailsInner
      */
     'address'?: string;
     /**
      * It displays the unique identification number assigned to individuals who are appointed as directors of companies in India.
      * @type {string}
-     * @memberof CinResponseBodySchemaDirectorDetails
+     * @memberof CinResponseSchemaDirectorDetailsInner
      */
     'din'?: string;
     /**
      * It displays the name of the director.
      * @type {string}
-     * @memberof CinResponseBodySchemaDirectorDetails
+     * @memberof CinResponseSchemaDirectorDetailsInner
      */
     'name'?: string;
 }
 /**
  * Find the request parameters to create a reverse penny order request
  * @export
- * @interface CreateOrderRequestBodySchema
+ * @interface CreateRequestRequestSchema
  */
-export interface CreateOrderRequestBodySchema {
+export interface CreateRequestRequestSchema {
     /**
      * It is the unique ID you create to identify the API request. The maximum character limit is 50. Only alphanumeric, hyphen (-), period (.), and underscore ( _ ) are allowed.
      * @type {string}
-     * @memberof CreateOrderRequestBodySchema
+     * @memberof CreateRequestRequestSchema
      */
     'verification_id'?: string;
     /**
      * It is the name of the UPI VPA account holder.
      * @type {string}
-     * @memberof CreateOrderRequestBodySchema
+     * @memberof CreateRequestRequestSchema
      */
     'name'?: string;
 }
 /**
  * Success response for creating a reverse penny order request=
  * @export
- * @interface CreateOrderResponseSchema
+ * @interface CreateRequestResponseSchema
  */
-export interface CreateOrderResponseSchema {
+export interface CreateRequestResponseSchema {
     /**
      * It displays the unique ID you created to identify this API request.
      * @type {string}
-     * @memberof CreateOrderResponseSchema
+     * @memberof CreateRequestResponseSchema
      */
     'verification_id'?: string;
     /**
      * It displays the unique ID created by Cashfree Payments for reference purposes.
      * @type {number}
-     * @memberof CreateOrderResponseSchema
+     * @memberof CreateRequestResponseSchema
      */
     'ref_id'?: number;
     /**
      * It displays the time validity of the order request,
      * @type {string}
-     * @memberof CreateOrderResponseSchema
+     * @memberof CreateRequestResponseSchema
      */
     'valid_upto'?: string;
     /**
      * It displays the generated UPI link for the reverse penny order request.
      * @type {string}
-     * @memberof CreateOrderResponseSchema
+     * @memberof CreateRequestResponseSchema
      */
     'upi_link'?: string;
     /**
      * It displays the generated Paytm link for the reverse penny order request.
      * @type {string}
-     * @memberof CreateOrderResponseSchema
+     * @memberof CreateRequestResponseSchema
      */
     'paytm'?: string;
     /**
      * It displays the generated BHIM link for the reverse penny order request.
      * @type {string}
-     * @memberof CreateOrderResponseSchema
+     * @memberof CreateRequestResponseSchema
      */
     'bhim'?: string;
     /**
      * It displays the generated Gpay link for the reverse penny order request.
      * @type {string}
-     * @memberof CreateOrderResponseSchema
+     * @memberof CreateRequestResponseSchema
      */
     'gpay'?: string;
     /**
      * It displays the generated Phonepe link for the reverse penny order request.
      * @type {string}
-     * @memberof CreateOrderResponseSchema
+     * @memberof CreateRequestResponseSchema
      */
     'phonepe'?: string;
     /**
      * It displays the generated QR code for the reverse penny order request.
      * @type {string}
-     * @memberof CreateOrderResponseSchema
+     * @memberof CreateRequestResponseSchema
      */
     'qr_code'?: string;
 }
@@ -1836,49 +1836,6 @@ export interface ESignVerificationUploadDocumentResponseSchema {
     'document_id'?: number;
 }
 /**
- * Response when links are expired in case of RPD.
- * @export
- * @interface EXPIRED
- */
-export interface EXPIRED {
-    /**
-     * 
-     * @type {string}
-     * @memberof EXPIRED
-     */
-    'verification_id'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof EXPIRED
-     */
-    'ref_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof EXPIRED
-     */
-    'status'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EXPIRED
-     */
-    'name_match_score'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EXPIRED
-     */
-    'added_on'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof EXPIRED
-     */
-    'processed_on'?: string;
-}
-/**
  * Response in case of error.
  * @export
  * @interface ErrorResponseSchema
@@ -1908,49 +1865,6 @@ export interface ErrorResponseSchema {
      * @memberof ErrorResponseSchema
      */
     'type'?: string;
-}
-/**
- * Response when failed to transfer 1RS in case of RPD.
- * @export
- * @interface FAILURE
- */
-export interface FAILURE {
-    /**
-     * 
-     * @type {string}
-     * @memberof FAILURE
-     */
-    'verification_id'?: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof FAILURE
-     */
-    'ref_id'?: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof FAILURE
-     */
-    'status'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof FAILURE
-     */
-    'name_match_score'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof FAILURE
-     */
-    'added_on'?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof FAILURE
-     */
-    'processed_on'?: string;
 }
 /**
  * Find the request parameters to verify facial features in two images
@@ -2033,10 +1947,10 @@ export interface FaceMatchResponseSchema {
     'face_match_result'?: string;
     /**
      * It displays the score of the face match verification request.
-     * @type {string}
+     * @type {number}
      * @memberof FaceMatchResponseSchema
      */
-    'face_match_score'?: string;
+    'face_match_score'?: number;
     /**
      * It displays whether the individual in the image 1 is wearing a mask.
      * @type {boolean}
@@ -2061,25 +1975,6 @@ export interface FaceMatchResponseSchema {
      * @memberof FaceMatchResponseSchema
      */
     'maskDetected_score_second_image'?: string;
-}
-/**
- * Find the request parameters to verify GSTIN information
- * @export
- * @interface GSTINRequestSchema
- */
-export interface GSTINRequestSchema {
-    /**
-     * It is the unique number assigned to businesses registered under the Goods and Services Tax (GST) system in India.
-     * @type {string}
-     * @memberof GSTINRequestSchema
-     */
-    'GSTIN': string;
-    /**
-     * It is the name of the business to which the GSTIN is issued. The maximum character limit is 100.
-     * @type {string}
-     * @memberof GSTINRequestSchema
-     */
-    'businessName'?: string;
 }
 /**
  * Response for Verify Bulk PAN API
@@ -2111,6 +2006,103 @@ export interface GetPanBulkResponseSchema {
      * @memberof GetPanBulkResponseSchema
      */
     'entries'?: Array<GetVerifyPanResponseSchema>;
+}
+/**
+ * Reverse penny drop verification successful
+ * @export
+ * @interface GetStatusRpdResponseSchema
+ */
+export interface GetStatusRpdResponseSchema {
+    /**
+     * It displays the bank account number of the individual.
+     * @type {string}
+     * @memberof GetStatusRpdResponseSchema
+     */
+    'bank_account'?: string;
+    /**
+     * It displays the IFSC information of the individual\'s bank account.
+     * @type {string}
+     * @memberof GetStatusRpdResponseSchema
+     */
+    'ifsc'?: string;
+    /**
+     * It displays the UPI VPA information of the individual.
+     * @type {string}
+     * @memberof GetStatusRpdResponseSchema
+     */
+    'upi'?: string;
+    /**
+     * It displays the name of the individual registered in the bank records.
+     * @type {string}
+     * @memberof GetStatusRpdResponseSchema
+     */
+    'name_at_bank'?: string;
+    /**
+     * It displays the unique ID created by you to identify the verifiation request.
+     * @type {string}
+     * @memberof GetStatusRpdResponseSchema
+     */
+    'verification_id'?: string;
+    /**
+     * It displays the unique ID created by Cashfree Payments for reference purposes.
+     * @type {string}
+     * @memberof GetStatusRpdResponseSchema
+     */
+    'ref_id'?: string;
+    /**
+     * It displays the unique transaction reference (UTR) number created by the bank to identify the transaction.
+     * @type {string}
+     * @memberof GetStatusRpdResponseSchema
+     */
+    'utr'?: string;
+    /**
+     * It displays the status of the API request.
+     * @type {string}
+     * @memberof GetStatusRpdResponseSchema
+     */
+    'status'?: string;
+    /**
+     * It displays the score of the name match verification.
+     * @type {string}
+     * @memberof GetStatusRpdResponseSchema
+     */
+    'name_match_score'?: string;
+    /**
+     * It displays the result of the name match verification.
+     * @type {string}
+     * @memberof GetStatusRpdResponseSchema
+     */
+    'name_match_result'?: string;
+    /**
+     * It displays the date and time of when the request was added.
+     * @type {string}
+     * @memberof GetStatusRpdResponseSchema
+     */
+    'added_on'?: string;
+    /**
+     * It displays the date and time of when the request was processed.
+     * @type {string}
+     * @memberof GetStatusRpdResponseSchema
+     */
+    'processed_on'?: string;
+    /**
+     * It displays the date and time of when the 1 rupee was collected.
+     * @type {string}
+     * @memberof GetStatusRpdResponseSchema
+     */
+    'penny_collected_on'?: string;
+    /**
+     * It displays the status of the rupee reversal.
+     * @type {string}
+     * @memberof GetStatusRpdResponseSchema
+     */
+    'reversal_status'?: string;
+    /**
+     * It displays the type of account.
+     * @type {string}
+     * @memberof GetStatusRpdResponseSchema
+     */
+    'account_type'?: string;
 }
 /**
  * Success response for Verify PAN Sync API
@@ -2208,6 +2200,25 @@ export interface GetVerifyPanResponseSchema {
      * @memberof GetVerifyPanResponseSchema
      */
     'aadhaar_seeding_status_desc'?: string;
+}
+/**
+ * Find the request parameters to verify GSTIN information
+ * @export
+ * @interface GstinRequestSchema
+ */
+export interface GstinRequestSchema {
+    /**
+     * It is the unique number assigned to businesses registered under the Goods and Services Tax (GST) system in India.
+     * @type {string}
+     * @memberof GstinRequestSchema
+     */
+    'GSTIN': string;
+    /**
+     * It is the name of the business to which the GSTIN is issued. The maximum character limit is 100.
+     * @type {string}
+     * @memberof GstinRequestSchema
+     */
+    'businessName'?: string;
 }
 /**
  * Success response for Verify GSTIN
@@ -2390,154 +2401,154 @@ export interface Invaliddoctypeschema {
 /**
  * Find the request parameters to verify IP address
  * @export
- * @interface Ipvalidationrequestschema
+ * @interface IpVerificationRequestSchema
  */
-export interface Ipvalidationrequestschema {
+export interface IpVerificationRequestSchema {
     /**
      * It is the IP address that you need to verify which is assigned to a device connected to a computer network.
      * @type {string}
-     * @memberof Ipvalidationrequestschema
+     * @memberof IpVerificationRequestSchema
      */
     'ip_address': string;
     /**
      * It is the unique ID you create to identify the verification request. The maximum character limit is 50. Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.
      * @type {string}
-     * @memberof Ipvalidationrequestschema
+     * @memberof IpVerificationRequestSchema
      */
     'verification_id': string;
 }
 /**
  * Verify IP success response
  * @export
- * @interface Ipvalidationsuccessschema
+ * @interface IpVerificationResponseSchema
  */
-export interface Ipvalidationsuccessschema {
+export interface IpVerificationResponseSchema {
     /**
      * It displays the unique ID created by Cashfree Payments for reference purposes.
      * @type {number}
-     * @memberof Ipvalidationsuccessschema
+     * @memberof IpVerificationResponseSchema
      */
     'reference_id'?: number;
     /**
      * It displays the unique ID you created to identify the verification request.
      * @type {string}
-     * @memberof Ipvalidationsuccessschema
+     * @memberof IpVerificationResponseSchema
      */
     'verification_id'?: string;
     /**
      * It displays the status of the IP address.
      * @type {string}
-     * @memberof Ipvalidationsuccessschema
+     * @memberof IpVerificationResponseSchema
      */
     'status'?: string;
     /**
      * It displays the entered IP address.
      * @type {string}
-     * @memberof Ipvalidationsuccessschema
+     * @memberof IpVerificationResponseSchema
      */
     'ip_address'?: string;
     /**
      * It displays the category or classification of a proxy server based on its functionality and how it handles network requests.
      * @type {string}
-     * @memberof Ipvalidationsuccessschema
+     * @memberof IpVerificationResponseSchema
      */
     'proxy_type'?: string;
     /**
      * It displays the country code associated with the geographical location of the device or network to which the IP address is assigned.
      * @type {string}
-     * @memberof Ipvalidationsuccessschema
+     * @memberof IpVerificationResponseSchema
      */
     'country_code'?: string;
     /**
      * It displays the name of the country associated with the geographical location of the device or network to which the IP address is assigned.
      * @type {string}
-     * @memberof Ipvalidationsuccessschema
+     * @memberof IpVerificationResponseSchema
      */
     'country_name'?: string;
     /**
      * It displays the name of the region associated with the geographical location of the device or network to which the IP address is assigned.
      * @type {string}
-     * @memberof Ipvalidationsuccessschema
+     * @memberof IpVerificationResponseSchema
      */
     'region_name'?: string;
     /**
      * It displays the name of the city associated with the geographical location of the device or network to which the IP address is assigned.
      * @type {string}
-     * @memberof Ipvalidationsuccessschema
+     * @memberof IpVerificationResponseSchema
      */
     'city_name'?: string;
     /**
      * It displays the risk score associated with a particular city based on factors such as cybersecurity threats, crime rates, or other relevant data.
      * @type {string}
-     * @memberof Ipvalidationsuccessschema
+     * @memberof IpVerificationResponseSchema
      */
     'city_risk_score'?: string;
     /**
      * It displays the risk score associated with a particular city based on factors such as cybersecurity threats, crime rates, or other relevant data.
      * @type {string}
-     * @memberof Ipvalidationsuccessschema
+     * @memberof IpVerificationResponseSchema
      */
     'proxy_type_risk_score'?: string;
 }
 /**
  * Find the request parameters to check the liveliness in an image
  * @export
- * @interface LivelinessRequestBodySchema
+ * @interface LivelinessRequestSchema
  */
-export interface LivelinessRequestBodySchema {
+export interface LivelinessRequestSchema {
     /**
      * It is the unique ID you create to identify the verification request. The maximum character limit is 50. Only alphanumeric, period (.), hyphen (-) and underscore ( _ ) are allowed.
      * @type {string}
-     * @memberof LivelinessRequestBodySchema
+     * @memberof LivelinessRequestSchema
      */
     'verification_id': string;
     /**
      * Upload the image of the individual to verify the liveliness of the image.
      * @type {File}
-     * @memberof LivelinessRequestBodySchema
+     * @memberof LivelinessRequestSchema
      */
     'image': File;
     /**
      * It is the boolean value to set the strictness check of the image. Default value for strict_check is false.
      * @type {boolean}
-     * @memberof LivelinessRequestBodySchema
+     * @memberof LivelinessRequestSchema
      */
     'strict_check'?: boolean;
 }
 /**
  * Success response for Liveliness Check API
  * @export
- * @interface LivelinessResponseBodySchema
+ * @interface LivelinessResponseSchema
  */
-export interface LivelinessResponseBodySchema {
+export interface LivelinessResponseSchema {
     /**
      * It displays the unique ID created by Cashfree Payments for reference purposes.
      * @type {number}
-     * @memberof LivelinessResponseBodySchema
+     * @memberof LivelinessResponseSchema
      */
     'reference_id'?: number;
     /**
      * It displays the unique ID you created to identify the API request.
      * @type {string}
-     * @memberof LivelinessResponseBodySchema
+     * @memberof LivelinessResponseSchema
      */
     'verification_id'?: string;
     /**
      * It displays the status of the API request.
      * @type {string}
-     * @memberof LivelinessResponseBodySchema
+     * @memberof LivelinessResponseSchema
      */
     'status'?: string;
     /**
      * It displays the result of the liveliness check.
      * @type {boolean}
-     * @memberof LivelinessResponseBodySchema
+     * @memberof LivelinessResponseSchema
      */
     'liveliness'?: boolean;
     /**
      * It displays the score of the liveliness check.
      * @type {number}
-     * @memberof LivelinessResponseBodySchema
+     * @memberof LivelinessResponseSchema
      */
     'score'?: number;
 }
@@ -2569,731 +2580,731 @@ export interface NameMatchRequestSchema {
 /**
  * Success response for Name Match API
  * @export
- * @interface NameMatchResponseBodySchema
+ * @interface NameMatchResponseSchema
  */
-export interface NameMatchResponseBodySchema {
+export interface NameMatchResponseSchema {
     /**
      * It displays the unique ID you created to identify the verification request.
      * @type {string}
-     * @memberof NameMatchResponseBodySchema
+     * @memberof NameMatchResponseSchema
      */
     'verification_id'?: string;
     /**
      * It displays the unique ID created by Cashfree Payments for reference purposes.
      * @type {number}
-     * @memberof NameMatchResponseBodySchema
+     * @memberof NameMatchResponseSchema
      */
     'reference_id'?: number;
     /**
      * It displays the name you entered for verification.
      * @type {string}
-     * @memberof NameMatchResponseBodySchema
+     * @memberof NameMatchResponseSchema
      */
     'name_1'?: string;
     /**
      * It displays the name you entered for verificaiton with name_1.
      * @type {string}
-     * @memberof NameMatchResponseBodySchema
+     * @memberof NameMatchResponseSchema
      */
     'name_2'?: string;
     /**
      * It displays the status of the API request.
      * @type {string}
-     * @memberof NameMatchResponseBodySchema
+     * @memberof NameMatchResponseSchema
      */
     'status'?: string;
     /**
      * It displays the score of the name match verification.
      * @type {number}
-     * @memberof NameMatchResponseBodySchema
+     * @memberof NameMatchResponseSchema
      */
     'score'?: number;
     /**
      * It justifies the match score for the API request.
      * @type {string}
-     * @memberof NameMatchResponseBodySchema
+     * @memberof NameMatchResponseSchema
      */
     'reason'?: string;
 }
 /**
  * Find the request parameters to generate an OTP for aadhaar verification
  * @export
- * @interface OfflineAadhaarSendOTPRequestSchema
+ * @interface OfflineAadhaarSendOtpRequestSchema
  */
-export interface OfflineAadhaarSendOTPRequestSchema {
+export interface OfflineAadhaarSendOtpRequestSchema {
     /**
      * It is the unique 12-digit identification number issued by the Unique Identification Authority of India (UIDAI).
      * @type {string}
-     * @memberof OfflineAadhaarSendOTPRequestSchema
+     * @memberof OfflineAadhaarSendOtpRequestSchema
      */
     'aadhaar_number': string;
 }
 /**
  * Success response for Generate OTP to Verify Aadhaar API
  * @export
- * @interface OfflineAadhaarSendOTPResponseSchema
+ * @interface OfflineAadhaarSendOtpResponseSchema
  */
-export interface OfflineAadhaarSendOTPResponseSchema {
+export interface OfflineAadhaarSendOtpResponseSchema {
     /**
      * It displays the unique ID created by Cashfree Payments for reference purposes.
      * @type {string}
-     * @memberof OfflineAadhaarSendOTPResponseSchema
+     * @memberof OfflineAadhaarSendOtpResponseSchema
      */
     'ref_id'?: string;
     /**
      * It displays the status of the API request.
      * @type {string}
-     * @memberof OfflineAadhaarSendOTPResponseSchema
+     * @memberof OfflineAadhaarSendOtpResponseSchema
      */
     'status'?: string;
     /**
      * It displays details about the success or failure of the API request.
      * @type {string}
-     * @memberof OfflineAadhaarSendOTPResponseSchema
+     * @memberof OfflineAadhaarSendOtpResponseSchema
      */
     'message'?: string;
-}
-/**
- * Success response for Submit OTP for Aadhaar Verification
- * @export
- * @interface OfflineAadhaarVerifyOTPResponseSchema
- */
-export interface OfflineAadhaarVerifyOTPResponseSchema {
-    /**
-     * It displays the unique ID created by Cashfree Payments for reference purposes.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchema
-     */
-    'ref_id'?: string;
-    /**
-     * It displays the status of the aadhaar information.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchema
-     */
-    'status'?: string;
-    /**
-     * It displays details about the success or failure of the API request.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchema
-     */
-    'message'?: string;
-    /**
-     * It displays the parent/guardian of the aadhaar card holder.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchema
-     */
-    'care_of'?: string;
-    /**
-     * It displays the address information as present in the aadhaar card.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchema
-     */
-    'address'?: string;
-    /**
-     * It displays the date of birth of the aadhaar card holder.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchema
-     */
-    'dob'?: string;
-    /**
-     * It displays the email address of the aadhaar card holder.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchema
-     */
-    'email'?: string;
-    /**
-     * It displays the gender of the aadhaar card holder.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchema
-     */
-    'gender'?: string;
-    /**
-     * It displays the name of the aadhaar card holder.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchema
-     */
-    'name'?: string;
-    /**
-     * It displays the year of birth of the aadhaar card holder.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchema
-     */
-    'year_of_birth'?: string;
-    /**
-     * It displays the unique information about the device\'s hardware, software, and other characteristics.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchema
-     */
-    'mobile_hash'?: string;
-    /**
-     * It displays the URL to the image present in the aadhaar card.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchema
-     */
-    'photo_link'?: string;
-    /**
-     * 
-     * @type {OfflineAadhaarVerifyOTPResponseSchemaSplitAddress}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchema
-     */
-    'split_address'?: OfflineAadhaarVerifyOTPResponseSchemaSplitAddress;
-}
-/**
- * It contains the address information in individual components.
- * @export
- * @interface OfflineAadhaarVerifyOTPResponseSchemaSplitAddress
- */
-export interface OfflineAadhaarVerifyOTPResponseSchemaSplitAddress {
-    /**
-     * It displays the name of the country as present in the aadhaar card.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchemaSplitAddress
-     */
-    'country'?: string;
-    /**
-     * It displays the name of the district as present in the aadhaar card.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchemaSplitAddress
-     */
-    'dist'?: string;
-    /**
-     * It displays the house name/number as present in the aadhaar card.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchemaSplitAddress
-     */
-    'house'?: string;
-    /**
-     * It displays the name of the landmark as present in the aadhaar card.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchemaSplitAddress
-     */
-    'landmark'?: string;
-    /**
-     * It displays the PIN code information as present in the aadhaar card.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchemaSplitAddress
-     */
-    'pincode'?: string;
-    /**
-     * It displays the post office nearest to the address present.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchemaSplitAddress
-     */
-    'po'?: string;
-    /**
-     * It displays the name of the state as present in the aadhaar card.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchemaSplitAddress
-     */
-    'state'?: string;
-    /**
-     * It displays the name of the street as present in the aadhaar card.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchemaSplitAddress
-     */
-    'street'?: string;
-    /**
-     * It displays the name of the sub district as present in the aadhaar card.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchemaSplitAddress
-     */
-    'subdist'?: string;
-    /**
-     * It displays the village, town, city information as present in the aadhaar card.
-     * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPResponseSchemaSplitAddress
-     */
-    'vtc'?: string;
 }
 /**
  * Find the request parameters to submit the OTP for aadhaar verification
  * @export
- * @interface OfflineAadhaarVerifyOTPSchema
+ * @interface OfflineAadhaarVerifyOtpRequestSchema
  */
-export interface OfflineAadhaarVerifyOTPSchema {
+export interface OfflineAadhaarVerifyOtpRequestSchema {
     /**
      * It is the OTP received on the registered phone number for offline aadhaar verification.
      * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPSchema
+     * @memberof OfflineAadhaarVerifyOtpRequestSchema
      */
     'otp': string;
     /**
      * It is the unique ID created by Cashfree Payments that you receive in the response of Generate OTP to Verify Aadhaar API.
      * @type {string}
-     * @memberof OfflineAadhaarVerifyOTPSchema
+     * @memberof OfflineAadhaarVerifyOtpRequestSchema
      */
     'ref_id': string;
 }
 /**
- * Find the request parameters to verify PAN via OCR
+ * Success response for Submit OTP for Aadhaar Verification
  * @export
- * @interface PANOCRRequestSchema
+ * @interface OfflineAadhaarVerifyOtpResponseSchema
  */
-export interface PANOCRRequestSchema {
-    /**
-     * It is the unique ID you create to identify the verification request. The maximum character limit is 50. Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.
-     * @type {string}
-     * @memberof PANOCRRequestSchema
-     */
-    'verification_id': string;
-    /**
-     * It is the scanned copy of the PAN card. Allowed file type - JPEG/JPG/PNG.
-     * @type {File}
-     * @memberof PANOCRRequestSchema
-     */
-    'front_image': File;
-}
-/**
- * PAN Verification via OCR success response
- * @export
- * @interface PANOCRResponseSchema
- */
-export interface PANOCRResponseSchema {
-    /**
-     * It displays the name of the PAN holder.
-     * @type {string}
-     * @memberof PANOCRResponseSchema
-     */
-    'name'?: string;
-    /**
-     * It displays the name of the organisation the individual runs.
-     * @type {string}
-     * @memberof PANOCRResponseSchema
-     */
-    'organization_name'?: string;
-    /**
-     * It displays the type of PAN issued to the individual.
-     * @type {string}
-     * @memberof PANOCRResponseSchema
-     */
-    'pan_type'?: string;
-    /**
-     * It displays the incorporation date of the individual\'s organisation.
-     * @type {string}
-     * @memberof PANOCRResponseSchema
-     */
-    'date_of_incorporation'?: string;
-    /**
-     * It displays the date of birth of the individual.
-     * @type {string}
-     * @memberof PANOCRResponseSchema
-     */
-    'dob'?: string;
-    /**
-     * It displays the father\'s name of the individual.
-     * @type {string}
-     * @memberof PANOCRResponseSchema
-     */
-    'father'?: string;
-    /**
-     * It displays the entered PAN information in the request.
-     * @type {string}
-     * @memberof PANOCRResponseSchema
-     */
-    'pan'?: string;
-    /**
-     * It displays whethere the entered PAN information is valid.
-     * @type {boolean}
-     * @memberof PANOCRResponseSchema
-     */
-    'valid'?: boolean;
-    /**
-     * It displays the age of the individual.
-     * @type {string}
-     * @memberof PANOCRResponseSchema
-     */
-    'age'?: string;
-    /**
-     * It displays the status of the PAN information.
-     * @type {string}
-     * @memberof PANOCRResponseSchema
-     */
-    'status'?: string;
+export interface OfflineAadhaarVerifyOtpResponseSchema {
     /**
      * It displays the unique ID created by Cashfree Payments for reference purposes.
      * @type {string}
-     * @memberof PANOCRResponseSchema
+     * @memberof OfflineAadhaarVerifyOtpResponseSchema
      */
-    'reference_id'?: string;
+    'ref_id'?: string;
     /**
-     * It displays the unique ID you created to identify the request.
+     * It displays the status of the aadhaar information.
      * @type {string}
-     * @memberof PANOCRResponseSchema
+     * @memberof OfflineAadhaarVerifyOtpResponseSchema
      */
-    'verification_id'?: string;
-    /**
-     * It displays the level of confidence or reliability associated with the PAN verification.
-     * @type {string}
-     * @memberof PANOCRResponseSchema
-     */
-    'confidence_score'?: string;
+    'status'?: string;
     /**
      * It displays details about the success or failure of the API request.
      * @type {string}
-     * @memberof PANOCRResponseSchema
+     * @memberof OfflineAadhaarVerifyOtpResponseSchema
      */
     'message'?: string;
-}
-/**
- * Find the request parameters to verify PAN
- * @export
- * @interface PANRequestSchema
- */
-export interface PANRequestSchema {
     /**
-     * It is the unique 10-character alphanumeric identifier of the individual issued by the Income Tax Department. The first 5 should be alphabets followed by 4 numbers and the 10th character should again be an alphabet.
+     * It displays the parent/guardian of the aadhaar card holder.
      * @type {string}
-     * @memberof PANRequestSchema
+     * @memberof OfflineAadhaarVerifyOtpResponseSchema
      */
-    'pan': string;
+    'care_of'?: string;
     /**
-     * It is the name of the individual.
+     * It displays the address information as present in the aadhaar card.
      * @type {string}
-     * @memberof PANRequestSchema
+     * @memberof OfflineAadhaarVerifyOtpResponseSchema
+     */
+    'address'?: string;
+    /**
+     * It displays the date of birth of the aadhaar card holder.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchema
+     */
+    'dob'?: string;
+    /**
+     * It displays the email address of the aadhaar card holder.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchema
+     */
+    'email'?: string;
+    /**
+     * It displays the gender of the aadhaar card holder.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchema
+     */
+    'gender'?: string;
+    /**
+     * It displays the name of the aadhaar card holder.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchema
      */
     'name'?: string;
+    /**
+     * It displays the year of birth of the aadhaar card holder.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchema
+     */
+    'year_of_birth'?: string;
+    /**
+     * It displays the unique information about the device\'s hardware, software, and other characteristics.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchema
+     */
+    'mobile_hash'?: string;
+    /**
+     * It displays the URL to the image present in the aadhaar card.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchema
+     */
+    'photo_link'?: string;
+    /**
+     * 
+     * @type {OfflineAadhaarVerifyOtpResponseSchemaSplitAddress}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchema
+     */
+    'split_address'?: OfflineAadhaarVerifyOtpResponseSchemaSplitAddress;
+}
+/**
+ * It contains the address information in individual components.
+ * @export
+ * @interface OfflineAadhaarVerifyOtpResponseSchemaSplitAddress
+ */
+export interface OfflineAadhaarVerifyOtpResponseSchemaSplitAddress {
+    /**
+     * It displays the name of the country as present in the aadhaar card.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchemaSplitAddress
+     */
+    'country'?: string;
+    /**
+     * It displays the name of the district as present in the aadhaar card.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchemaSplitAddress
+     */
+    'dist'?: string;
+    /**
+     * It displays the house name/number as present in the aadhaar card.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchemaSplitAddress
+     */
+    'house'?: string;
+    /**
+     * It displays the name of the landmark as present in the aadhaar card.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchemaSplitAddress
+     */
+    'landmark'?: string;
+    /**
+     * It displays the PIN code information as present in the aadhaar card.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchemaSplitAddress
+     */
+    'pincode'?: string;
+    /**
+     * It displays the post office nearest to the address present.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchemaSplitAddress
+     */
+    'po'?: string;
+    /**
+     * It displays the name of the state as present in the aadhaar card.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchemaSplitAddress
+     */
+    'state'?: string;
+    /**
+     * It displays the name of the street as present in the aadhaar card.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchemaSplitAddress
+     */
+    'street'?: string;
+    /**
+     * It displays the name of the sub district as present in the aadhaar card.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchemaSplitAddress
+     */
+    'subdist'?: string;
+    /**
+     * It displays the village, town, city information as present in the aadhaar card.
+     * @type {string}
+     * @memberof OfflineAadhaarVerifyOtpResponseSchemaSplitAddress
+     */
+    'vtc'?: string;
 }
 /**
  * Find the request parameters to verify PAN information
  * @export
- * @interface PanAdvanceRequestBodySchema
+ * @interface PanAdvanceRequestSchema
  */
-export interface PanAdvanceRequestBodySchema {
+export interface PanAdvanceRequestSchema {
     /**
      * It is the unique 10-character alphanumeric identifier of the individual issued by the Income Tax Department. The first 5 should be alphabets followed by 4 numbers and the 10th character should again be an alphabet.
      * @type {string}
-     * @memberof PanAdvanceRequestBodySchema
+     * @memberof PanAdvanceRequestSchema
      */
     'pan': string;
     /**
      * It is the unique ID you create to identify the verification request. The maximum character limit is 50. Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.
      * @type {string}
-     * @memberof PanAdvanceRequestBodySchema
+     * @memberof PanAdvanceRequestSchema
      */
     'verification_id': string;
     /**
      * It is the name of the PAN information holder.
      * @type {string}
-     * @memberof PanAdvanceRequestBodySchema
+     * @memberof PanAdvanceRequestSchema
      */
     'name'?: string;
 }
 /**
  * Success response for PAN Advance
  * @export
- * @interface PanAdvanceResponseBodySchema
+ * @interface PanAdvanceResponseSchema
  */
-export interface PanAdvanceResponseBodySchema {
+export interface PanAdvanceResponseSchema {
     /**
      * It displays the unique ID created by Cashfree Payments for reference purposes.
      * @type {number}
-     * @memberof PanAdvanceResponseBodySchema
+     * @memberof PanAdvanceResponseSchema
      */
     'reference_id'?: number;
     /**
      * It displays the unique ID you created to identify the verification request.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchema
+     * @memberof PanAdvanceResponseSchema
      */
     'verification_id'?: string;
     /**
      * It displays the status of the PAN information.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchema
+     * @memberof PanAdvanceResponseSchema
      */
     'status'?: string;
     /**
      * It displays details about the success or failure of the API request.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchema
+     * @memberof PanAdvanceResponseSchema
      */
     'message'?: string;
     /**
      * It displays the PAN information entered in the API request.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchema
+     * @memberof PanAdvanceResponseSchema
      */
     'pan'?: string;
     /**
      * It displays the name entered in the API request.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchema
+     * @memberof PanAdvanceResponseSchema
      */
     'name_provided'?: string;
     /**
      * It displays the registererd name as present in the PAN information.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchema
+     * @memberof PanAdvanceResponseSchema
      */
     'registered_name'?: string;
     /**
      * It displays the name as present in the PAN information.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchema
+     * @memberof PanAdvanceResponseSchema
      */
     'name_pan_card'?: string;
     /**
      * It displays the type of the PAN issued.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchema
+     * @memberof PanAdvanceResponseSchema
      */
     'type'?: string;
     /**
      * It displays the gender of the individual as present in the PAN information.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchema
+     * @memberof PanAdvanceResponseSchema
      */
     'gender'?: string;
     /**
      * It displays the date of birth of the individual.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchema
+     * @memberof PanAdvanceResponseSchema
      */
     'date_of_birth'?: string;
     /**
      * It displays the masked aadhaar number of the individual.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchema
+     * @memberof PanAdvanceResponseSchema
      */
     'masked_aadhaar_number'?: string;
     /**
      * It displays the email ID of the individual.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchema
+     * @memberof PanAdvanceResponseSchema
      */
     'email'?: string;
     /**
      * It displays the mobile number of the individual.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchema
+     * @memberof PanAdvanceResponseSchema
      */
     'mobile_number'?: string;
     /**
      * It displays the aadhaar and PAN link status.
      * @type {boolean}
-     * @memberof PanAdvanceResponseBodySchema
+     * @memberof PanAdvanceResponseSchema
      */
     'aadhaar_linked'?: boolean;
     /**
      * 
-     * @type {PanAdvanceResponseBodySchemaAddress}
-     * @memberof PanAdvanceResponseBodySchema
+     * @type {PanAdvanceResponseSchemaAddress}
+     * @memberof PanAdvanceResponseSchema
      */
-    'address'?: PanAdvanceResponseBodySchemaAddress;
+    'address'?: PanAdvanceResponseSchemaAddress;
 }
 /**
  * It displays the address information of the individual.
  * @export
- * @interface PanAdvanceResponseBodySchemaAddress
+ * @interface PanAdvanceResponseSchemaAddress
  */
-export interface PanAdvanceResponseBodySchemaAddress {
+export interface PanAdvanceResponseSchemaAddress {
     /**
      * It displays the complete address of the individual.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchemaAddress
+     * @memberof PanAdvanceResponseSchemaAddress
      */
     'full_address'?: string;
     /**
      * It displays the street name from the individual\'s address.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchemaAddress
+     * @memberof PanAdvanceResponseSchemaAddress
      */
     'street'?: string;
     /**
      * It displays the city name from the individual\'s address.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchemaAddress
+     * @memberof PanAdvanceResponseSchemaAddress
      */
     'city'?: string;
     /**
      * It displays the state name from the individual\'s address.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchemaAddress
+     * @memberof PanAdvanceResponseSchemaAddress
      */
     'state'?: string;
     /**
      * It displays the PIN code from the individual\'s address.
      * @type {number}
-     * @memberof PanAdvanceResponseBodySchemaAddress
+     * @memberof PanAdvanceResponseSchemaAddress
      */
     'pincode'?: number;
     /**
      * It displays the country name from the individual\'s address.
      * @type {string}
-     * @memberof PanAdvanceResponseBodySchemaAddress
+     * @memberof PanAdvanceResponseSchemaAddress
      */
     'country'?: string;
 }
 /**
+ * Find the request parameters to verify PAN via OCR
+ * @export
+ * @interface PanOcrRequestSchema
+ */
+export interface PanOcrRequestSchema {
+    /**
+     * It is the unique ID you create to identify the verification request. The maximum character limit is 50. Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.
+     * @type {string}
+     * @memberof PanOcrRequestSchema
+     */
+    'verification_id': string;
+    /**
+     * It is the scanned copy of the PAN card. Allowed file type - JPEG/JPG/PNG.
+     * @type {File}
+     * @memberof PanOcrRequestSchema
+     */
+    'front_image': File;
+}
+/**
+ * PAN Verification via OCR success response
+ * @export
+ * @interface PanOcrResponseSchema
+ */
+export interface PanOcrResponseSchema {
+    /**
+     * It displays the name of the PAN holder.
+     * @type {string}
+     * @memberof PanOcrResponseSchema
+     */
+    'name'?: string;
+    /**
+     * It displays the name of the organisation the individual runs.
+     * @type {string}
+     * @memberof PanOcrResponseSchema
+     */
+    'organization_name'?: string;
+    /**
+     * It displays the type of PAN issued to the individual.
+     * @type {string}
+     * @memberof PanOcrResponseSchema
+     */
+    'pan_type'?: string;
+    /**
+     * It displays the incorporation date of the individual\'s organisation.
+     * @type {string}
+     * @memberof PanOcrResponseSchema
+     */
+    'date_of_incorporation'?: string;
+    /**
+     * It displays the date of birth of the individual.
+     * @type {string}
+     * @memberof PanOcrResponseSchema
+     */
+    'dob'?: string;
+    /**
+     * It displays the father\'s name of the individual.
+     * @type {string}
+     * @memberof PanOcrResponseSchema
+     */
+    'father'?: string;
+    /**
+     * It displays the entered PAN information in the request.
+     * @type {string}
+     * @memberof PanOcrResponseSchema
+     */
+    'pan'?: string;
+    /**
+     * It displays whethere the entered PAN information is valid.
+     * @type {boolean}
+     * @memberof PanOcrResponseSchema
+     */
+    'valid'?: boolean;
+    /**
+     * It displays the age of the individual.
+     * @type {string}
+     * @memberof PanOcrResponseSchema
+     */
+    'age'?: string;
+    /**
+     * It displays the status of the PAN information.
+     * @type {string}
+     * @memberof PanOcrResponseSchema
+     */
+    'status'?: string;
+    /**
+     * It displays the unique ID created by Cashfree Payments for reference purposes.
+     * @type {string}
+     * @memberof PanOcrResponseSchema
+     */
+    'reference_id'?: string;
+    /**
+     * It displays the unique ID you created to identify the request.
+     * @type {string}
+     * @memberof PanOcrResponseSchema
+     */
+    'verification_id'?: string;
+    /**
+     * It displays the level of confidence or reliability associated with the PAN verification.
+     * @type {string}
+     * @memberof PanOcrResponseSchema
+     */
+    'confidence_score'?: string;
+    /**
+     * It displays details about the success or failure of the API request.
+     * @type {string}
+     * @memberof PanOcrResponseSchema
+     */
+    'message'?: string;
+}
+/**
+ * Find the request parameters to verify PAN
+ * @export
+ * @interface PanRequestSchema
+ */
+export interface PanRequestSchema {
+    /**
+     * It is the unique 10-character alphanumeric identifier of the individual issued by the Income Tax Department. The first 5 should be alphabets followed by 4 numbers and the 10th character should again be an alphabet.
+     * @type {string}
+     * @memberof PanRequestSchema
+     */
+    'pan': string;
+    /**
+     * It is the name of the individual.
+     * @type {string}
+     * @memberof PanRequestSchema
+     */
+    'name'?: string;
+}
+/**
  * Find the request parameters to fetch the list of GSTIN associated with PAN
  * @export
- * @interface PanToGstinRequestBodySchema
+ * @interface PanToGstinRequestSchema
  */
-export interface PanToGstinRequestBodySchema {
+export interface PanToGstinRequestSchema {
     /**
      * It is the unique 10-character alphanumeric identifier issued by the Income Tax Department.
      * @type {string}
-     * @memberof PanToGstinRequestBodySchema
+     * @memberof PanToGstinRequestSchema
      */
     'pan': string;
     /**
      * It is the unique ID you create to identify the request. The maximum character limit is 50. Alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.
      * @type {string}
-     * @memberof PanToGstinRequestBodySchema
+     * @memberof PanToGstinRequestSchema
      */
     'verification_id': string;
 }
 /**
  * Success response for Fetch GSTIN with PAN
  * @export
- * @interface PanToGstinResponseBodySchema
+ * @interface PanToGstinResponseSchema
  */
-export interface PanToGstinResponseBodySchema {
+export interface PanToGstinResponseSchema {
     /**
      * It displays the unique ID created by Cashfree Payments for reference purposes.
      * @type {number}
-     * @memberof PanToGstinResponseBodySchema
+     * @memberof PanToGstinResponseSchema
      */
     'reference_id'?: number;
     /**
      * It displays the unique ID you create to identity the verification request.
      * @type {string}
-     * @memberof PanToGstinResponseBodySchema
+     * @memberof PanToGstinResponseSchema
      */
     'verification_id'?: string;
     /**
      * It displays the status of the API request. 
      * @type {string}
-     * @memberof PanToGstinResponseBodySchema
+     * @memberof PanToGstinResponseSchema
      */
     'status'?: string;
     /**
      * It displays details about the success or failure of the API request.
      * @type {string}
-     * @memberof PanToGstinResponseBodySchema
+     * @memberof PanToGstinResponseSchema
      */
     'message'?: string;
     /**
      * It displays the entered PAN information in the request.
      * @type {string}
-     * @memberof PanToGstinResponseBodySchema
+     * @memberof PanToGstinResponseSchema
      */
     'pan'?: string;
     /**
      * It displays the list of GSTIN associated with the entered PAN.
-     * @type {Array<PanToGstinResponseBodySchemaGstinListInner>}
-     * @memberof PanToGstinResponseBodySchema
+     * @type {Array<PanToGstinResponseSchemaGstinListInner>}
+     * @memberof PanToGstinResponseSchema
      */
-    'gstin_list'?: Array<PanToGstinResponseBodySchemaGstinListInner>;
+    'gstin_list'?: Array<PanToGstinResponseSchemaGstinListInner>;
 }
 /**
  * 
  * @export
- * @interface PanToGstinResponseBodySchemaGstinListInner
+ * @interface PanToGstinResponseSchemaGstinListInner
  */
-export interface PanToGstinResponseBodySchemaGstinListInner {
+export interface PanToGstinResponseSchemaGstinListInner {
     /**
      * It displays the GSTIN information.
      * @type {string}
-     * @memberof PanToGstinResponseBodySchemaGstinListInner
+     * @memberof PanToGstinResponseSchemaGstinListInner
      */
     'gstin'?: string;
     /**
      * It displays the status of the GSTIN associated with the entered PAN.
      * @type {string}
-     * @memberof PanToGstinResponseBodySchemaGstinListInner
+     * @memberof PanToGstinResponseSchemaGstinListInner
      */
     'status'?: string;
     /**
      * It displays the name of the state.
      * @type {string}
-     * @memberof PanToGstinResponseBodySchemaGstinListInner
+     * @memberof PanToGstinResponseSchemaGstinListInner
      */
     'state'?: string;
 }
 /**
  * Find the request parameters to verify passport information
  * @export
- * @interface PassportVerificationRequestBodySchema
+ * @interface PassportVerificationRequestSchema
  */
-export interface PassportVerificationRequestBodySchema {
+export interface PassportVerificationRequestSchema {
     /**
      * It is the unique ID you create to identify the verification request. The maximum character limit is 50. Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.
      * @type {string}
-     * @memberof PassportVerificationRequestBodySchema
+     * @memberof PassportVerificationRequestSchema
      */
     'verification_id': string;
     /**
      * It is the name of the passport holder.
      * @type {string}
-     * @memberof PassportVerificationRequestBodySchema
+     * @memberof PassportVerificationRequestSchema
      */
     'name'?: string;
     /**
      * It is the unique alphanumeric code that identifies an individual\'s passport application.
      * @type {string}
-     * @memberof PassportVerificationRequestBodySchema
+     * @memberof PassportVerificationRequestSchema
      */
     'file_number': string;
     /**
      * It is the date of birth of the passport holder. The format is YYYY-MM-DD.
      * @type {string}
-     * @memberof PassportVerificationRequestBodySchema
+     * @memberof PassportVerificationRequestSchema
      */
     'dob': string;
 }
 /**
  * Success response for Verify Passport
  * @export
- * @interface PassportVerificationResponseBodySchema
+ * @interface PassportVerificationResponseSchema
  */
-export interface PassportVerificationResponseBodySchema {
+export interface PassportVerificationResponseSchema {
     /**
      * It displays the unique ID created by Cashfree Payments for reference purposes.
      * @type {number}
-     * @memberof PassportVerificationResponseBodySchema
+     * @memberof PassportVerificationResponseSchema
      */
     'reference_id'?: number;
     /**
      * It displays the unique ID you created to identify the verification request.
      * @type {string}
-     * @memberof PassportVerificationResponseBodySchema
+     * @memberof PassportVerificationResponseSchema
      */
     'verification_id'?: string;
     /**
      * It displays the status of the passport.
      * @type {string}
-     * @memberof PassportVerificationResponseBodySchema
+     * @memberof PassportVerificationResponseSchema
      */
     'status'?: string;
     /**
      * It displays the unique alphanumeric code that identifies an individual\'s passport application.
      * @type {string}
-     * @memberof PassportVerificationResponseBodySchema
+     * @memberof PassportVerificationResponseSchema
      */
     'file_number'?: string;
     /**
      * It displays the name of the passport holder.
      * @type {string}
-     * @memberof PassportVerificationResponseBodySchema
+     * @memberof PassportVerificationResponseSchema
      */
     'name'?: string;
     /**
      * It displays the date of birth of the passport holder.
      * @type {string}
-     * @memberof PassportVerificationResponseBodySchema
+     * @memberof PassportVerificationResponseSchema
      */
     'dob'?: string;
     /**
      * It displays the type of passport application.
      * @type {string}
-     * @memberof PassportVerificationResponseBodySchema
+     * @memberof PassportVerificationResponseSchema
      */
     'application_type'?: string;
     /**
      * It displays when the passport application was received.
      * @type {string}
-     * @memberof PassportVerificationResponseBodySchema
+     * @memberof PassportVerificationResponseSchema
      */
     'application_received_date'?: string;
 }
@@ -3409,113 +3420,16 @@ export interface ReverseGeocodingResponseSchema {
     'pincode'?: string;
     /**
      * 
-     * @type {string}
+     * @type {number}
      * @memberof ReverseGeocodingResponseSchema
      */
-    'score'?: string;
+    'score'?: number;
     /**
      * It displays the status of the entered coordinates.
      * @type {string}
      * @memberof ReverseGeocodingResponseSchema
      */
     'status'?: string;
-}
-/**
- * Reverse penny drop verification successful
- * @export
- * @interface SUCCESS
- */
-export interface SUCCESS {
-    /**
-     * It displays the bank account number of the individual.
-     * @type {string}
-     * @memberof SUCCESS
-     */
-    'bank_account'?: string;
-    /**
-     * It displays the IFSC information of the individual\'s bank account.
-     * @type {string}
-     * @memberof SUCCESS
-     */
-    'ifsc'?: string;
-    /**
-     * It displays the UPI VPA information of the individual.
-     * @type {string}
-     * @memberof SUCCESS
-     */
-    'upi'?: string;
-    /**
-     * It displays the name of the individual registered in the bank records.
-     * @type {string}
-     * @memberof SUCCESS
-     */
-    'name_at_bank'?: string;
-    /**
-     * It displays the unique ID created by you to identify the verifiation request.
-     * @type {string}
-     * @memberof SUCCESS
-     */
-    'verification_id'?: string;
-    /**
-     * It displays the unique ID created by Cashfree Payments for reference purposes.
-     * @type {number}
-     * @memberof SUCCESS
-     */
-    'ref_id'?: number;
-    /**
-     * It displays the unique transaction reference (UTR) number created by the bank to identify the transaction.
-     * @type {string}
-     * @memberof SUCCESS
-     */
-    'utr'?: string;
-    /**
-     * It displays the status of the API request.
-     * @type {string}
-     * @memberof SUCCESS
-     */
-    'status'?: string;
-    /**
-     * It displays the score of the name match verification.
-     * @type {string}
-     * @memberof SUCCESS
-     */
-    'name_match_score'?: string;
-    /**
-     * It displays the result of the name match verification.
-     * @type {string}
-     * @memberof SUCCESS
-     */
-    'name_match_result'?: string;
-    /**
-     * It displays the date and time of when the request was added.
-     * @type {string}
-     * @memberof SUCCESS
-     */
-    'added_on'?: string;
-    /**
-     * It displays the date and time of when the request was processed.
-     * @type {string}
-     * @memberof SUCCESS
-     */
-    'processed_on'?: string;
-    /**
-     * It displays the date and time of when the 1 rupee was collected.
-     * @type {string}
-     * @memberof SUCCESS
-     */
-    'penny_collected_on'?: string;
-    /**
-     * It displays the status of the rupee reversal.
-     * @type {string}
-     * @memberof SUCCESS
-     */
-    'reversal_status'?: string;
-    /**
-     * It displays the type of account.
-     * @type {string}
-     * @memberof SUCCESS
-     */
-    'account_type'?: string;
 }
 /**
  * It containts the address information in individual components.
@@ -3606,148 +3520,148 @@ export interface SplitAddressSchema {
 /**
  * Find the request parameters to verify UPI VPA information
  * @export
- * @interface UpiAdvanceRequestBodySchema
+ * @interface UpiAdvanceRequestSchema
  */
-export interface UpiAdvanceRequestBodySchema {
+export interface UpiAdvanceRequestSchema {
     /**
      * It is the UPI VPA information. Only alphanumeric characters with period (.), hyphen (-), and underscore ( _ ), at the rate of (@) are allowed.
      * @type {string}
-     * @memberof UpiAdvanceRequestBodySchema
+     * @memberof UpiAdvanceRequestSchema
      */
     'vpa': string;
     /**
      * It is the name of the UPI VPA account holder.
      * @type {string}
-     * @memberof UpiAdvanceRequestBodySchema
+     * @memberof UpiAdvanceRequestSchema
      */
     'name'?: string;
 }
 /**
  * UPI 360 success response
  * @export
- * @interface UpiAdvanceResponseBodySchema
+ * @interface UpiAdvanceResponseSchema
  */
-export interface UpiAdvanceResponseBodySchema {
+export interface UpiAdvanceResponseSchema {
     /**
      * It displays the unique ID created by Cashfree Payments for reference purposes.
      * @type {number}
-     * @memberof UpiAdvanceResponseBodySchema
+     * @memberof UpiAdvanceResponseSchema
      */
     'reference_id'?: number;
     /**
      * It displays the status of the UPI VPA information.
      * @type {string}
-     * @memberof UpiAdvanceResponseBodySchema
+     * @memberof UpiAdvanceResponseSchema
      */
     'status'?: string;
     /**
      * It displays details about the success or failure of the API request.
      * @type {string}
-     * @memberof UpiAdvanceResponseBodySchema
+     * @memberof UpiAdvanceResponseSchema
      */
     'message'?: string;
     /**
      * It displays the IFSC information associated with the UPI VPA information.
      * @type {string}
-     * @memberof UpiAdvanceResponseBodySchema
+     * @memberof UpiAdvanceResponseSchema
      */
     'ifsc'?: string;
     /**
      * It displays the UPI VPA information.
      * @type {string}
-     * @memberof UpiAdvanceResponseBodySchema
+     * @memberof UpiAdvanceResponseSchema
      */
     'vpa'?: string;
     /**
      * It displays the name of the account holder as registered in the bank records.
      * @type {string}
-     * @memberof UpiAdvanceResponseBodySchema
+     * @memberof UpiAdvanceResponseSchema
      */
     'name_at_bank'?: string;
 }
 /**
  * Find the request parameters to fetch the list of UPI VPA
  * @export
- * @interface UpiMobileRequestBodySchema
+ * @interface UpiMobileRequestSchema
  */
-export interface UpiMobileRequestBodySchema {
+export interface UpiMobileRequestSchema {
     /**
      * It is the unique ID you create to identify the verification request. The maximum character limit is 50. Only alphaumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.
      * @type {string}
-     * @memberof UpiMobileRequestBodySchema
+     * @memberof UpiMobileRequestSchema
      */
     'verification_id': string;
     /**
      * It is the mobile number of the UPI VPA account holder.
      * @type {string}
-     * @memberof UpiMobileRequestBodySchema
+     * @memberof UpiMobileRequestSchema
      */
     'mobile_number': string;
     /**
      * It is the name of the account holder.
      * @type {string}
-     * @memberof UpiMobileRequestBodySchema
+     * @memberof UpiMobileRequestSchema
      */
     'name'?: string;
     /**
      * It is the email ID of the account holder.
      * @type {string}
-     * @memberof UpiMobileRequestBodySchema
+     * @memberof UpiMobileRequestSchema
      */
     'email'?: string;
 }
 /**
  * Success response
  * @export
- * @interface UpiMobileResponseBodySchema
+ * @interface UpiMobileResponseSchema
  */
-export interface UpiMobileResponseBodySchema {
+export interface UpiMobileResponseSchema {
     /**
      * It displays the unique ID created by Cashfree Payments for reference purposes.
      * @type {number}
-     * @memberof UpiMobileResponseBodySchema
+     * @memberof UpiMobileResponseSchema
      */
     'reference_id'?: number;
     /**
      * It displays the status of the API request.
      * @type {string}
-     * @memberof UpiMobileResponseBodySchema
+     * @memberof UpiMobileResponseSchema
      */
     'status'?: string;
     /**
      * It displays the status of the UPI VPA information.
      * @type {string}
-     * @memberof UpiMobileResponseBodySchema
+     * @memberof UpiMobileResponseSchema
      */
     'account_status'?: string;
     /**
      * It displays the unique ID you created to identify the verification request.
      * @type {string}
-     * @memberof UpiMobileResponseBodySchema
+     * @memberof UpiMobileResponseSchema
      */
     'verification_id'?: string;
     /**
      * It displays the mobile number of the account holder.
      * @type {string}
-     * @memberof UpiMobileResponseBodySchema
+     * @memberof UpiMobileResponseSchema
      */
     'mobile_number'?: string;
     /**
      * It displays the UPI VPA associated with the entered mobile number. If no primary UPI VPA is associated, tis field will be null.
      * @type {string}
-     * @memberof UpiMobileResponseBodySchema
+     * @memberof UpiMobileResponseSchema
      */
     'vpa'?: string;
     /**
      * It displays the name of the account holder as registered in the bank. If no primary UPI VPA is associated, this field will be null.
      * @type {string}
-     * @memberof UpiMobileResponseBodySchema
+     * @memberof UpiMobileResponseSchema
      */
     'name_at_bank'?: string;
     /**
      * It displays the list of additional UPI VPA associated with the mobile number. If no other UPI VPA is linked with the mobile number, this will be an empty array [].
      * @type {Array<string>}
-     * @memberof UpiMobileResponseBodySchema
+     * @memberof UpiMobileResponseSchema
      */
     'additional_vpas'?: Array<string>;
 }
@@ -3777,30 +3691,6 @@ export interface V2ErrorResponse404SchemaIpVerification {
     'message'?: string;
 }
 /**
- * @type VRSIPVerification400Response
- * @export
- */
-export type VRSIPVerification400Response = DuplicateVerificationId | InvalidIpAddress | XClientIdMissing;
-
-/**
- * @type VRSMaskAadhaar200Response
- * @export
- */
-export type VRSMaskAadhaar200Response = Aadhaarmaskingsuccessschema | Invaliddoctypeschema;
-
-/**
- * @type VRSMaskAadhaar400Response
- * @export
- */
-export type VRSMaskAadhaar400Response = XClientIdMissing;
-
-/**
- * @type VRSReversePennyDropFetchStatus200Response
- * @export
- */
-export type VRSReversePennyDropFetchStatus200Response = EXPIRED | FAILURE | SUCCESS;
-
-/**
  * It contains the validity details.
  * @export
  * @interface ValidityDetails
@@ -3822,417 +3712,417 @@ export interface ValidityDetails {
 /**
  * Find the request parameters to verify vehicle RC information
  * @export
- * @interface VehicleRCRequestSchema
+ * @interface VehicleRcRequestSchema
  */
-export interface VehicleRCRequestSchema {
+export interface VehicleRcRequestSchema {
     /**
      * It is the unique ID you create to identify the verification request. The maximum character limit is 50. Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.
      * @type {string}
-     * @memberof VehicleRCRequestSchema
+     * @memberof VehicleRcRequestSchema
      */
     'verification_id': string;
     /**
      * It is the registration number of the vehicle
      * @type {string}
-     * @memberof VehicleRCRequestSchema
+     * @memberof VehicleRcRequestSchema
      */
-    'rc_number'?: string;
+    'vehicle_number': string;
 }
 /**
  * Verify Vehicle RC success response
  * @export
- * @interface VehicleRCResponseSchema
+ * @interface VehicleRcResponseSchema
  */
-export interface VehicleRCResponseSchema {
+export interface VehicleRcResponseSchema {
     /**
      * It displays the unique ID you created to identify the verification request.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'verification_id'?: string;
     /**
      * It displays the unique ID created by Cashfree Payments for reference purposes.
      * @type {number}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'reference_id'?: number;
     /**
      * It displays the status of the vehicle RC information.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'status'?: string;
     /**
      * It displays the registration number of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'reg_no'?: string;
     /**
      * It displays the category or type of the vehicle as recognised by the relevant transportation authorities.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'class'?: string;
     /**
      * It displays the chassis information of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'chassis'?: string;
     /**
      * It displays the engine number of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'engine'?: string;
     /**
      * It displays the manufacturer of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'vehicle_manufacturer_name'?: string;
     /**
      * It displays the model number of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'model'?: string;
     /**
      * It displays the colour of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'vehicle_color'?: string;
     /**
      * It displays the type of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'type'?: string;
     /**
      * It displays the norms set by the Central Pollution Control Board (CPCB)
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'norms_type'?: string;
     /**
      * It displays the body type of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'body_type'?: string;
     /**
      * It displays the number of owners of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'owner_count'?: string;
     /**
      * It displays the name of the current owner of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'owner'?: string;
     /**
      * It displays the father\'s name of the current owner of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'owner_father_name'?: string;
     /**
      * It displays the mobile number of the current owner of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'mobile_number'?: string;
     /**
      * It displays the status of the RC.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'rc_status'?: string;
     /**
      * It displays the particular date of the status of the RC.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'status_as_on'?: string;
     /**
      * It displays the name of the registration authority.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'reg_authority'?: string;
     /**
      * It displays the date of registration of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'reg_date'?: string;
     /**
      * It displays the month and year of the manufacturing of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'vehicle_manufacturing_month_year'?: string;
     /**
      * It displays the date until which the registration of the vehicle is valid.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'rc_expiry_date'?: string;
     /**
      * It displays the date until which the tax paid by the owner for the vehicle is valid.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'vehicle_tax_upto'?: string;
     /**
      * It displays the name of the insurance company associated with the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'vehicle_insurance_company_name'?: string;
     /**
      * It displays the date until which the insurance paid by the owner for the vehicle is valid.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'vehicle_insurance_upto'?: string;
     /**
      * It displays the insurance policy number of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'vehicle_insurance_policy_number'?: string;
     /**
      * It displays the name of the financial institution or lender that provided financing for the purchase of a vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'rc_financer'?: string;
     /**
      * It displays the current address of the owner of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'present_address'?: string;
     /**
      * 
      * @type {SplitAddress}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'split_present_address'?: SplitAddress;
     /**
      * It displays the permanent address of the owner of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'permanent_address'?: string;
     /**
      * 
      * @type {SplitAddress}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'split_permanent_address'?: SplitAddress;
     /**
      * It displays the cubic capacity of the vehicle\'s engine.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'vehicle_cubic_capacity'?: string;
     /**
      * It displays the gross weight of the vehicle in kilograms.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'gross_vehicle_weight'?: string;
     /**
      * It displays the weight of the vehicle without carrying any load in kiolgrams.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'unladen_weight'?: string;
     /**
      * It displays the category of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'vehicle_category'?: string;
     /**
      * 
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'rc_standard_cap'?: string;
     /**
      * It displays the number of cylinders present in the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'vehicle_cylinders_no'?: string;
     /**
      * It displays the number of seats in the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'vehicle_seat_capacity'?: string;
     /**
      * It displays the number of beds available in the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'vehicle_sleeper_capacity'?: string;
     /**
      * It displays the number of people that can stand in the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'vehicle_standing_capacity'?: string;
     /**
      * It displays distance between the front and rear axles of a vehicle in mm.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'wheelbase'?: string;
     /**
      * It displays the registration number of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'vehicle_number'?: string;
     /**
      * It displays the Pollution Under Control Certificate (PUCC) number associated with vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'pucc_number'?: string;
     /**
      * It displays till when the PUCC number is valid.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'pucc_upto'?: string;
     /**
      * It displays whether the vehicle is blacklisted.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'blacklist_status'?: string;
     /**
      * It displays the reasons for blacklisting the vehicle.
      * @type {object}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'blacklist_details'?: object;
     /**
      * It displays traffic tickets or citations issued by traffic police or authorities for various traffic violations.
      * @type {object}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'challan_details'?: object;
     /**
      * It displays when the relevant authorities granted permission or authorisation for a specific type of permit associated with the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'permit_issue_date'?: string;
     /**
      * It displays the permit number of the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'permit_number'?: string;
     /**
      * It displays the type of permit issued to the vehicle.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'permit_type'?: string;
     /**
      * It displays the beginning date of the issuance of permit.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'permit_valid_from'?: string;
     /**
      * It displays the end date of the permit.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'permit_valid_upto'?: string;
     /**
      * It displays whether the vehicle owner or registrant declared that the vehicle is not in use for a certain period.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'non_use_status'?: string;
     /**
      * It displays the beginning date of the non use period.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'non_use_from'?: string;
     /**
      * It displays the end date of the non use period.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'non_use_to'?: string;
     /**
      * It displays the permit issued to the vehicle to go outside the home state carrying goods.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'national_permit_number'?: string;
     /**
      * It displays the end date of the permit issued to the vechicle to go outside the home state carrying goods.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'national_permit_upto'?: string;
     /**
      * It displays the national permit issuer\'s name.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'national_permit_issued_by'?: string;
     /**
      * It displays whether the vehicle is for commercial purpose.
      * @type {boolean}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'is_commercial'?: boolean;
     /**
      * It displays the details of the no objection certificate.
      * @type {string}
-     * @memberof VehicleRCResponseSchema
+     * @memberof VehicleRcResponseSchema
      */
     'noc_details'?: string;
 }
 /**
  * Find the request body parameters to verify the voter ID information.
  * @export
- * @interface VoterIdRequestBodySchema
+ * @interface VoterIdRequestSchema
  */
-export interface VoterIdRequestBodySchema {
+export interface VoterIdRequestSchema {
     /**
-     * It is the unique ID you create to identify the verification request. The maximum character limit is 50. Alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.
+     * 
      * @type {string}
-     * @memberof VoterIdRequestBodySchema
+     * @memberof VoterIdRequestSchema
      */
     'verification_id': string;
     /**
      * It is the unique identification number assigned to each voter ID
      * @type {string}
-     * @memberof VoterIdRequestBodySchema
+     * @memberof VoterIdRequestSchema
      */
     'epic_number': string;
     /**
      * It is the name of the voter ID card holder.
      * @type {string}
-     * @memberof VoterIdRequestBodySchema
+     * @memberof VoterIdRequestSchema
      */
     'name'?: string;
 }
@@ -4475,11 +4365,11 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          * x_cf_signature?: string, 
          */
-        vRSAadhaarOCRVerification: async (verification_id: string, front_image: File,  x_api_version?: string, x_cf_signature?: string, back_image?: File,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsAadhaarOcrVerification: async (verification_id: string, front_image: File,  x_api_version?: string, x_cf_signature?: string, back_image?: File,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'verification_id' is not null or undefined
-            assertParamExists('vRSAadhaarOCRVerification', 'verification_id', verification_id)
+            assertParamExists('vrsAadhaarOcrVerification', 'verification_id', verification_id)
             // verify required parameter 'front_image' is not null or undefined
-            assertParamExists('vRSAadhaarOCRVerification', 'front_image', front_image)
+            assertParamExists('vrsAadhaarOcrVerification', 'front_image', front_image)
             const localVarPath = `/document/aadhaar`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -4519,7 +4409,7 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4541,11 +4431,11 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          * 
          */
-        vRSMaskAadhaar: async (image: File, verification_id: string,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsMaskAadhaar: async (image: File, verification_id: string,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'image' is not null or undefined
-            assertParamExists('vRSMaskAadhaar', 'image', image)
+            assertParamExists('vrsMaskAadhaar', 'image', image)
             // verify required parameter 'verification_id' is not null or undefined
-            assertParamExists('vRSMaskAadhaar', 'verification_id', verification_id)
+            assertParamExists('vrsMaskAadhaar', 'verification_id', verification_id)
             const localVarPath = `/aadhaar-masking`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -4581,7 +4471,7 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4596,14 +4486,14 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
          * Use this API to generate OTP for a given aadhar number. The mobile number linked with the aadhaar information will receive the generated OTP. Use the generated OTP for offline aadhaar verification. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | OTP sent successfully                                      | Enter the OTP in the Submit OTP to Verify Aadhaar API.                      |   | 200      | SUCCESS | Aadhaar not linked to mobile number                        | Enter a valid aadhaar number linked to a mobile number to generate the OTP. |   | 200      | SUCCESS | Invalid Aadhaar Card                                       | Enter a valid aadhaar number.                                               |   | 400      | ERROR   | aadhaar Number should contain 12 characters.               | Enter a valid aadhaar number that has only 12 numeric digits.               |   | 400      | ERROR   | Please enter aadhaar number in numeric format              | Enter a valid aadhaar number that has only 12 numeric digits.               |   | 400      | ERROR   | Please enter aadhaar number in the request                 | Enter a valid aadhaar number.                                               |   | 400      | ERROR   | x-client-id is missing in the request                      | Enter all the header information in the API request.                        |   | 401      | ERROR   | Invalid clientId and clientSecret combination              | Enter valid client ID and secret key in the request.                        |   | 403      | ERROR   | IP not whitelisted                                         | Whitelist the IP address.                                                   |   | 409      | ERROR   | Otp generated for this aadhaar, please try after some time | Try again after some time.                                                  |   | 422      | ERROR   | Insufficient balance to process this request.              | Ensure you have sufficient balance and then process the request.            |   | 500      | ERROR   | something went wrong                                       | Try again after some time.                                                  |
          * @summary Generate OTP to Verify Aadhaar
          
-         * @param {OfflineAadhaarSendOTPRequestSchema} OfflineAadhaarSendOTPRequestSchema Find the request parameters to generate OTP for a given aadhar number
+         * @param {OfflineAadhaarSendOtpRequestSchema} OfflineAadhaarSendOtpRequestSchema Find the request parameters to generate OTP for a given aadhar number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          * 
          */
-        vRSOfflineAadhaarSendOTP: async (OfflineAadhaarSendOTPRequestSchema: OfflineAadhaarSendOTPRequestSchema,   options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'OfflineAadhaarSendOTPRequestSchema' is not null or undefined
-            assertParamExists('vRSOfflineAadhaarSendOTP', 'OfflineAadhaarSendOTPRequestSchema', OfflineAadhaarSendOTPRequestSchema)
+        vrsOfflineAadhaarSendOtp: async (OfflineAadhaarSendOtpRequestSchema: OfflineAadhaarSendOtpRequestSchema,   options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'OfflineAadhaarSendOtpRequestSchema' is not null or undefined
+            assertParamExists('vrsOfflineAadhaarSendOtp', 'OfflineAadhaarSendOtpRequestSchema', OfflineAadhaarSendOtpRequestSchema)
             const localVarPath = `/offline-aadhaar/otp`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -4630,11 +4520,11 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(OfflineAadhaarSendOTPRequestSchema, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(OfflineAadhaarSendOtpRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -4645,14 +4535,14 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
          * Use this API to verify aadhaar by submitting the OTP received on the mobile number linked to the aadhaar information. You also need to enter the reference ID received in the response of Generate OTP to Verify Aadhaar API. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | Aadhaar Card Exists                           | -                                                                                             |   | 400      | ERROR   | Session expired, please generate a new OTP    | Generate a new OTP using Generate OTP to Verify Aadhaar API.                                  |   | 400      | ERROR   | Invalid Aadhaar Card                          | -                                                                                             |   | 400      | ERROR   | Aadhaar not linked to mobile number           | Enter a valid aadhaar number linked to a mobile number in the Generate OTP to Verify Aadhaar. |   | 400      | ERROR   | Otp expired                                   | Generate a new OTP using Generate OTP to Verify Aadhaar API.                                  |   | 400      | ERROR   | Please enter a valid otp.                     | Enter the generated OTP.                                                                      |   | 400      | ERROR   | Please enter the otp in the request           | Enter the generated OTP.                                                                      |   | 400      | ERROR   | OTP entered is invalid                        | Enter the generated OTP.                                                                      |   | 400      | ERROR   | x-client-id is missing in the request         | Enter all the header information in the API request.                                          |   | 401      | ERROR   | Invalid clientId and clientSecret combination | Enter valid client ID and secret key in the request.                                          |   | 403      | ERROR   | IP not whitelisted                            | Whitelist the IP address.                                                                     |   | 422      | ERROR   | Insufficient balance to process this request. | Ensure you have sufficient balance and then process the request.                              |   | 500      | ERROR   | Unable to validate, please retry later                          | Try again after some time.                                                                    |
          * @summary Submit OTP to Verify Aadhaar
          
-         * @param {OfflineAadhaarVerifyOTPSchema} OfflineAadhaarVerifyOTPSchema Find the request parameters to submit the generated OTP
+         * @param {OfflineAadhaarVerifyOtpRequestSchema} OfflineAadhaarVerifyOtpRequestSchema Find the request parameters to submit the generated OTP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          * 
          */
-        vRSOfflineAadhaarVerifyOTP: async (OfflineAadhaarVerifyOTPSchema: OfflineAadhaarVerifyOTPSchema,   options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'OfflineAadhaarVerifyOTPSchema' is not null or undefined
-            assertParamExists('vRSOfflineAadhaarVerifyOTP', 'OfflineAadhaarVerifyOTPSchema', OfflineAadhaarVerifyOTPSchema)
+        vrsOfflineAadhaarVerifyOtp: async (OfflineAadhaarVerifyOtpRequestSchema: OfflineAadhaarVerifyOtpRequestSchema,   options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'OfflineAadhaarVerifyOtpRequestSchema' is not null or undefined
+            assertParamExists('vrsOfflineAadhaarVerifyOtp', 'OfflineAadhaarVerifyOtpRequestSchema', OfflineAadhaarVerifyOtpRequestSchema)
             const localVarPath = `/offline-aadhaar/verify`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -4679,11 +4569,11 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(OfflineAadhaarVerifyOTPSchema, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(OfflineAadhaarVerifyOtpRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -4711,8 +4601,8 @@ const AadhaarApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSAadhaarOCRVerification(verification_id: string, front_image: File, x_api_version?: string, x_cf_signature?: string, back_image?: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AadhaarOCRResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSAadhaarOCRVerification(verification_id, front_image, x_api_version, x_cf_signature, back_image, options);
+        async vrsAadhaarOcrVerification(verification_id: string, front_image: File, x_api_version?: string, x_cf_signature?: string, back_image?: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AadhaarOcrResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsAadhaarOcrVerification(verification_id, front_image, x_api_version, x_cf_signature, back_image, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -4728,8 +4618,8 @@ const AadhaarApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSMaskAadhaar(image: File, verification_id: string, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VRSMaskAadhaar200Response>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSMaskAadhaar(image, verification_id, x_cf_signature, options);
+        async vrsMaskAadhaar(image: File, verification_id: string, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AadhaarMaskingResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsMaskAadhaar(image, verification_id, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -4739,12 +4629,12 @@ const AadhaarApiFp = function(configuration?: Configuration) {
         /**
          * Use this API to generate OTP for a given aadhar number. The mobile number linked with the aadhaar information will receive the generated OTP. Use the generated OTP for offline aadhaar verification. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | OTP sent successfully                                      | Enter the OTP in the Submit OTP to Verify Aadhaar API.                      |   | 200      | SUCCESS | Aadhaar not linked to mobile number                        | Enter a valid aadhaar number linked to a mobile number to generate the OTP. |   | 200      | SUCCESS | Invalid Aadhaar Card                                       | Enter a valid aadhaar number.                                               |   | 400      | ERROR   | aadhaar Number should contain 12 characters.               | Enter a valid aadhaar number that has only 12 numeric digits.               |   | 400      | ERROR   | Please enter aadhaar number in numeric format              | Enter a valid aadhaar number that has only 12 numeric digits.               |   | 400      | ERROR   | Please enter aadhaar number in the request                 | Enter a valid aadhaar number.                                               |   | 400      | ERROR   | x-client-id is missing in the request                      | Enter all the header information in the API request.                        |   | 401      | ERROR   | Invalid clientId and clientSecret combination              | Enter valid client ID and secret key in the request.                        |   | 403      | ERROR   | IP not whitelisted                                         | Whitelist the IP address.                                                   |   | 409      | ERROR   | Otp generated for this aadhaar, please try after some time | Try again after some time.                                                  |   | 422      | ERROR   | Insufficient balance to process this request.              | Ensure you have sufficient balance and then process the request.            |   | 500      | ERROR   | something went wrong                                       | Try again after some time.                                                  |
          * @summary Generate OTP to Verify Aadhaar
-         * @param {OfflineAadhaarSendOTPRequestSchema} OfflineAadhaarSendOTPRequestSchema Find the request parameters to generate OTP for a given aadhar number
+         * @param {OfflineAadhaarSendOtpRequestSchema} OfflineAadhaarSendOtpRequestSchema Find the request parameters to generate OTP for a given aadhar number
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSOfflineAadhaarSendOTP(OfflineAadhaarSendOTPRequestSchema: OfflineAadhaarSendOTPRequestSchema, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OfflineAadhaarSendOTPResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSOfflineAadhaarSendOTP(OfflineAadhaarSendOTPRequestSchema, options);
+        async vrsOfflineAadhaarSendOtp(OfflineAadhaarSendOtpRequestSchema: OfflineAadhaarSendOtpRequestSchema, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OfflineAadhaarSendOtpResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsOfflineAadhaarSendOtp(OfflineAadhaarSendOtpRequestSchema, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -4754,12 +4644,12 @@ const AadhaarApiFp = function(configuration?: Configuration) {
         /**
          * Use this API to verify aadhaar by submitting the OTP received on the mobile number linked to the aadhaar information. You also need to enter the reference ID received in the response of Generate OTP to Verify Aadhaar API. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | Aadhaar Card Exists                           | -                                                                                             |   | 400      | ERROR   | Session expired, please generate a new OTP    | Generate a new OTP using Generate OTP to Verify Aadhaar API.                                  |   | 400      | ERROR   | Invalid Aadhaar Card                          | -                                                                                             |   | 400      | ERROR   | Aadhaar not linked to mobile number           | Enter a valid aadhaar number linked to a mobile number in the Generate OTP to Verify Aadhaar. |   | 400      | ERROR   | Otp expired                                   | Generate a new OTP using Generate OTP to Verify Aadhaar API.                                  |   | 400      | ERROR   | Please enter a valid otp.                     | Enter the generated OTP.                                                                      |   | 400      | ERROR   | Please enter the otp in the request           | Enter the generated OTP.                                                                      |   | 400      | ERROR   | OTP entered is invalid                        | Enter the generated OTP.                                                                      |   | 400      | ERROR   | x-client-id is missing in the request         | Enter all the header information in the API request.                                          |   | 401      | ERROR   | Invalid clientId and clientSecret combination | Enter valid client ID and secret key in the request.                                          |   | 403      | ERROR   | IP not whitelisted                            | Whitelist the IP address.                                                                     |   | 422      | ERROR   | Insufficient balance to process this request. | Ensure you have sufficient balance and then process the request.                              |   | 500      | ERROR   | Unable to validate, please retry later                          | Try again after some time.                                                                    |
          * @summary Submit OTP to Verify Aadhaar
-         * @param {OfflineAadhaarVerifyOTPSchema} OfflineAadhaarVerifyOTPSchema Find the request parameters to submit the generated OTP
+         * @param {OfflineAadhaarVerifyOtpRequestSchema} OfflineAadhaarVerifyOtpRequestSchema Find the request parameters to submit the generated OTP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSOfflineAadhaarVerifyOTP(OfflineAadhaarVerifyOTPSchema: OfflineAadhaarVerifyOTPSchema, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OfflineAadhaarVerifyOTPResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSOfflineAadhaarVerifyOTP(OfflineAadhaarVerifyOTPSchema, options);
+        async vrsOfflineAadhaarVerifyOtp(OfflineAadhaarVerifyOtpRequestSchema: OfflineAadhaarVerifyOtpRequestSchema, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<OfflineAadhaarVerifyOtpResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsOfflineAadhaarVerifyOtp(OfflineAadhaarVerifyOtpRequestSchema, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -4788,15 +4678,15 @@ const AdvancedEmploymentApiAxiosParamCreator = function (configuration?: Configu
          * Use this API to to retrieve an individual\'s recent employment details such as member ID, joining date, and exit date of the company. Verifying the employment information of the individual mitigates risk and prevents fraud. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#employment-information) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | SUCCESS                                      | -   | 200              | SUCCESS       | EMPLOYMENT_DETAILS_NOT_FOUND                                      | Enter the correct information in the request.    | 400              | ERROR         | provided input combination is not valid                  | Enter a combination of values that help fetch the employment details.   | 400              | ERROR         | verification_id can include only alphanum, dot, hyphen and underscores.                  | Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.     | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists                                           | Enter a unique verification ID to identify the request.  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | verification attempt failed                      | Try again after some time. 
          * @summary Get Employment Details
          
-         * @param {AdvanceEmploymentRequestBodySchema} AdvanceEmploymentRequestBodySchema Find the request parameters to retrieve employment details
+         * @param {AdvanceEmploymentRequestSchema} AdvanceEmploymentRequestSchema Find the request parameters to retrieve employment details
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          * 
          */
-        vRSAdvanceEmploymentVerification: async (AdvanceEmploymentRequestBodySchema: AdvanceEmploymentRequestBodySchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'AdvanceEmploymentRequestBodySchema' is not null or undefined
-            assertParamExists('vRSAdvanceEmploymentVerification', 'AdvanceEmploymentRequestBodySchema', AdvanceEmploymentRequestBodySchema)
+        vrsAdvanceEmploymentVerification: async (AdvanceEmploymentRequestSchema: AdvanceEmploymentRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'AdvanceEmploymentRequestSchema' is not null or undefined
+            assertParamExists('vrsAdvanceEmploymentVerification', 'AdvanceEmploymentRequestSchema', AdvanceEmploymentRequestSchema)
             const localVarPath = `/advance-employment`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -4823,11 +4713,11 @@ const AdvancedEmploymentApiAxiosParamCreator = function (configuration?: Configu
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(AdvanceEmploymentRequestBodySchema, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(AdvanceEmploymentRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -4847,13 +4737,13 @@ const AdvancedEmploymentApiFp = function(configuration?: Configuration) {
         /**
          * Use this API to to retrieve an individual\'s recent employment details such as member ID, joining date, and exit date of the company. Verifying the employment information of the individual mitigates risk and prevents fraud. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#employment-information) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | SUCCESS                                      | -   | 200              | SUCCESS       | EMPLOYMENT_DETAILS_NOT_FOUND                                      | Enter the correct information in the request.    | 400              | ERROR         | provided input combination is not valid                  | Enter a combination of values that help fetch the employment details.   | 400              | ERROR         | verification_id can include only alphanum, dot, hyphen and underscores.                  | Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.     | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists                                           | Enter a unique verification ID to identify the request.  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | verification attempt failed                      | Try again after some time. 
          * @summary Get Employment Details
-         * @param {AdvanceEmploymentRequestBodySchema} AdvanceEmploymentRequestBodySchema Find the request parameters to retrieve employment details
+         * @param {AdvanceEmploymentRequestSchema} AdvanceEmploymentRequestSchema Find the request parameters to retrieve employment details
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSAdvanceEmploymentVerification(AdvanceEmploymentRequestBodySchema: AdvanceEmploymentRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AdvanceEmployment200ResponseBody>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSAdvanceEmploymentVerification(AdvanceEmploymentRequestBodySchema, x_cf_signature, options);
+        async vrsAdvanceEmploymentVerification(AdvanceEmploymentRequestSchema: AdvanceEmploymentRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AdvanceEmploymentResponse>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsAdvanceEmploymentVerification(AdvanceEmploymentRequestSchema, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -4882,15 +4772,15 @@ const CINApiAxiosParamCreator = function (configuration?: Configuration) {
          * Use this API to retrieve information from CIN such as business incorporation date, director(s) details, CIN status, and more. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#cin) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | VALID                                      | -    | 200              | SUCCESS         | INVALID                  | Enter the correct information in the request. | 400              | ERROR         | verification_id is missing in the request.                  | Enter a valid verification_id in the request.  | 400              | ERROR         | verification_id can include only alphanum, dot, hyphen, and underscores.               | Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.   | 400              | ERROR         | cin is missing in the request.                  | Enter the unique alphanumeric identifier (CIN) assigned to companies in the request.   | 400              | ERROR         | cin should be of 21 character alphanumeric string of format (X00000XX0000XXX000000).                  | Enter the correct format of the CIN information in the request.     | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists                                           | Enter a unique verification ID to identify the request.  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | verification attempt failed                      | Try again after some time. 
          * @summary Verify CIN
          
-         * @param {CinRequestBodySchema} CinRequestBodySchema Find the request parameters to retrieve your customer\&#39;s CIN information
+         * @param {CinRequestSchema} CinRequestSchema Find the request parameters to retrieve your customer\&#39;s CIN information
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          * 
          */
-        vRSCINVerification: async (CinRequestBodySchema: CinRequestBodySchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'CinRequestBodySchema' is not null or undefined
-            assertParamExists('vRSCINVerification', 'CinRequestBodySchema', CinRequestBodySchema)
+        vrsCinVerification: async (CinRequestSchema: CinRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'CinRequestSchema' is not null or undefined
+            assertParamExists('vrsCinVerification', 'CinRequestSchema', CinRequestSchema)
             const localVarPath = `/cin`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -4917,11 +4807,11 @@ const CINApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(CinRequestBodySchema, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(CinRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -4941,13 +4831,13 @@ const CINApiFp = function(configuration?: Configuration) {
         /**
          * Use this API to retrieve information from CIN such as business incorporation date, director(s) details, CIN status, and more. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#cin) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | VALID                                      | -    | 200              | SUCCESS         | INVALID                  | Enter the correct information in the request. | 400              | ERROR         | verification_id is missing in the request.                  | Enter a valid verification_id in the request.  | 400              | ERROR         | verification_id can include only alphanum, dot, hyphen, and underscores.               | Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.   | 400              | ERROR         | cin is missing in the request.                  | Enter the unique alphanumeric identifier (CIN) assigned to companies in the request.   | 400              | ERROR         | cin should be of 21 character alphanumeric string of format (X00000XX0000XXX000000).                  | Enter the correct format of the CIN information in the request.     | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists                                           | Enter a unique verification ID to identify the request.  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | verification attempt failed                      | Try again after some time. 
          * @summary Verify CIN
-         * @param {CinRequestBodySchema} CinRequestBodySchema Find the request parameters to retrieve your customer\&#39;s CIN information
+         * @param {CinRequestSchema} CinRequestSchema Find the request parameters to retrieve your customer\&#39;s CIN information
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSCINVerification(CinRequestBodySchema: CinRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CinResponseBodySchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSCINVerification(CinRequestBodySchema, x_cf_signature, options);
+        async vrsCinVerification(CinRequestSchema: CinRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CinResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsCinVerification(CinRequestSchema, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -4982,9 +4872,9 @@ const DigilockerApiAxiosParamCreator = function (configuration?: Configuration) 
          * @throws {RequiredError}
          * 
          */
-        vRSDigiLockerVerificationCreateUrl: async (DigiLockerVerificationCreateUrlRequestSchema: DigiLockerVerificationCreateUrlRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsDigilockerVerificationCreateUrl: async (DigiLockerVerificationCreateUrlRequestSchema: DigiLockerVerificationCreateUrlRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'DigiLockerVerificationCreateUrlRequestSchema' is not null or undefined
-            assertParamExists('vRSDigiLockerVerificationCreateUrl', 'DigiLockerVerificationCreateUrlRequestSchema', DigiLockerVerificationCreateUrlRequestSchema)
+            assertParamExists('vrsDigilockerVerificationCreateUrl', 'DigiLockerVerificationCreateUrlRequestSchema', DigiLockerVerificationCreateUrlRequestSchema)
             const localVarPath = `/digilocker`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -5011,7 +4901,7 @@ const DigilockerApiAxiosParamCreator = function (configuration?: Configuration) 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5034,9 +4924,9 @@ const DigilockerApiAxiosParamCreator = function (configuration?: Configuration) 
          * @throws {RequiredError}
          * verification_id?: string, 
          */
-        vRSDigiLockerVerificationFetchDocument: async (document_type: string,  x_cf_signature?: string, reference_id?: number, verification_id?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsDigilockerVerificationFetchDocument: async (document_type: string,  x_cf_signature?: string, reference_id?: number, verification_id?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'document_type' is not null or undefined
-            assertParamExists('vRSDigiLockerVerificationFetchDocument', 'document_type', document_type)
+            assertParamExists('vrsDigilockerVerificationFetchDocument', 'document_type', document_type)
             const localVarPath = `/digilocker/document/{document_type}`
                 .replace(`{${"document_type"}}`, encodeURIComponent(String(document_type)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -5070,7 +4960,7 @@ const DigilockerApiAxiosParamCreator = function (configuration?: Configuration) 
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5091,7 +4981,7 @@ const DigilockerApiAxiosParamCreator = function (configuration?: Configuration) 
          * @throws {RequiredError}
          * 
          */
-        vRSDigiLockerVerificationFetchStatus: async ( x_cf_signature?: string, reference_id?: number, verification_id?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsDigilockerVerificationFetchStatus: async ( x_cf_signature?: string, reference_id?: number, verification_id?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/digilocker`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -5124,7 +5014,7 @@ const DigilockerApiAxiosParamCreator = function (configuration?: Configuration) 
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5152,8 +5042,8 @@ const DigilockerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSDigiLockerVerificationCreateUrl(DigiLockerVerificationCreateUrlRequestSchema: DigiLockerVerificationCreateUrlRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DigiLockerVerificationCreateUrlResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSDigiLockerVerificationCreateUrl(DigiLockerVerificationCreateUrlRequestSchema, x_cf_signature, options);
+        async vrsDigilockerVerificationCreateUrl(DigiLockerVerificationCreateUrlRequestSchema: DigiLockerVerificationCreateUrlRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DigiLockerVerificationCreateUrlResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsDigilockerVerificationCreateUrl(DigiLockerVerificationCreateUrlRequestSchema, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -5170,8 +5060,8 @@ const DigilockerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSDigiLockerVerificationFetchDocument(document_type: string, x_cf_signature?: string, reference_id?: number, verification_id?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DigiLockerVerificationGetDocumentResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSDigiLockerVerificationFetchDocument(document_type, x_cf_signature, reference_id, verification_id, options);
+        async vrsDigilockerVerificationFetchDocument(document_type: string, x_cf_signature?: string, reference_id?: number, verification_id?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DigiLockerVerificationGetDocumentResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsDigilockerVerificationFetchDocument(document_type, x_cf_signature, reference_id, verification_id, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -5187,8 +5077,8 @@ const DigilockerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSDigiLockerVerificationFetchStatus(x_cf_signature?: string, reference_id?: number, verification_id?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DigiLockerVerificationGetStatusResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSDigiLockerVerificationFetchStatus(x_cf_signature, reference_id, verification_id, options);
+        async vrsDigilockerVerificationFetchStatus(x_cf_signature?: string, reference_id?: number, verification_id?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DigiLockerVerificationGetStatusResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsDigilockerVerificationFetchStatus(x_cf_signature, reference_id, verification_id, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -5223,9 +5113,9 @@ const DrivingLicenseApiAxiosParamCreator = function (configuration?: Configurati
          * @throws {RequiredError}
          * 
          */
-        vRSDrivingLicenseVerification: async (DrivingLicenseRequestSchema: DrivingLicenseRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsDrivingLicenseVerification: async (DrivingLicenseRequestSchema: DrivingLicenseRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'DrivingLicenseRequestSchema' is not null or undefined
-            assertParamExists('vRSDrivingLicenseVerification', 'DrivingLicenseRequestSchema', DrivingLicenseRequestSchema)
+            assertParamExists('vrsDrivingLicenseVerification', 'DrivingLicenseRequestSchema', DrivingLicenseRequestSchema)
             const localVarPath = `/driving-license`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -5252,7 +5142,7 @@ const DrivingLicenseApiAxiosParamCreator = function (configuration?: Configurati
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5281,8 +5171,8 @@ const DrivingLicenseApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSDrivingLicenseVerification(DrivingLicenseRequestSchema: DrivingLicenseRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DrivingLicenseResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSDrivingLicenseVerification(DrivingLicenseRequestSchema, x_cf_signature, options);
+        async vrsDrivingLicenseVerification(DrivingLicenseRequestSchema: DrivingLicenseRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<DrivingLicenseResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsDrivingLicenseVerification(DrivingLicenseRequestSchema, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -5317,9 +5207,9 @@ const ESignApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          * 
          */
-        vRSESignCreateSignature: async (ESignVerificationCreateSignatureRequestSchema: ESignVerificationCreateSignatureRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsESignCreateSignature: async (ESignVerificationCreateSignatureRequestSchema: ESignVerificationCreateSignatureRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'ESignVerificationCreateSignatureRequestSchema' is not null or undefined
-            assertParamExists('vRSESignCreateSignature', 'ESignVerificationCreateSignatureRequestSchema', ESignVerificationCreateSignatureRequestSchema)
+            assertParamExists('vrsESignCreateSignature', 'ESignVerificationCreateSignatureRequestSchema', ESignVerificationCreateSignatureRequestSchema)
             const localVarPath = `/esignature`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -5346,7 +5236,7 @@ const ESignApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5367,9 +5257,9 @@ const ESignApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          * 
          */
-        vRSESignUploadDocument: async (document: File,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsESignUploadDocument: async (document: File,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'document' is not null or undefined
-            assertParamExists('vRSESignUploadDocument', 'document', document)
+            assertParamExists('vrsESignUploadDocument', 'document', document)
             const localVarPath = `/esignature/document`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -5401,7 +5291,7 @@ const ESignApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5423,7 +5313,7 @@ const ESignApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          * 
          */
-        vRSESignVerificationFetchStatus: async ( x_cf_signature?: string, reference_id?: number, verification_id?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsESignVerificationFetchStatus: async ( x_cf_signature?: string, reference_id?: number, verification_id?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/esignature`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -5456,7 +5346,7 @@ const ESignApiAxiosParamCreator = function (configuration?: Configuration) {
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5484,8 +5374,8 @@ const ESignApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSESignCreateSignature(ESignVerificationCreateSignatureRequestSchema: ESignVerificationCreateSignatureRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ESignVerificationCreateSignatureResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSESignCreateSignature(ESignVerificationCreateSignatureRequestSchema, x_cf_signature, options);
+        async vrsESignCreateSignature(ESignVerificationCreateSignatureRequestSchema: ESignVerificationCreateSignatureRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ESignVerificationCreateSignatureResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsESignCreateSignature(ESignVerificationCreateSignatureRequestSchema, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -5500,8 +5390,8 @@ const ESignApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSESignUploadDocument(document: File, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ESignVerificationUploadDocumentResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSESignUploadDocument(document, x_cf_signature, options);
+        async vrsESignUploadDocument(document: File, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ESignVerificationUploadDocumentResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsESignUploadDocument(document, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -5517,8 +5407,8 @@ const ESignApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSESignVerificationFetchStatus(x_cf_signature?: string, reference_id?: number, verification_id?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ESignVerificationGetStatusResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSESignVerificationFetchStatus(x_cf_signature, reference_id, verification_id, options);
+        async vrsESignVerificationFetchStatus(x_cf_signature?: string, reference_id?: number, verification_id?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ESignVerificationGetStatusResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsESignVerificationFetchStatus(x_cf_signature, reference_id, verification_id, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -5559,13 +5449,13 @@ const FaceMatchApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          * x_cf_signature?: string, 
          */
-        vRSFaceMatchVerification: async (verification_id: string, first_image: File, second_image: File,  x_cf_signature?: string, threshold?: string, detect_mask_first_image?: boolean, detect_mask_second_image?: boolean, align_horizontally?: boolean,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsFaceMatchVerification: async (verification_id: string, first_image: File, second_image: File,  x_cf_signature?: string, threshold?: string, detect_mask_first_image?: boolean, detect_mask_second_image?: boolean, align_horizontally?: boolean,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'verification_id' is not null or undefined
-            assertParamExists('vRSFaceMatchVerification', 'verification_id', verification_id)
+            assertParamExists('vrsFaceMatchVerification', 'verification_id', verification_id)
             // verify required parameter 'first_image' is not null or undefined
-            assertParamExists('vRSFaceMatchVerification', 'first_image', first_image)
+            assertParamExists('vrsFaceMatchVerification', 'first_image', first_image)
             // verify required parameter 'second_image' is not null or undefined
-            assertParamExists('vRSFaceMatchVerification', 'second_image', second_image)
+            assertParamExists('vrsFaceMatchVerification', 'second_image', second_image)
             const localVarPath = `/face-match`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -5621,7 +5511,7 @@ const FaceMatchApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5656,8 +5546,8 @@ const FaceMatchApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSFaceMatchVerification(verification_id: string, first_image: File, second_image: File, x_cf_signature?: string, threshold?: string, detect_mask_first_image?: boolean, detect_mask_second_image?: boolean, align_horizontally?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FaceMatchResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSFaceMatchVerification(verification_id, first_image, second_image, x_cf_signature, threshold, detect_mask_first_image, detect_mask_second_image, align_horizontally, options);
+        async vrsFaceMatchVerification(verification_id: string, first_image: File, second_image: File, x_cf_signature?: string, threshold?: string, detect_mask_first_image?: boolean, detect_mask_second_image?: boolean, align_horizontally?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<FaceMatchResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsFaceMatchVerification(verification_id, first_image, second_image, x_cf_signature, threshold, detect_mask_first_image, detect_mask_second_image, align_horizontally, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -5686,14 +5576,14 @@ const GSTINApiAxiosParamCreator = function (configuration?: Configuration) {
          * Use this API to verify if a given GSTIN information exists or not. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | GSTIN Exists                                      | -   | 200              | SUCCESS       | GSTIN Doesn’t Exist                                      | Enter the correct information in the request.     | 400              | ERROR         | GSTIN first 2 digits should be numeric and length should not exceed 15 and should be alphanumeric.                  | Enter a valid GSTIN in the request. The correct identifier has the first 2 digits in numerics and does not exceed 15 charaters.  | 400              | ERROR         | GSTIN is missing in the request.                  | Enter the GSTIN information in the request.  | 400              | ERROR         |  businessName can include a maximum of 200 characters.                  | The maximum character limit for businessName is 200.   | 400              | ERROR         |  businessName should be alphanumeric.                  | Enter only alphabets and/or numerical values in the parameter.    | 400              | ERROR         |  GstIn Verification is not enabled for this account                  | Contact your account manager.     | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.   | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         |Unable to validate, please retry later                     | Try again after some time.  
          * @summary Verify GSTIN
          
-         * @param {GSTINRequestSchema} GSTINRequestSchema Find the request parameters to retrieve GSTIN information
+         * @param {GstinRequestSchema} GstinRequestSchema Find the request parameters to retrieve GSTIN information
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          * 
          */
-        vRSGstinVerification: async (GSTINRequestSchema: GSTINRequestSchema,   options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'GSTINRequestSchema' is not null or undefined
-            assertParamExists('vRSGstinVerification', 'GSTINRequestSchema', GSTINRequestSchema)
+        vrsGstinVerification: async (GstinRequestSchema: GstinRequestSchema,   options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'GstinRequestSchema' is not null or undefined
+            assertParamExists('vrsGstinVerification', 'GstinRequestSchema', GstinRequestSchema)
             const localVarPath = `/gstin`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -5720,11 +5610,11 @@ const GSTINApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(GSTINRequestSchema, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(GstinRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -5744,12 +5634,12 @@ const GSTINApiFp = function(configuration?: Configuration) {
         /**
          * Use this API to verify if a given GSTIN information exists or not. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | GSTIN Exists                                      | -   | 200              | SUCCESS       | GSTIN Doesn’t Exist                                      | Enter the correct information in the request.     | 400              | ERROR         | GSTIN first 2 digits should be numeric and length should not exceed 15 and should be alphanumeric.                  | Enter a valid GSTIN in the request. The correct identifier has the first 2 digits in numerics and does not exceed 15 charaters.  | 400              | ERROR         | GSTIN is missing in the request.                  | Enter the GSTIN information in the request.  | 400              | ERROR         |  businessName can include a maximum of 200 characters.                  | The maximum character limit for businessName is 200.   | 400              | ERROR         |  businessName should be alphanumeric.                  | Enter only alphabets and/or numerical values in the parameter.    | 400              | ERROR         |  GstIn Verification is not enabled for this account                  | Contact your account manager.     | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.   | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         |Unable to validate, please retry later                     | Try again after some time.  
          * @summary Verify GSTIN
-         * @param {GSTINRequestSchema} GSTINRequestSchema Find the request parameters to retrieve GSTIN information
+         * @param {GstinRequestSchema} GstinRequestSchema Find the request parameters to retrieve GSTIN information
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSGstinVerification(GSTINRequestSchema: GSTINRequestSchema, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GstinResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSGstinVerification(GSTINRequestSchema, options);
+        async vrsGstinVerification(GstinRequestSchema: GstinRequestSchema, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GstinResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsGstinVerification(GstinRequestSchema, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -5778,14 +5668,14 @@ const IPApiAxiosParamCreator = function (configuration?: Configuration) {
          * Use this API to verify location, proxy details, city risk score, and proxy type risk score of an IP address. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#ip-address) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.    ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | VALID                                      | -    | 400             | ERROR         | x-client-id is missing in the request.                  | Enter all the header information in the request. | 400              | ERROR         | verification_id already exists.                  | Enter a unique verification ID to identify the request.  | 400              | ERROR         | please enter a valid IP address               | Enter a valid IP address in the request.    | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 404              | ERROR         | unable to find IP details                                           | Enter a valid IP address in the request.    | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong, please try after some time                      | Try again after some time. 
          * @summary Verify IP
          
-         * @param {Ipvalidationrequestschema} Ipvalidationrequestschema Find the request parameters to retrieve location information of an IP address
+         * @param {IpVerificationRequestSchema} IpVerificationRequestSchema Find the request parameters to retrieve location information of an IP address
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          * 
          */
-        vRSIPVerification: async (Ipvalidationrequestschema: Ipvalidationrequestschema,   options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'Ipvalidationrequestschema' is not null or undefined
-            assertParamExists('vRSIPVerification', 'Ipvalidationrequestschema', Ipvalidationrequestschema)
+        vrsIpVerification: async (IpVerificationRequestSchema: IpVerificationRequestSchema,   options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'IpVerificationRequestSchema' is not null or undefined
+            assertParamExists('vrsIpVerification', 'IpVerificationRequestSchema', IpVerificationRequestSchema)
             const localVarPath = `/ip`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -5812,11 +5702,11 @@ const IPApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(Ipvalidationrequestschema, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(IpVerificationRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -5836,12 +5726,12 @@ const IPApiFp = function(configuration?: Configuration) {
         /**
          * Use this API to verify location, proxy details, city risk score, and proxy type risk score of an IP address. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#ip-address) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.    ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | VALID                                      | -    | 400             | ERROR         | x-client-id is missing in the request.                  | Enter all the header information in the request. | 400              | ERROR         | verification_id already exists.                  | Enter a unique verification ID to identify the request.  | 400              | ERROR         | please enter a valid IP address               | Enter a valid IP address in the request.    | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 404              | ERROR         | unable to find IP details                                           | Enter a valid IP address in the request.    | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong, please try after some time                      | Try again after some time. 
          * @summary Verify IP
-         * @param {Ipvalidationrequestschema} Ipvalidationrequestschema Find the request parameters to retrieve location information of an IP address
+         * @param {IpVerificationRequestSchema} IpVerificationRequestSchema Find the request parameters to retrieve location information of an IP address
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSIPVerification(Ipvalidationrequestschema: Ipvalidationrequestschema, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Ipvalidationsuccessschema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSIPVerification(Ipvalidationrequestschema, options);
+        async vrsIpVerification(IpVerificationRequestSchema: IpVerificationRequestSchema, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<IpVerificationResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsIpVerification(IpVerificationRequestSchema, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -5878,11 +5768,11 @@ const LivelinessApiAxiosParamCreator = function (configuration?: Configuration) 
          * @throws {RequiredError}
          * strict_check?: boolean, 
          */
-        vRSLivelinessCheck: async (verification_id: string, image: File,  x_cf_signature?: string, strict_check?: boolean,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsLivelinessCheck: async (verification_id: string, image: File,  x_cf_signature?: string, strict_check?: boolean,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'verification_id' is not null or undefined
-            assertParamExists('vRSLivelinessCheck', 'verification_id', verification_id)
+            assertParamExists('vrsLivelinessCheck', 'verification_id', verification_id)
             // verify required parameter 'image' is not null or undefined
-            assertParamExists('vRSLivelinessCheck', 'image', image)
+            assertParamExists('vrsLivelinessCheck', 'image', image)
             const localVarPath = `/liveliness`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -5922,7 +5812,7 @@ const LivelinessApiAxiosParamCreator = function (configuration?: Configuration) 
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5953,8 +5843,8 @@ const LivelinessApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSLivelinessCheck(verification_id: string, image: File, x_cf_signature?: string, strict_check?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LivelinessResponseBodySchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSLivelinessCheck(verification_id, image, x_cf_signature, strict_check, options);
+        async vrsLivelinessCheck(verification_id: string, image: File, x_cf_signature?: string, strict_check?: boolean, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LivelinessResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsLivelinessCheck(verification_id, image, x_cf_signature, strict_check, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -5989,9 +5879,9 @@ const NameMatchApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          * 
          */
-        vRSNameMatchVerification: async (NameMatchRequestSchema: NameMatchRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsNameMatchVerification: async (NameMatchRequestSchema: NameMatchRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'NameMatchRequestSchema' is not null or undefined
-            assertParamExists('vRSNameMatchVerification', 'NameMatchRequestSchema', NameMatchRequestSchema)
+            assertParamExists('vrsNameMatchVerification', 'NameMatchRequestSchema', NameMatchRequestSchema)
             const localVarPath = `/name-match`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -6018,7 +5908,7 @@ const NameMatchApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6047,8 +5937,8 @@ const NameMatchApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSNameMatchVerification(NameMatchRequestSchema: NameMatchRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NameMatchResponseBodySchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSNameMatchVerification(NameMatchRequestSchema, x_cf_signature, options);
+        async vrsNameMatchVerification(NameMatchRequestSchema: NameMatchRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<NameMatchResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsNameMatchVerification(NameMatchRequestSchema, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -6077,16 +5967,16 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
          * Use this API to verify your customers\' PAN information individually or in batches at a time. This API comes in handy when you have to verify a large number of PAN information. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#pan) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | Request accepted. You can check the status after some time.                      | -     | 400      | ERROR   | Please provide atleast one entry for verification                                | You need to have a minimum of one entry in the request.        | 400      | ERROR   | bulk_verification_id is missing in the request.                                  | You need to create a unique ID to identify the API request.        | 400      | ERROR   | bulk_verification_id should contain only alphanumeric and underscore characters. | Only alphanumeric and underscore ( _ ) are allowed.               | 400      | ERROR   | x-client-id is missing in the request.                                           | Enter all the header information in the API request.               | 401      | ERROR   | Invalid clientId and clientSecret combination                                    | Enter valid client ID and secret key in the request.               | 403      | ERROR   | IP not whitelisted                                                               | Whitelist the IP address.                                          | 422      | ERROR   | Insufficient balance to process this request.                                    | Ensure you have sufficient balance and then process the request.   | 500      | ERROR   | Unable to validate, please retry later                                           | Try again after some time.                                    | 500      | ERROR   | something went wrong, please try after some time                                 | Try again after some time.       
          * @summary Verify PAN in Bulk
          
-         * @param {BulkPANRequestSchema} BulkPANRequestSchema Find the request parameters to verify a large number of PAN information
+         * @param {BulkPanRequestSchema} BulkPanRequestSchema Find the request parameters to verify a large number of PAN information
          * @param {string} [x_api_version] It is the API version. To receive the aadhaar seeding status in the response, use any date after 2022-09-12
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          * 
          */
-        vRSBulkPanVerification: async (BulkPANRequestSchema: BulkPANRequestSchema,  x_api_version?: string, x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'BulkPANRequestSchema' is not null or undefined
-            assertParamExists('vRSBulkPanVerification', 'BulkPANRequestSchema', BulkPANRequestSchema)
+        vrsBulkPanVerification: async (BulkPanRequestSchema: BulkPanRequestSchema,  x_api_version?: string, x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'BulkPanRequestSchema' is not null or undefined
+            assertParamExists('vrsBulkPanVerification', 'BulkPanRequestSchema', BulkPanRequestSchema)
             const localVarPath = `/pan/bulk`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -6113,11 +6003,11 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(BulkPANRequestSchema, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(BulkPanRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6136,11 +6026,11 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          * x_cf_signature?: string, 
          */
-        vRSFetchBulkPanDetails: async (reference_id: string, bulk_verification_id: string,  x_api_version?: string, x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsFetchBulkPanDetails: async (reference_id: string, bulk_verification_id: string,  x_api_version?: string, x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'reference_id' is not null or undefined
-            assertParamExists('vRSFetchBulkPanDetails', 'reference_id', reference_id)
+            assertParamExists('vrsFetchBulkPanDetails', 'reference_id', reference_id)
             // verify required parameter 'bulk_verification_id' is not null or undefined
-            assertParamExists('vRSFetchBulkPanDetails', 'bulk_verification_id', bulk_verification_id)
+            assertParamExists('vrsFetchBulkPanDetails', 'bulk_verification_id', bulk_verification_id)
             const localVarPath = `/pan/bulk`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -6173,7 +6063,7 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6194,9 +6084,9 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          * 
          */
-        vRSFetchPanDetails: async (reference_id: string,  x_api_version?: string, x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsFetchPanDetails: async (reference_id: string,  x_api_version?: string, x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'reference_id' is not null or undefined
-            assertParamExists('vRSFetchPanDetails', 'reference_id', reference_id)
+            assertParamExists('vrsFetchPanDetails', 'reference_id', reference_id)
             const localVarPath = `/pan/{reference_id}`
                 .replace(`{${"reference_id"}}`, encodeURIComponent(String(reference_id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -6222,10 +6112,60 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Use this API to verify the PAN information of your customers. You can retrieve more information such as masked aadhaar number, contact information. etc, than just verifying if a given PAN exists. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#pan) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|    | 200      | SUCCESS | VALID                                                        | -                                                                               | 200      | SUCCESS | Invalid PAN                                                  | Enter a valid 10-character alphanumeric PAN identifier.                         | 400      | ERROR   | Enter valid PAN.                                             | Enter a valid 10-character alphanumeric PAN identifier in the correct format.   | 400      | ERROR   | pan is missing in the request.                               | Enter a valid 10-character alphanumeric PAN identifier in the request.          | 400      | ERROR   | x-client-id is missing in the request.                       | Enter all the header information in the API request.                            | 401      | ERROR   | Invalid clientId and clientSecret combination                | Enter valid client ID and secret key in the request.                            | 403      | ERROR   | IP not whitelisted                                           | Whitelist the IP address.                                                       | 409      | ERROR   | This Verification ID already exists. Provide a different ID. | Enter a unique verification ID to identify the API request.                     | 422      | ERROR   | Insufficient balance to process this request.                | Ensure you have sufficient balance and then process the request.                | 500      | ERROR   | Unable to process your request. Try again after some time.    | Try again after some time.                                                      | 502      | ERROR   | Unable to process your request. Try again after some time.   | Try again after some time.                                                     |
+         * @summary PAN 360
+         
+         * @param {PanAdvanceRequestSchema} PanAdvanceRequestSchema Find the request parameters to retrieve the PAN information
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         * 
+         */
+        vrsPanAdvanceVerification: async (PanAdvanceRequestSchema: PanAdvanceRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'PanAdvanceRequestSchema' is not null or undefined
+            assertParamExists('vrsPanAdvanceVerification', 'PanAdvanceRequestSchema', PanAdvanceRequestSchema)
+            const localVarPath = `/pan/advance`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            var url = "https://sandbox.cashfree.com/verification";
+            if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                url = "https://api.cashfree.com/verification"
+            }
+            const localVarUrlObj = new URL(localVarPath, url);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication XClientSecret required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-secret")
+
+            // authentication XClientID required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-id")
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(PanAdvanceRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6244,11 +6184,11 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          * x_cf_signature?: string, 
          */
-        vRSPANOCRVerification: async (verification_id: string, front_image: File,  x_api_version?: string, x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsPanOcrVerification: async (verification_id: string, front_image: File,  x_api_version?: string, x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'verification_id' is not null or undefined
-            assertParamExists('vRSPANOCRVerification', 'verification_id', verification_id)
+            assertParamExists('vrsPanOcrVerification', 'verification_id', verification_id)
             // verify required parameter 'front_image' is not null or undefined
-            assertParamExists('vRSPANOCRVerification', 'front_image', front_image)
+            assertParamExists('vrsPanOcrVerification', 'front_image', front_image)
             const localVarPath = `/document/pan`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -6284,7 +6224,7 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6296,69 +6236,19 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
             };
         },
         /**
-         * Use this API to verify the PAN information of your customers. You can retrieve more information such as masked aadhaar number, contact information. etc, than just verifying if a given PAN exists. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#pan) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|    | 200      | SUCCESS | VALID                                                        | -                                                                               | 200      | SUCCESS | Invalid PAN                                                  | Enter a valid 10-character alphanumeric PAN identifier.                         | 400      | ERROR   | Enter valid PAN.                                             | Enter a valid 10-character alphanumeric PAN identifier in the correct format.   | 400      | ERROR   | pan is missing in the request.                               | Enter a valid 10-character alphanumeric PAN identifier in the request.          | 400      | ERROR   | x-client-id is missing in the request.                       | Enter all the header information in the API request.                            | 401      | ERROR   | Invalid clientId and clientSecret combination                | Enter valid client ID and secret key in the request.                            | 403      | ERROR   | IP not whitelisted                                           | Whitelist the IP address.                                                       | 409      | ERROR   | This Verification ID already exists. Provide a different ID. | Enter a unique verification ID to identify the API request.                     | 422      | ERROR   | Insufficient balance to process this request.                | Ensure you have sufficient balance and then process the request.                | 500      | ERROR   | Unable to process your request. Try again after some time.    | Try again after some time.                                                      | 502      | ERROR   | Unable to process your request. Try again after some time.   | Try again after some time.                                                     |
-         * @summary PAN 360
-         
-         * @param {PanAdvanceRequestBodySchema} PanAdvanceRequestBodySchema Find the request parameters to retrieve the PAN information
-         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         * 
-         */
-        vRSPanAdvanceVerification: async (PanAdvanceRequestBodySchema: PanAdvanceRequestBodySchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'PanAdvanceRequestBodySchema' is not null or undefined
-            assertParamExists('vRSPanAdvanceVerification', 'PanAdvanceRequestBodySchema', PanAdvanceRequestBodySchema)
-            const localVarPath = `/pan/advance`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            var url = "https://sandbox.cashfree.com/verification";
-            if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
-                url = "https://api.cashfree.com/verification"
-            }
-            const localVarUrlObj = new URL(localVarPath, url);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication XClientSecret required
-            await setApiKeyToObject(localVarHeaderParameter, "x-client-secret")
-
-            // authentication XClientID required
-            await setApiKeyToObject(localVarHeaderParameter, "x-client-id")
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(PanAdvanceRequestBodySchema, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Use this API to verify if a given PAN exists. You will receive the name registered with the PAN and the PAN type (Individual or Business) in the response for a valid PAN. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#pan) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | VALID                                            | -                                                                             |   | 200      | SUCCESS | Invalid PAN                                            | Enter a valid 10-character alphanumeric PAN identifier.                       |   | 400      | ERROR   | Enter valid PAN.                                 | Enter a valid 10-character alphanumeric PAN identifier in the correct format. |   | 400      | ERROR   | pan is missing in the request.                   | Enter a valid 10-character alphanumeric PAN identifier in the request.        |   | 400      | ERROR   | x-client-id is missing in the request.           | Enter all the header information in the API request.                          |   | 401      | ERROR   | Invalid clientId and clientSecret combination    | Enter valid client ID and secret key in the request.                          |   | 403      | ERROR   | IP not whitelisted                               | Whitelist the IP address.                                                     |   | 422      | ERROR   | Insufficient balance to process this request.    | Ensure you have sufficient balance and then process the request.              |   | 500      | ERROR   | something went wrong, please try after some time | Try again after some time.                                                    |   | 500      | ERROR   | Unable to validate, please retry later           | Try again after some time.                                                    |
          * @summary Verify PAN Sync
          
-         * @param {PANRequestSchema} PANRequestSchema Find the request parameters to verify whether the PAN information is valid
+         * @param {PanRequestSchema} PanRequestSchema Find the request parameters to verify whether the PAN information is valid
          * @param {string} [x_api_version] It is the API version. To receive the aadhaar seeding status in the response, use any date after 2022-09-12
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          * 
          */
-        vRSPanVerification: async (PANRequestSchema: PANRequestSchema,  x_api_version?: string, x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'PANRequestSchema' is not null or undefined
-            assertParamExists('vRSPanVerification', 'PANRequestSchema', PANRequestSchema)
+        vrsPanVerification: async (PanRequestSchema: PanRequestSchema,  x_api_version?: string, x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'PanRequestSchema' is not null or undefined
+            assertParamExists('vrsPanVerification', 'PanRequestSchema', PanRequestSchema)
             const localVarPath = `/pan`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -6385,11 +6275,11 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(PANRequestSchema, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(PanRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6409,14 +6299,14 @@ const PANApiFp = function(configuration?: Configuration) {
         /**
          * Use this API to verify your customers\' PAN information individually or in batches at a time. This API comes in handy when you have to verify a large number of PAN information. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#pan) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | Request accepted. You can check the status after some time.                      | -     | 400      | ERROR   | Please provide atleast one entry for verification                                | You need to have a minimum of one entry in the request.        | 400      | ERROR   | bulk_verification_id is missing in the request.                                  | You need to create a unique ID to identify the API request.        | 400      | ERROR   | bulk_verification_id should contain only alphanumeric and underscore characters. | Only alphanumeric and underscore ( _ ) are allowed.               | 400      | ERROR   | x-client-id is missing in the request.                                           | Enter all the header information in the API request.               | 401      | ERROR   | Invalid clientId and clientSecret combination                                    | Enter valid client ID and secret key in the request.               | 403      | ERROR   | IP not whitelisted                                                               | Whitelist the IP address.                                          | 422      | ERROR   | Insufficient balance to process this request.                                    | Ensure you have sufficient balance and then process the request.   | 500      | ERROR   | Unable to validate, please retry later                                           | Try again after some time.                                    | 500      | ERROR   | something went wrong, please try after some time                                 | Try again after some time.       
          * @summary Verify PAN in Bulk
-         * @param {BulkPANRequestSchema} BulkPANRequestSchema Find the request parameters to verify a large number of PAN information
+         * @param {BulkPanRequestSchema} BulkPanRequestSchema Find the request parameters to verify a large number of PAN information
          * @param {string} [x_api_version] It is the API version. To receive the aadhaar seeding status in the response, use any date after 2022-09-12
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSBulkPanVerification(BulkPANRequestSchema: BulkPANRequestSchema, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostPanBulkResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSBulkPanVerification(BulkPANRequestSchema, x_api_version, x_cf_signature, options);
+        async vrsBulkPanVerification(BulkPanRequestSchema: BulkPanRequestSchema, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PostPanBulkResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsBulkPanVerification(BulkPanRequestSchema, x_api_version, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -6433,8 +6323,8 @@ const PANApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSFetchBulkPanDetails(reference_id: string, bulk_verification_id: string, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetPanBulkResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSFetchBulkPanDetails(reference_id, bulk_verification_id, x_api_version, x_cf_signature, options);
+        async vrsFetchBulkPanDetails(reference_id: string, bulk_verification_id: string, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetPanBulkResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsFetchBulkPanDetails(reference_id, bulk_verification_id, x_api_version, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -6450,8 +6340,24 @@ const PANApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSFetchPanDetails(reference_id: string, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetVerifyPanResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSFetchPanDetails(reference_id, x_api_version, x_cf_signature, options);
+        async vrsFetchPanDetails(reference_id: string, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetVerifyPanResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsFetchPanDetails(reference_id, x_api_version, x_cf_signature, options);
+                var url = "https://sandbox.cashfree.com/verification";
+                if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                    url = "https://api.cashfree.com/verification"
+                }
+                return createRequestFunction(localVarAxiosArgs, globalAxios, url, configuration);
+        },
+        /**
+         * Use this API to verify the PAN information of your customers. You can retrieve more information such as masked aadhaar number, contact information. etc, than just verifying if a given PAN exists. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#pan) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|    | 200      | SUCCESS | VALID                                                        | -                                                                               | 200      | SUCCESS | Invalid PAN                                                  | Enter a valid 10-character alphanumeric PAN identifier.                         | 400      | ERROR   | Enter valid PAN.                                             | Enter a valid 10-character alphanumeric PAN identifier in the correct format.   | 400      | ERROR   | pan is missing in the request.                               | Enter a valid 10-character alphanumeric PAN identifier in the request.          | 400      | ERROR   | x-client-id is missing in the request.                       | Enter all the header information in the API request.                            | 401      | ERROR   | Invalid clientId and clientSecret combination                | Enter valid client ID and secret key in the request.                            | 403      | ERROR   | IP not whitelisted                                           | Whitelist the IP address.                                                       | 409      | ERROR   | This Verification ID already exists. Provide a different ID. | Enter a unique verification ID to identify the API request.                     | 422      | ERROR   | Insufficient balance to process this request.                | Ensure you have sufficient balance and then process the request.                | 500      | ERROR   | Unable to process your request. Try again after some time.    | Try again after some time.                                                      | 502      | ERROR   | Unable to process your request. Try again after some time.   | Try again after some time.                                                     |
+         * @summary PAN 360
+         * @param {PanAdvanceRequestSchema} PanAdvanceRequestSchema Find the request parameters to retrieve the PAN information
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async vrsPanAdvanceVerification(PanAdvanceRequestSchema: PanAdvanceRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PanAdvanceResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsPanAdvanceVerification(PanAdvanceRequestSchema, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -6468,24 +6374,8 @@ const PANApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSPANOCRVerification(verification_id: string, front_image: File, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PANOCRResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSPANOCRVerification(verification_id, front_image, x_api_version, x_cf_signature, options);
-                var url = "https://sandbox.cashfree.com/verification";
-                if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
-                    url = "https://api.cashfree.com/verification"
-                }
-                return createRequestFunction(localVarAxiosArgs, globalAxios, url, configuration);
-        },
-        /**
-         * Use this API to verify the PAN information of your customers. You can retrieve more information such as masked aadhaar number, contact information. etc, than just verifying if a given PAN exists. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#pan) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|    | 200      | SUCCESS | VALID                                                        | -                                                                               | 200      | SUCCESS | Invalid PAN                                                  | Enter a valid 10-character alphanumeric PAN identifier.                         | 400      | ERROR   | Enter valid PAN.                                             | Enter a valid 10-character alphanumeric PAN identifier in the correct format.   | 400      | ERROR   | pan is missing in the request.                               | Enter a valid 10-character alphanumeric PAN identifier in the request.          | 400      | ERROR   | x-client-id is missing in the request.                       | Enter all the header information in the API request.                            | 401      | ERROR   | Invalid clientId and clientSecret combination                | Enter valid client ID and secret key in the request.                            | 403      | ERROR   | IP not whitelisted                                           | Whitelist the IP address.                                                       | 409      | ERROR   | This Verification ID already exists. Provide a different ID. | Enter a unique verification ID to identify the API request.                     | 422      | ERROR   | Insufficient balance to process this request.                | Ensure you have sufficient balance and then process the request.                | 500      | ERROR   | Unable to process your request. Try again after some time.    | Try again after some time.                                                      | 502      | ERROR   | Unable to process your request. Try again after some time.   | Try again after some time.                                                     |
-         * @summary PAN 360
-         * @param {PanAdvanceRequestBodySchema} PanAdvanceRequestBodySchema Find the request parameters to retrieve the PAN information
-         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async vRSPanAdvanceVerification(PanAdvanceRequestBodySchema: PanAdvanceRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PanAdvanceResponseBodySchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSPanAdvanceVerification(PanAdvanceRequestBodySchema, x_cf_signature, options);
+        async vrsPanOcrVerification(verification_id: string, front_image: File, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PanOcrResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsPanOcrVerification(verification_id, front_image, x_api_version, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -6495,14 +6385,14 @@ const PANApiFp = function(configuration?: Configuration) {
         /**
          * Use this API to verify if a given PAN exists. You will receive the name registered with the PAN and the PAN type (Individual or Business) in the response for a valid PAN. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#pan) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | VALID                                            | -                                                                             |   | 200      | SUCCESS | Invalid PAN                                            | Enter a valid 10-character alphanumeric PAN identifier.                       |   | 400      | ERROR   | Enter valid PAN.                                 | Enter a valid 10-character alphanumeric PAN identifier in the correct format. |   | 400      | ERROR   | pan is missing in the request.                   | Enter a valid 10-character alphanumeric PAN identifier in the request.        |   | 400      | ERROR   | x-client-id is missing in the request.           | Enter all the header information in the API request.                          |   | 401      | ERROR   | Invalid clientId and clientSecret combination    | Enter valid client ID and secret key in the request.                          |   | 403      | ERROR   | IP not whitelisted                               | Whitelist the IP address.                                                     |   | 422      | ERROR   | Insufficient balance to process this request.    | Ensure you have sufficient balance and then process the request.              |   | 500      | ERROR   | something went wrong, please try after some time | Try again after some time.                                                    |   | 500      | ERROR   | Unable to validate, please retry later           | Try again after some time.                                                    |
          * @summary Verify PAN Sync
-         * @param {PANRequestSchema} PANRequestSchema Find the request parameters to verify whether the PAN information is valid
+         * @param {PanRequestSchema} PanRequestSchema Find the request parameters to verify whether the PAN information is valid
          * @param {string} [x_api_version] It is the API version. To receive the aadhaar seeding status in the response, use any date after 2022-09-12
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSPanVerification(PANRequestSchema: PANRequestSchema, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetVerifyPanResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSPanVerification(PANRequestSchema, x_api_version, x_cf_signature, options);
+        async vrsPanVerification(PanRequestSchema: PanRequestSchema, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetVerifyPanResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsPanVerification(PanRequestSchema, x_api_version, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -6531,15 +6421,15 @@ const PANToGSTINApiAxiosParamCreator = function (configuration?: Configuration) 
          * Use this API to fetch the list of GSTIN associated with the PAN information. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#fetch-gstin-with-pan) and use the information to trigger the validations. The test data are usable only in test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | Gstins List found                                      | -    | 200              | SUCCESS         | Gstin not found                  | No results found for the entered information. Enter the correct information in the request. | 400              | ERROR         | Enter valid PAN.                  | Enter the unique 10-character alphanumeric identifier issued by the Income Tax Department.  | 400              | ERROR         | pan is missing in the request.               | Enter the PAN information in the request to fetch the list of associated GSTIN.    | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists                                           | Enter a unique verification ID to identify the request.  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | verification attempt failed                      | Try again after some time. 
          * @summary Fetch GSTIN with PAN
          
-         * @param {PanToGstinRequestBodySchema} PanToGstinRequestBodySchema Find the request parameters to retrieve the list of GSTIN associated with a PAN
+         * @param {PanToGstinRequestSchema} PanToGstinRequestSchema Find the request parameters to retrieve the list of GSTIN associated with a PAN
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          * 
          */
-        vRSPANtoGSTINVerification: async (PanToGstinRequestBodySchema: PanToGstinRequestBodySchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'PanToGstinRequestBodySchema' is not null or undefined
-            assertParamExists('vRSPANtoGSTINVerification', 'PanToGstinRequestBodySchema', PanToGstinRequestBodySchema)
+        vrsPanToGstinVerification: async (PanToGstinRequestSchema: PanToGstinRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'PanToGstinRequestSchema' is not null or undefined
+            assertParamExists('vrsPanToGstinVerification', 'PanToGstinRequestSchema', PanToGstinRequestSchema)
             const localVarPath = `/pan-gstin`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -6566,11 +6456,11 @@ const PANToGSTINApiAxiosParamCreator = function (configuration?: Configuration) 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(PanToGstinRequestBodySchema, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(PanToGstinRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6590,13 +6480,13 @@ const PANToGSTINApiFp = function(configuration?: Configuration) {
         /**
          * Use this API to fetch the list of GSTIN associated with the PAN information. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#fetch-gstin-with-pan) and use the information to trigger the validations. The test data are usable only in test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | Gstins List found                                      | -    | 200              | SUCCESS         | Gstin not found                  | No results found for the entered information. Enter the correct information in the request. | 400              | ERROR         | Enter valid PAN.                  | Enter the unique 10-character alphanumeric identifier issued by the Income Tax Department.  | 400              | ERROR         | pan is missing in the request.               | Enter the PAN information in the request to fetch the list of associated GSTIN.    | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists                                           | Enter a unique verification ID to identify the request.  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | verification attempt failed                      | Try again after some time. 
          * @summary Fetch GSTIN with PAN
-         * @param {PanToGstinRequestBodySchema} PanToGstinRequestBodySchema Find the request parameters to retrieve the list of GSTIN associated with a PAN
+         * @param {PanToGstinRequestSchema} PanToGstinRequestSchema Find the request parameters to retrieve the list of GSTIN associated with a PAN
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSPANtoGSTINVerification(PanToGstinRequestBodySchema: PanToGstinRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PanToGstinResponseBodySchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSPANtoGSTINVerification(PanToGstinRequestBodySchema, x_cf_signature, options);
+        async vrsPanToGstinVerification(PanToGstinRequestSchema: PanToGstinRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PanToGstinResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsPanToGstinVerification(PanToGstinRequestSchema, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -6625,15 +6515,15 @@ const PassportApiAxiosParamCreator = function (configuration?: Configuration) {
          * Use this API to verify passport information and ensure the identity of your customer. Provide the passport file number in the request and we help you fetch the details. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#passport) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | VALID                                      | -    | 200              | SUCCESS         | INVALID                  | Enter the correct information in the request. | 400              | ERROR         | verification_id is missing in the request.                  | Enter a valid verification_id in the request.  | 400              | ERROR         | verification_id can include only alphanum, dot, hyphen, and underscores.               | Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.   | 400              | ERROR         | file_number is missing in the request.                  | Enter the file number in the request.   | 400              | ERROR         | dob is missing in the request.                  | Enter the date of birth of the passport holder in the request.   | 400              | ERROR         | dob should be of type YYYY-MM-DD.                  | Enter the DOB in the YYYY-MM-DD format    | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists                                           | Enter a unique verification ID to identify the request.  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | verification attempt failed                      | Try again after some time.  
          * @summary Verify Passport
          
-         * @param {PassportVerificationRequestBodySchema} PassportVerificationRequestBodySchema Find the request parameter to retrieve your customer\&#39;s passport information
+         * @param {PassportVerificationRequestSchema} PassportVerificationRequestSchema Find the request parameter to retrieve your customer\&#39;s passport information
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          * 
          */
-        vRSPassportVerification: async (PassportVerificationRequestBodySchema: PassportVerificationRequestBodySchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'PassportVerificationRequestBodySchema' is not null or undefined
-            assertParamExists('vRSPassportVerification', 'PassportVerificationRequestBodySchema', PassportVerificationRequestBodySchema)
+        vrsPassportVerification: async (PassportVerificationRequestSchema: PassportVerificationRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'PassportVerificationRequestSchema' is not null or undefined
+            assertParamExists('vrsPassportVerification', 'PassportVerificationRequestSchema', PassportVerificationRequestSchema)
             const localVarPath = `/passport`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -6660,11 +6550,11 @@ const PassportApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(PassportVerificationRequestBodySchema, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(PassportVerificationRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6684,13 +6574,13 @@ const PassportApiFp = function(configuration?: Configuration) {
         /**
          * Use this API to verify passport information and ensure the identity of your customer. Provide the passport file number in the request and we help you fetch the details. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#passport) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | VALID                                      | -    | 200              | SUCCESS         | INVALID                  | Enter the correct information in the request. | 400              | ERROR         | verification_id is missing in the request.                  | Enter a valid verification_id in the request.  | 400              | ERROR         | verification_id can include only alphanum, dot, hyphen, and underscores.               | Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.   | 400              | ERROR         | file_number is missing in the request.                  | Enter the file number in the request.   | 400              | ERROR         | dob is missing in the request.                  | Enter the date of birth of the passport holder in the request.   | 400              | ERROR         | dob should be of type YYYY-MM-DD.                  | Enter the DOB in the YYYY-MM-DD format    | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists                                           | Enter a unique verification ID to identify the request.  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | verification attempt failed                      | Try again after some time.  
          * @summary Verify Passport
-         * @param {PassportVerificationRequestBodySchema} PassportVerificationRequestBodySchema Find the request parameter to retrieve your customer\&#39;s passport information
+         * @param {PassportVerificationRequestSchema} PassportVerificationRequestSchema Find the request parameter to retrieve your customer\&#39;s passport information
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSPassportVerification(PassportVerificationRequestBodySchema: PassportVerificationRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PassportVerificationResponseBodySchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSPassportVerification(PassportVerificationRequestBodySchema, x_cf_signature, options);
+        async vrsPassportVerification(PassportVerificationRequestSchema: PassportVerificationRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PassportVerificationResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsPassportVerification(PassportVerificationRequestSchema, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -6725,9 +6615,9 @@ const ReverseGeocodingApiAxiosParamCreator = function (configuration?: Configura
          * @throws {RequiredError}
          * 
          */
-        vRSReverseGeocodingVerification: async (ReverseGeocodingRequestSchema: ReverseGeocodingRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsReverseGeocodingVerification: async (ReverseGeocodingRequestSchema: ReverseGeocodingRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'ReverseGeocodingRequestSchema' is not null or undefined
-            assertParamExists('vRSReverseGeocodingVerification', 'ReverseGeocodingRequestSchema', ReverseGeocodingRequestSchema)
+            assertParamExists('vrsReverseGeocodingVerification', 'ReverseGeocodingRequestSchema', ReverseGeocodingRequestSchema)
             const localVarPath = `/reverse-geocoding`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -6754,7 +6644,7 @@ const ReverseGeocodingApiAxiosParamCreator = function (configuration?: Configura
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6783,8 +6673,8 @@ const ReverseGeocodingApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSReverseGeocodingVerification(ReverseGeocodingRequestSchema: ReverseGeocodingRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ReverseGeocodingResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSReverseGeocodingVerification(ReverseGeocodingRequestSchema, x_cf_signature, options);
+        async vrsReverseGeocodingVerification(ReverseGeocodingRequestSchema: ReverseGeocodingRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ReverseGeocodingResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsReverseGeocodingVerification(ReverseGeocodingRequestSchema, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -6813,14 +6703,14 @@ const ReversePennyDropApiAxiosParamCreator = function (configuration?: Configura
          * Use this API to create a reverse penny drop request. Reverse penny drop is a verification method for validating bank account information. Your customers/users deposit 1 rupee through a UPI based transaction and get the 1 rupee back once the verification is complete. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | -                                      | -    | 400              | ERROR         | verification_id is missing in the request.                  | Enter a valid verification_id in the request.   | 400              | ERROR         | verification_id already exists                  | Enter a unique verification_id.    | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | Unable to validate, please retry later                      | Try again after some time.  
          * @summary Create Reverse Penny Drop Request
          
-         * @param {CreateOrderRequestBodySchema} CreateOrderRequestBodySchema Find the request parameters to create a reverse penny drop request
+         * @param {CreateRequestRequestSchema} CreateRequestRequestSchema Find the request parameters to create a reverse penny drop request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          * 
          */
-        vRSReversePennyDropCreateRequest: async (CreateOrderRequestBodySchema: CreateOrderRequestBodySchema,   options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'CreateOrderRequestBodySchema' is not null or undefined
-            assertParamExists('vRSReversePennyDropCreateRequest', 'CreateOrderRequestBodySchema', CreateOrderRequestBodySchema)
+        vrsReversePennyDropCreateRequest: async (CreateRequestRequestSchema: CreateRequestRequestSchema,   options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'CreateRequestRequestSchema' is not null or undefined
+            assertParamExists('vrsReversePennyDropCreateRequest', 'CreateRequestRequestSchema', CreateRequestRequestSchema)
             const localVarPath = `/reverse-penny-drop`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -6847,11 +6737,11 @@ const ReversePennyDropApiAxiosParamCreator = function (configuration?: Configura
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(CreateOrderRequestBodySchema, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(CreateRequestRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6868,7 +6758,7 @@ const ReversePennyDropApiAxiosParamCreator = function (configuration?: Configura
          * @throws {RequiredError}
          * 
          */
-        vRSReversePennyDropFetchStatus: async ( ref_id?: string, verification_id?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsReversePennyDropFetchStatus: async ( ref_id?: string, verification_id?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/remitter/status`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -6901,7 +6791,7 @@ const ReversePennyDropApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6924,12 +6814,12 @@ const ReversePennyDropApiFp = function(configuration?: Configuration) {
         /**
          * Use this API to create a reverse penny drop request. Reverse penny drop is a verification method for validating bank account information. Your customers/users deposit 1 rupee through a UPI based transaction and get the 1 rupee back once the verification is complete. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | -                                      | -    | 400              | ERROR         | verification_id is missing in the request.                  | Enter a valid verification_id in the request.   | 400              | ERROR         | verification_id already exists                  | Enter a unique verification_id.    | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | Unable to validate, please retry later                      | Try again after some time.  
          * @summary Create Reverse Penny Drop Request
-         * @param {CreateOrderRequestBodySchema} CreateOrderRequestBodySchema Find the request parameters to create a reverse penny drop request
+         * @param {CreateRequestRequestSchema} CreateRequestRequestSchema Find the request parameters to create a reverse penny drop request
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSReversePennyDropCreateRequest(CreateOrderRequestBodySchema: CreateOrderRequestBodySchema, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateOrderResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSReversePennyDropCreateRequest(CreateOrderRequestBodySchema, options);
+        async vrsReversePennyDropCreateRequest(CreateRequestRequestSchema: CreateRequestRequestSchema, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CreateRequestResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsReversePennyDropCreateRequest(CreateRequestRequestSchema, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -6944,8 +6834,8 @@ const ReversePennyDropApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSReversePennyDropFetchStatus(ref_id?: string, verification_id?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VRSReversePennyDropFetchStatus200Response>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSReversePennyDropFetchStatus(ref_id, verification_id, options);
+        async vrsReversePennyDropFetchStatus(ref_id?: string, verification_id?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetStatusRpdResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsReversePennyDropFetchStatus(ref_id, verification_id, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -6974,15 +6864,15 @@ const UPIApiAxiosParamCreator = function (configuration?: Configuration) {
          * Use this API to verify UPI information of your customers along with IFSC and the name as registered in the bank records. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | VALID                                      | -   | 200              | SUCCESS       | INVALID                                        | Enter a valid VPA in the request.  | 200              | SUCCESS       | Vpa has expired                                        | -   | 400              | ERROR         | vpa should be valid.               | Enter a valid VPA in the request.   | 400              | ERROR         | vpa is missing in the request.                  | Enter a value for vpa in the request.   | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.   | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | Unable to process your request. Try again after some time.            | Try again after some time. 
          * @summary UPI 360
          
-         * @param {UpiAdvanceRequestBodySchema} UpiAdvanceRequestBodySchema Find the request parameters to retrieve the UPI VPA information of your customer
+         * @param {UpiAdvanceRequestSchema} UpiAdvanceRequestSchema Find the request parameters to retrieve the UPI VPA information of your customer
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          * 
          */
-        vRSUPIAdvanceVerification: async (UpiAdvanceRequestBodySchema: UpiAdvanceRequestBodySchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'UpiAdvanceRequestBodySchema' is not null or undefined
-            assertParamExists('vRSUPIAdvanceVerification', 'UpiAdvanceRequestBodySchema', UpiAdvanceRequestBodySchema)
+        vrsUpiAdvanceVerification: async (UpiAdvanceRequestSchema: UpiAdvanceRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'UpiAdvanceRequestSchema' is not null or undefined
+            assertParamExists('vrsUpiAdvanceVerification', 'UpiAdvanceRequestSchema', UpiAdvanceRequestSchema)
             const localVarPath = `/upi/advance`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -7009,11 +6899,11 @@ const UPIApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(UpiAdvanceRequestBodySchema, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(UpiAdvanceRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -7024,15 +6914,15 @@ const UPIApiAxiosParamCreator = function (configuration?: Configuration) {
          * Use this API to fetch the account holder name along with the UPI VPA information of your customer by providing the phone number. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#upi) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes    | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | VALID                                         | -                                                                  | 200      | SUCCESS | No UPI ID found linked to the Mobile Number   | Enter a mobile number linked to at least one UPI VPA.              | 200      | SUCCESS | Unable to validate, please retry later        | Try again after some time.                                         | 400      | ERROR   | Mobile number entered is invalid.             | Enter a valid mobile number.                                       | 400      | ERROR   | mobile_number is missing in the request.      | Enter a valid mobile number in the API request.                    | 400      | ERROR   | x-client-id is missing in the request.        | Enter all the header information in the API request.               | 401      | ERROR   | Invalid clientId and clientSecret combination | Enter valid client ID and secret key in the request.               | 403      | ERROR   | IP not whitelisted                            | Whitelist the IP address.                                          | 409      | ERROR   | verification id already exists                | Create a unique verification ID to identify the request.           | 422      | ERROR   | Insufficient balance to process this request  | Ensure you have sufficient balance and then process the request.   | 500      | ERROR   | something went wrong                          | Try again after some time.                                       |   
          * @summary Get Multiple VPA from Phone Number.
          
-         * @param {UpiMobileRequestBodySchema} UpiMobileRequestBodySchema Find the request parameters to retrieve the list of UPI VPA associated with the mobile number
+         * @param {UpiMobileRequestSchema} UpiMobileRequestSchema Find the request parameters to retrieve the list of UPI VPA associated with the mobile number
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          * 
          */
-        vRSUPIMobileVerification: async (UpiMobileRequestBodySchema: UpiMobileRequestBodySchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'UpiMobileRequestBodySchema' is not null or undefined
-            assertParamExists('vRSUPIMobileVerification', 'UpiMobileRequestBodySchema', UpiMobileRequestBodySchema)
+        vrsUpiMobileVerification: async (UpiMobileRequestSchema: UpiMobileRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'UpiMobileRequestSchema' is not null or undefined
+            assertParamExists('vrsUpiMobileVerification', 'UpiMobileRequestSchema', UpiMobileRequestSchema)
             const localVarPath = `/upi/mobile`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -7059,11 +6949,11 @@ const UPIApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(UpiMobileRequestBodySchema, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(UpiMobileRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -7083,13 +6973,13 @@ const UPIApiFp = function(configuration?: Configuration) {
         /**
          * Use this API to verify UPI information of your customers along with IFSC and the name as registered in the bank records. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | VALID                                      | -   | 200              | SUCCESS       | INVALID                                        | Enter a valid VPA in the request.  | 200              | SUCCESS       | Vpa has expired                                        | -   | 400              | ERROR         | vpa should be valid.               | Enter a valid VPA in the request.   | 400              | ERROR         | vpa is missing in the request.                  | Enter a value for vpa in the request.   | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.   | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | Unable to process your request. Try again after some time.            | Try again after some time. 
          * @summary UPI 360
-         * @param {UpiAdvanceRequestBodySchema} UpiAdvanceRequestBodySchema Find the request parameters to retrieve the UPI VPA information of your customer
+         * @param {UpiAdvanceRequestSchema} UpiAdvanceRequestSchema Find the request parameters to retrieve the UPI VPA information of your customer
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSUPIAdvanceVerification(UpiAdvanceRequestBodySchema: UpiAdvanceRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpiAdvanceResponseBodySchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSUPIAdvanceVerification(UpiAdvanceRequestBodySchema, x_cf_signature, options);
+        async vrsUpiAdvanceVerification(UpiAdvanceRequestSchema: UpiAdvanceRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpiAdvanceResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsUpiAdvanceVerification(UpiAdvanceRequestSchema, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -7099,13 +6989,13 @@ const UPIApiFp = function(configuration?: Configuration) {
         /**
          * Use this API to fetch the account holder name along with the UPI VPA information of your customer by providing the phone number. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#upi) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes    | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | VALID                                         | -                                                                  | 200      | SUCCESS | No UPI ID found linked to the Mobile Number   | Enter a mobile number linked to at least one UPI VPA.              | 200      | SUCCESS | Unable to validate, please retry later        | Try again after some time.                                         | 400      | ERROR   | Mobile number entered is invalid.             | Enter a valid mobile number.                                       | 400      | ERROR   | mobile_number is missing in the request.      | Enter a valid mobile number in the API request.                    | 400      | ERROR   | x-client-id is missing in the request.        | Enter all the header information in the API request.               | 401      | ERROR   | Invalid clientId and clientSecret combination | Enter valid client ID and secret key in the request.               | 403      | ERROR   | IP not whitelisted                            | Whitelist the IP address.                                          | 409      | ERROR   | verification id already exists                | Create a unique verification ID to identify the request.           | 422      | ERROR   | Insufficient balance to process this request  | Ensure you have sufficient balance and then process the request.   | 500      | ERROR   | something went wrong                          | Try again after some time.                                       |   
          * @summary Get Multiple VPA from Phone Number.
-         * @param {UpiMobileRequestBodySchema} UpiMobileRequestBodySchema Find the request parameters to retrieve the list of UPI VPA associated with the mobile number
+         * @param {UpiMobileRequestSchema} UpiMobileRequestSchema Find the request parameters to retrieve the list of UPI VPA associated with the mobile number
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSUPIMobileVerification(UpiMobileRequestBodySchema: UpiMobileRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpiMobileResponseBodySchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSUPIMobileVerification(UpiMobileRequestBodySchema, x_cf_signature, options);
+        async vrsUpiMobileVerification(UpiMobileRequestSchema: UpiMobileRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpiMobileResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsUpiMobileVerification(UpiMobileRequestSchema, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -7134,15 +7024,15 @@ const VehicleRCApiAxiosParamCreator = function (configuration?: Configuration) {
          * Use this API to verify the authenticity of vehicle details. We help you find out the complete information of the vehicle including the owner, chassis number, registration date, registration number, and more.  View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#registration-certificate-vehicle) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | Valid                                      | -   | 200              | SUCCESS       | Invalid                                        | Enter a valid registration number of the vehicle   | 400              | ERROR         | vehicle-rc is invalid               | Enter a valid registration number of the vehicle.   | 400              | ERROR         | verification_id can include only alphanum, dot, hyphen, and underscores.                  | Enter a valid verification_id that includes only alphanumeric, period (.), hyphen (-), and underscore ( _ ).  | 400              | ERROR         | verification_id is missing in the request.               | Enter a valid verification ID in the request.   | 400              | ERROR         | verification_id can include a maximum of 50 characters.                  | Enter a valid verification_id that is withing 50 characters.    | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists  | Enter a unique verification_id that includes only alphanumeric, period (.), hyphen (-), and underscore ( _ ).  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | verification attempt failed            | Try again after some time. 
          * @summary Get Vehicle RC Details
          
-         * @param {VehicleRCRequestSchema} VehicleRCRequestSchema Find the request parameters to retrieve the information of a vehicle\&#39;s registration certificate
+         * @param {VehicleRcRequestSchema} VehicleRcRequestSchema Find the request parameters to retrieve the information of a vehicle\&#39;s registration certificate
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          * 
          */
-        vRSVehicleRCVerification: async (VehicleRCRequestSchema: VehicleRCRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'VehicleRCRequestSchema' is not null or undefined
-            assertParamExists('vRSVehicleRCVerification', 'VehicleRCRequestSchema', VehicleRCRequestSchema)
+        vrsVehicleRcVerification: async (VehicleRcRequestSchema: VehicleRcRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'VehicleRcRequestSchema' is not null or undefined
+            assertParamExists('vrsVehicleRcVerification', 'VehicleRcRequestSchema', VehicleRcRequestSchema)
             const localVarPath = `/vehicle-rc`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -7169,11 +7059,11 @@ const VehicleRCApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(VehicleRCRequestSchema, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(VehicleRcRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -7193,13 +7083,13 @@ const VehicleRCApiFp = function(configuration?: Configuration) {
         /**
          * Use this API to verify the authenticity of vehicle details. We help you find out the complete information of the vehicle including the owner, chassis number, registration date, registration number, and more.  View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#registration-certificate-vehicle) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | Valid                                      | -   | 200              | SUCCESS       | Invalid                                        | Enter a valid registration number of the vehicle   | 400              | ERROR         | vehicle-rc is invalid               | Enter a valid registration number of the vehicle.   | 400              | ERROR         | verification_id can include only alphanum, dot, hyphen, and underscores.                  | Enter a valid verification_id that includes only alphanumeric, period (.), hyphen (-), and underscore ( _ ).  | 400              | ERROR         | verification_id is missing in the request.               | Enter a valid verification ID in the request.   | 400              | ERROR         | verification_id can include a maximum of 50 characters.                  | Enter a valid verification_id that is withing 50 characters.    | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists  | Enter a unique verification_id that includes only alphanumeric, period (.), hyphen (-), and underscore ( _ ).  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | verification attempt failed            | Try again after some time. 
          * @summary Get Vehicle RC Details
-         * @param {VehicleRCRequestSchema} VehicleRCRequestSchema Find the request parameters to retrieve the information of a vehicle\&#39;s registration certificate
+         * @param {VehicleRcRequestSchema} VehicleRcRequestSchema Find the request parameters to retrieve the information of a vehicle\&#39;s registration certificate
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSVehicleRCVerification(VehicleRCRequestSchema: VehicleRCRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VehicleRCResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSVehicleRCVerification(VehicleRCRequestSchema, x_cf_signature, options);
+        async vrsVehicleRcVerification(VehicleRcRequestSchema: VehicleRcRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VehicleRcResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsVehicleRcVerification(VehicleRcRequestSchema, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -7228,15 +7118,15 @@ const VoterIDApiAxiosParamCreator = function (configuration?: Configuration) {
          * Use this API to verify the authenticity of your customer\'s voter ID. You need to enter the Electoral Photo Identity Card (EPIC) number and we retrieve complete details including assembly and parliamentary constituency details. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#voter-id) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | Valid voter ID                                       | -   | 200              | SUCCESS       | Invalid voter ID                                        | -   | 400              | ERROR         | verification_id is missing in the request               | Enter a valid verification_id in the request.  | 400              | ERROR         | verification_id can include only alphanum, dot, hyphen, and underscores.                  | Enter a valid verification_id that includes only alphanumeric, period (.), hyphen (-), and underscore ( _ ).  | 400              | ERROR         | epic_number is missing in the request.                      | Enter a valid EPIC number which is the unique identification number assigned to each voter ID.  | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists  | Enter a unique verification_id that includes only alphanumeric, period (.), hyphen (-), and underscore ( _ ).  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 500              | ERROR         | verification attempt failed            | Try again after some time. 
          * @summary Verify Voter ID
          
-         * @param {VoterIdRequestBodySchema} VoterIdRequestBodySchema Find the request parameters to fetch voter ID details
+         * @param {VoterIdRequestSchema} VoterIdRequestSchema Find the request parameters to fetch voter ID details
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          * 
          */
-        vRSVoterIdVerification: async (VoterIdRequestBodySchema: VoterIdRequestBodySchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'VoterIdRequestBodySchema' is not null or undefined
-            assertParamExists('vRSVoterIdVerification', 'VoterIdRequestBodySchema', VoterIdRequestBodySchema)
+        vrsVoterIdVerification: async (VoterIdRequestSchema: VoterIdRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'VoterIdRequestSchema' is not null or undefined
+            assertParamExists('vrsVoterIdVerification', 'VoterIdRequestSchema', VoterIdRequestSchema)
             const localVarPath = `/voter-id`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -7263,11 +7153,11 @@ const VoterIDApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(VoterIdRequestBodySchema, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(VoterIdRequestSchema, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -7287,13 +7177,13 @@ const VoterIDApiFp = function(configuration?: Configuration) {
         /**
          * Use this API to verify the authenticity of your customer\'s voter ID. You need to enter the Electoral Photo Identity Card (EPIC) number and we retrieve complete details including assembly and parliamentary constituency details. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#voter-id) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | Valid voter ID                                       | -   | 200              | SUCCESS       | Invalid voter ID                                        | -   | 400              | ERROR         | verification_id is missing in the request               | Enter a valid verification_id in the request.  | 400              | ERROR         | verification_id can include only alphanum, dot, hyphen, and underscores.                  | Enter a valid verification_id that includes only alphanumeric, period (.), hyphen (-), and underscore ( _ ).  | 400              | ERROR         | epic_number is missing in the request.                      | Enter a valid EPIC number which is the unique identification number assigned to each voter ID.  | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists  | Enter a unique verification_id that includes only alphanumeric, period (.), hyphen (-), and underscore ( _ ).  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 500              | ERROR         | verification attempt failed            | Try again after some time. 
          * @summary Verify Voter ID
-         * @param {VoterIdRequestBodySchema} VoterIdRequestBodySchema Find the request parameters to fetch voter ID details
+         * @param {VoterIdRequestSchema} VoterIdRequestSchema Find the request parameters to fetch voter ID details
          * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vRSVoterIdVerification(VoterIdRequestBodySchema: VoterIdRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoterIdResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vRSVoterIdVerification(VoterIdRequestBodySchema, x_cf_signature, options);
+        async vrsVoterIdVerification(VoterIdRequestSchema: VoterIdRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VoterIdResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsVoterIdVerification(VoterIdRequestSchema, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -7343,7 +7233,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof AadhaarApi
      */
-    public static VRSAadhaarOCRVerification(verification_id: string, front_image: File, x_api_version?: string, x_cf_signature?: string, back_image?: File, options?: AxiosRequestConfig) {
+    public static VrsAadhaarOcrVerification(verification_id: string, front_image: File, x_api_version?: string, x_cf_signature?: string, back_image?: File, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -7385,11 +7275,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return AadhaarApiFp().vRSAadhaarOCRVerification(verification_id, front_image, x_api_version, x_cf_signature, back_image, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return AadhaarApiFp().vrsAadhaarOcrVerification(verification_id, front_image, x_api_version, x_cf_signature, back_image, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -7408,7 +7298,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof AadhaarApi
      */
-    public static VRSMaskAadhaar(image: File, verification_id: string, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsMaskAadhaar(image: File, verification_id: string, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -7450,11 +7340,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return AadhaarApiFp().vRSMaskAadhaar(image, verification_id, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return AadhaarApiFp().vrsMaskAadhaar(image, verification_id, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -7466,12 +7356,12 @@ export class Cashfree {
     /**
      * Use this API to generate OTP for a given aadhar number. The mobile number linked with the aadhaar information will receive the generated OTP. Use the generated OTP for offline aadhaar verification. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | OTP sent successfully                                      | Enter the OTP in the Submit OTP to Verify Aadhaar API.                      |   | 200      | SUCCESS | Aadhaar not linked to mobile number                        | Enter a valid aadhaar number linked to a mobile number to generate the OTP. |   | 200      | SUCCESS | Invalid Aadhaar Card                                       | Enter a valid aadhaar number.                                               |   | 400      | ERROR   | aadhaar Number should contain 12 characters.               | Enter a valid aadhaar number that has only 12 numeric digits.               |   | 400      | ERROR   | Please enter aadhaar number in numeric format              | Enter a valid aadhaar number that has only 12 numeric digits.               |   | 400      | ERROR   | Please enter aadhaar number in the request                 | Enter a valid aadhaar number.                                               |   | 400      | ERROR   | x-client-id is missing in the request                      | Enter all the header information in the API request.                        |   | 401      | ERROR   | Invalid clientId and clientSecret combination              | Enter valid client ID and secret key in the request.                        |   | 403      | ERROR   | IP not whitelisted                                         | Whitelist the IP address.                                                   |   | 409      | ERROR   | Otp generated for this aadhaar, please try after some time | Try again after some time.                                                  |   | 422      | ERROR   | Insufficient balance to process this request.              | Ensure you have sufficient balance and then process the request.            |   | 500      | ERROR   | something went wrong                                       | Try again after some time.                                                  |
      * @summary Generate OTP to Verify Aadhaar
-     * @param {OfflineAadhaarSendOTPRequestSchema} OfflineAadhaarSendOTPRequestSchema Find the request parameters to generate OTP for a given aadhar number
+     * @param {OfflineAadhaarSendOtpRequestSchema} OfflineAadhaarSendOtpRequestSchema Find the request parameters to generate OTP for a given aadhar number
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AadhaarApi
      */
-    public static VRSOfflineAadhaarSendOTP(OfflineAadhaarSendOTPRequestSchema: OfflineAadhaarSendOTPRequestSchema, options?: AxiosRequestConfig) {
+    public static VrsOfflineAadhaarSendOtp(OfflineAadhaarSendOtpRequestSchema: OfflineAadhaarSendOtpRequestSchema, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -7513,11 +7403,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return AadhaarApiFp().vRSOfflineAadhaarSendOTP(OfflineAadhaarSendOTPRequestSchema, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return AadhaarApiFp().vrsOfflineAadhaarSendOtp(OfflineAadhaarSendOtpRequestSchema, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -7529,12 +7419,12 @@ export class Cashfree {
     /**
      * Use this API to verify aadhaar by submitting the OTP received on the mobile number linked to the aadhaar information. You also need to enter the reference ID received in the response of Generate OTP to Verify Aadhaar API. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | Aadhaar Card Exists                           | -                                                                                             |   | 400      | ERROR   | Session expired, please generate a new OTP    | Generate a new OTP using Generate OTP to Verify Aadhaar API.                                  |   | 400      | ERROR   | Invalid Aadhaar Card                          | -                                                                                             |   | 400      | ERROR   | Aadhaar not linked to mobile number           | Enter a valid aadhaar number linked to a mobile number in the Generate OTP to Verify Aadhaar. |   | 400      | ERROR   | Otp expired                                   | Generate a new OTP using Generate OTP to Verify Aadhaar API.                                  |   | 400      | ERROR   | Please enter a valid otp.                     | Enter the generated OTP.                                                                      |   | 400      | ERROR   | Please enter the otp in the request           | Enter the generated OTP.                                                                      |   | 400      | ERROR   | OTP entered is invalid                        | Enter the generated OTP.                                                                      |   | 400      | ERROR   | x-client-id is missing in the request         | Enter all the header information in the API request.                                          |   | 401      | ERROR   | Invalid clientId and clientSecret combination | Enter valid client ID and secret key in the request.                                          |   | 403      | ERROR   | IP not whitelisted                            | Whitelist the IP address.                                                                     |   | 422      | ERROR   | Insufficient balance to process this request. | Ensure you have sufficient balance and then process the request.                              |   | 500      | ERROR   | Unable to validate, please retry later                          | Try again after some time.                                                                    |
      * @summary Submit OTP to Verify Aadhaar
-     * @param {OfflineAadhaarVerifyOTPSchema} OfflineAadhaarVerifyOTPSchema Find the request parameters to submit the generated OTP
+     * @param {OfflineAadhaarVerifyOtpRequestSchema} OfflineAadhaarVerifyOtpRequestSchema Find the request parameters to submit the generated OTP
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AadhaarApi
      */
-    public static VRSOfflineAadhaarVerifyOTP(OfflineAadhaarVerifyOTPSchema: OfflineAadhaarVerifyOTPSchema, options?: AxiosRequestConfig) {
+    public static VrsOfflineAadhaarVerifyOtp(OfflineAadhaarVerifyOtpRequestSchema: OfflineAadhaarVerifyOtpRequestSchema, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -7576,11 +7466,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return AadhaarApiFp().vRSOfflineAadhaarVerifyOTP(OfflineAadhaarVerifyOTPSchema, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return AadhaarApiFp().vrsOfflineAadhaarVerifyOtp(OfflineAadhaarVerifyOtpRequestSchema, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -7592,13 +7482,13 @@ export class Cashfree {
     /**
      * Use this API to to retrieve an individual\'s recent employment details such as member ID, joining date, and exit date of the company. Verifying the employment information of the individual mitigates risk and prevents fraud. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#employment-information) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | SUCCESS                                      | -   | 200              | SUCCESS       | EMPLOYMENT_DETAILS_NOT_FOUND                                      | Enter the correct information in the request.    | 400              | ERROR         | provided input combination is not valid                  | Enter a combination of values that help fetch the employment details.   | 400              | ERROR         | verification_id can include only alphanum, dot, hyphen and underscores.                  | Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.     | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists                                           | Enter a unique verification ID to identify the request.  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | verification attempt failed                      | Try again after some time. 
      * @summary Get Employment Details
-     * @param {AdvanceEmploymentRequestBodySchema} AdvanceEmploymentRequestBodySchema Find the request parameters to retrieve employment details
+     * @param {AdvanceEmploymentRequestSchema} AdvanceEmploymentRequestSchema Find the request parameters to retrieve employment details
      * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AdvancedEmploymentApi
      */
-    public static VRSAdvanceEmploymentVerification(AdvanceEmploymentRequestBodySchema: AdvanceEmploymentRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsAdvanceEmploymentVerification(AdvanceEmploymentRequestSchema: AdvanceEmploymentRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -7640,11 +7530,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return AdvancedEmploymentApiFp().vRSAdvanceEmploymentVerification(AdvanceEmploymentRequestBodySchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return AdvancedEmploymentApiFp().vrsAdvanceEmploymentVerification(AdvanceEmploymentRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -7656,13 +7546,13 @@ export class Cashfree {
     /**
      * Use this API to retrieve information from CIN such as business incorporation date, director(s) details, CIN status, and more. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#cin) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | VALID                                      | -    | 200              | SUCCESS         | INVALID                  | Enter the correct information in the request. | 400              | ERROR         | verification_id is missing in the request.                  | Enter a valid verification_id in the request.  | 400              | ERROR         | verification_id can include only alphanum, dot, hyphen, and underscores.               | Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.   | 400              | ERROR         | cin is missing in the request.                  | Enter the unique alphanumeric identifier (CIN) assigned to companies in the request.   | 400              | ERROR         | cin should be of 21 character alphanumeric string of format (X00000XX0000XXX000000).                  | Enter the correct format of the CIN information in the request.     | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists                                           | Enter a unique verification ID to identify the request.  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | verification attempt failed                      | Try again after some time. 
      * @summary Verify CIN
-     * @param {CinRequestBodySchema} CinRequestBodySchema Find the request parameters to retrieve your customer\&#39;s CIN information
+     * @param {CinRequestSchema} CinRequestSchema Find the request parameters to retrieve your customer\&#39;s CIN information
      * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CINApi
      */
-    public static VRSCINVerification(CinRequestBodySchema: CinRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsCinVerification(CinRequestSchema: CinRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -7704,11 +7594,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return CINApiFp().vRSCINVerification(CinRequestBodySchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return CINApiFp().vrsCinVerification(CinRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -7726,7 +7616,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof DigilockerApi
      */
-    public static VRSDigiLockerVerificationCreateUrl(DigiLockerVerificationCreateUrlRequestSchema: DigiLockerVerificationCreateUrlRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsDigilockerVerificationCreateUrl(DigiLockerVerificationCreateUrlRequestSchema: DigiLockerVerificationCreateUrlRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -7768,11 +7658,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return DigilockerApiFp().vRSDigiLockerVerificationCreateUrl(DigiLockerVerificationCreateUrlRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return DigilockerApiFp().vrsDigilockerVerificationCreateUrl(DigiLockerVerificationCreateUrlRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -7792,7 +7682,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof DigilockerApi
      */
-    public static VRSDigiLockerVerificationFetchDocument(document_type: string, x_cf_signature?: string, reference_id?: number, verification_id?: string, options?: AxiosRequestConfig) {
+    public static VrsDigilockerVerificationFetchDocument(document_type: string, x_cf_signature?: string, reference_id?: number, verification_id?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -7834,11 +7724,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return DigilockerApiFp().vRSDigiLockerVerificationFetchDocument(document_type, x_cf_signature, reference_id, verification_id, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return DigilockerApiFp().vrsDigilockerVerificationFetchDocument(document_type, x_cf_signature, reference_id, verification_id, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -7857,7 +7747,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof DigilockerApi
      */
-    public static VRSDigiLockerVerificationFetchStatus(x_cf_signature?: string, reference_id?: number, verification_id?: string, options?: AxiosRequestConfig) {
+    public static VrsDigilockerVerificationFetchStatus(x_cf_signature?: string, reference_id?: number, verification_id?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -7899,11 +7789,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return DigilockerApiFp().vRSDigiLockerVerificationFetchStatus(x_cf_signature, reference_id, verification_id, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return DigilockerApiFp().vrsDigilockerVerificationFetchStatus(x_cf_signature, reference_id, verification_id, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -7921,7 +7811,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof DrivingLicenseApi
      */
-    public static VRSDrivingLicenseVerification(DrivingLicenseRequestSchema: DrivingLicenseRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsDrivingLicenseVerification(DrivingLicenseRequestSchema: DrivingLicenseRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -7963,11 +7853,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return DrivingLicenseApiFp().vRSDrivingLicenseVerification(DrivingLicenseRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return DrivingLicenseApiFp().vrsDrivingLicenseVerification(DrivingLicenseRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -7985,7 +7875,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof ESignApi
      */
-    public static VRSESignCreateSignature(ESignVerificationCreateSignatureRequestSchema: ESignVerificationCreateSignatureRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsESignCreateSignature(ESignVerificationCreateSignatureRequestSchema: ESignVerificationCreateSignatureRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -8027,11 +7917,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return ESignApiFp().vRSESignCreateSignature(ESignVerificationCreateSignatureRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return ESignApiFp().vrsESignCreateSignature(ESignVerificationCreateSignatureRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8049,7 +7939,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof ESignApi
      */
-    public static VRSESignUploadDocument(document: File, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsESignUploadDocument(document: File, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -8091,11 +7981,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return ESignApiFp().vRSESignUploadDocument(document, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return ESignApiFp().vrsESignUploadDocument(document, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8114,7 +8004,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof ESignApi
      */
-    public static VRSESignVerificationFetchStatus(x_cf_signature?: string, reference_id?: number, verification_id?: string, options?: AxiosRequestConfig) {
+    public static VrsESignVerificationFetchStatus(x_cf_signature?: string, reference_id?: number, verification_id?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -8156,11 +8046,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return ESignApiFp().vRSESignVerificationFetchStatus(x_cf_signature, reference_id, verification_id, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return ESignApiFp().vrsESignVerificationFetchStatus(x_cf_signature, reference_id, verification_id, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8184,7 +8074,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof FaceMatchApi
      */
-    public static VRSFaceMatchVerification(verification_id: string, first_image: File, second_image: File, x_cf_signature?: string, threshold?: string, detect_mask_first_image?: boolean, detect_mask_second_image?: boolean, align_horizontally?: boolean, options?: AxiosRequestConfig) {
+    public static VrsFaceMatchVerification(verification_id: string, first_image: File, second_image: File, x_cf_signature?: string, threshold?: string, detect_mask_first_image?: boolean, detect_mask_second_image?: boolean, align_horizontally?: boolean, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -8226,11 +8116,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return FaceMatchApiFp().vRSFaceMatchVerification(verification_id, first_image, second_image, x_cf_signature, threshold, detect_mask_first_image, detect_mask_second_image, align_horizontally, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return FaceMatchApiFp().vrsFaceMatchVerification(verification_id, first_image, second_image, x_cf_signature, threshold, detect_mask_first_image, detect_mask_second_image, align_horizontally, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8242,12 +8132,12 @@ export class Cashfree {
     /**
      * Use this API to verify if a given GSTIN information exists or not. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | GSTIN Exists                                      | -   | 200              | SUCCESS       | GSTIN Doesn’t Exist                                      | Enter the correct information in the request.     | 400              | ERROR         | GSTIN first 2 digits should be numeric and length should not exceed 15 and should be alphanumeric.                  | Enter a valid GSTIN in the request. The correct identifier has the first 2 digits in numerics and does not exceed 15 charaters.  | 400              | ERROR         | GSTIN is missing in the request.                  | Enter the GSTIN information in the request.  | 400              | ERROR         |  businessName can include a maximum of 200 characters.                  | The maximum character limit for businessName is 200.   | 400              | ERROR         |  businessName should be alphanumeric.                  | Enter only alphabets and/or numerical values in the parameter.    | 400              | ERROR         |  GstIn Verification is not enabled for this account                  | Contact your account manager.     | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.   | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         |Unable to validate, please retry later                     | Try again after some time.  
      * @summary Verify GSTIN
-     * @param {GSTINRequestSchema} GSTINRequestSchema Find the request parameters to retrieve GSTIN information
+     * @param {GstinRequestSchema} GstinRequestSchema Find the request parameters to retrieve GSTIN information
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof GSTINApi
      */
-    public static VRSGstinVerification(GSTINRequestSchema: GSTINRequestSchema, options?: AxiosRequestConfig) {
+    public static VrsGstinVerification(GstinRequestSchema: GstinRequestSchema, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -8289,11 +8179,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return GSTINApiFp().vRSGstinVerification(GSTINRequestSchema, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return GSTINApiFp().vrsGstinVerification(GstinRequestSchema, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8305,12 +8195,12 @@ export class Cashfree {
     /**
      * Use this API to verify location, proxy details, city risk score, and proxy type risk score of an IP address. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#ip-address) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.    ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | VALID                                      | -    | 400             | ERROR         | x-client-id is missing in the request.                  | Enter all the header information in the request. | 400              | ERROR         | verification_id already exists.                  | Enter a unique verification ID to identify the request.  | 400              | ERROR         | please enter a valid IP address               | Enter a valid IP address in the request.    | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 404              | ERROR         | unable to find IP details                                           | Enter a valid IP address in the request.    | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong, please try after some time                      | Try again after some time. 
      * @summary Verify IP
-     * @param {Ipvalidationrequestschema} Ipvalidationrequestschema Find the request parameters to retrieve location information of an IP address
+     * @param {IpVerificationRequestSchema} IpVerificationRequestSchema Find the request parameters to retrieve location information of an IP address
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof IPApi
      */
-    public static VRSIPVerification(Ipvalidationrequestschema: Ipvalidationrequestschema, options?: AxiosRequestConfig) {
+    public static VrsIpVerification(IpVerificationRequestSchema: IpVerificationRequestSchema, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -8352,11 +8242,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return IPApiFp().vRSIPVerification(Ipvalidationrequestschema, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return IPApiFp().vrsIpVerification(IpVerificationRequestSchema, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8376,7 +8266,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof LivelinessApi
      */
-    public static VRSLivelinessCheck(verification_id: string, image: File, x_cf_signature?: string, strict_check?: boolean, options?: AxiosRequestConfig) {
+    public static VrsLivelinessCheck(verification_id: string, image: File, x_cf_signature?: string, strict_check?: boolean, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -8418,11 +8308,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return LivelinessApiFp().vRSLivelinessCheck(verification_id, image, x_cf_signature, strict_check, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return LivelinessApiFp().vrsLivelinessCheck(verification_id, image, x_cf_signature, strict_check, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8440,7 +8330,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof NameMatchApi
      */
-    public static VRSNameMatchVerification(NameMatchRequestSchema: NameMatchRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsNameMatchVerification(NameMatchRequestSchema: NameMatchRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -8482,11 +8372,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return NameMatchApiFp().vRSNameMatchVerification(NameMatchRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return NameMatchApiFp().vrsNameMatchVerification(NameMatchRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8498,14 +8388,14 @@ export class Cashfree {
     /**
      * Use this API to verify your customers\' PAN information individually or in batches at a time. This API comes in handy when you have to verify a large number of PAN information. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#pan) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | Request accepted. You can check the status after some time.                      | -     | 400      | ERROR   | Please provide atleast one entry for verification                                | You need to have a minimum of one entry in the request.        | 400      | ERROR   | bulk_verification_id is missing in the request.                                  | You need to create a unique ID to identify the API request.        | 400      | ERROR   | bulk_verification_id should contain only alphanumeric and underscore characters. | Only alphanumeric and underscore ( _ ) are allowed.               | 400      | ERROR   | x-client-id is missing in the request.                                           | Enter all the header information in the API request.               | 401      | ERROR   | Invalid clientId and clientSecret combination                                    | Enter valid client ID and secret key in the request.               | 403      | ERROR   | IP not whitelisted                                                               | Whitelist the IP address.                                          | 422      | ERROR   | Insufficient balance to process this request.                                    | Ensure you have sufficient balance and then process the request.   | 500      | ERROR   | Unable to validate, please retry later                                           | Try again after some time.                                    | 500      | ERROR   | something went wrong, please try after some time                                 | Try again after some time.       
      * @summary Verify PAN in Bulk
-     * @param {BulkPANRequestSchema} BulkPANRequestSchema Find the request parameters to verify a large number of PAN information
+     * @param {BulkPanRequestSchema} BulkPanRequestSchema Find the request parameters to verify a large number of PAN information
      * @param {string} [x_api_version] It is the API version. To receive the aadhaar seeding status in the response, use any date after 2022-09-12
      * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PANApi
      */
-    public static VRSBulkPanVerification(BulkPANRequestSchema: BulkPANRequestSchema, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsBulkPanVerification(BulkPanRequestSchema: BulkPanRequestSchema, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -8547,11 +8437,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return PANApiFp().vRSBulkPanVerification(BulkPANRequestSchema, x_api_version, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return PANApiFp().vrsBulkPanVerification(BulkPanRequestSchema, x_api_version, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8571,7 +8461,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof PANApi
      */
-    public static VRSFetchBulkPanDetails(reference_id: string, bulk_verification_id: string, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsFetchBulkPanDetails(reference_id: string, bulk_verification_id: string, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -8613,11 +8503,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return PANApiFp().vRSFetchBulkPanDetails(reference_id, bulk_verification_id, x_api_version, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return PANApiFp().vrsFetchBulkPanDetails(reference_id, bulk_verification_id, x_api_version, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8636,7 +8526,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof PANApi
      */
-    public static VRSFetchPanDetails(reference_id: string, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsFetchPanDetails(reference_id: string, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -8678,11 +8568,75 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return PANApiFp().vRSFetchPanDetails(reference_id, x_api_version, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return PANApiFp().vrsFetchPanDetails(reference_id, x_api_version, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+        } catch (error) {
+            if(Cashfree.XEnableErrorAnalytics) {
+                Sentry.captureException(error);
+            }
+            throw error;
+        }
+    }
+
+    /**
+     * Use this API to verify the PAN information of your customers. You can retrieve more information such as masked aadhaar number, contact information. etc, than just verifying if a given PAN exists. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#pan) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|    | 200      | SUCCESS | VALID                                                        | -                                                                               | 200      | SUCCESS | Invalid PAN                                                  | Enter a valid 10-character alphanumeric PAN identifier.                         | 400      | ERROR   | Enter valid PAN.                                             | Enter a valid 10-character alphanumeric PAN identifier in the correct format.   | 400      | ERROR   | pan is missing in the request.                               | Enter a valid 10-character alphanumeric PAN identifier in the request.          | 400      | ERROR   | x-client-id is missing in the request.                       | Enter all the header information in the API request.                            | 401      | ERROR   | Invalid clientId and clientSecret combination                | Enter valid client ID and secret key in the request.                            | 403      | ERROR   | IP not whitelisted                                           | Whitelist the IP address.                                                       | 409      | ERROR   | This Verification ID already exists. Provide a different ID. | Enter a unique verification ID to identify the API request.                     | 422      | ERROR   | Insufficient balance to process this request.                | Ensure you have sufficient balance and then process the request.                | 500      | ERROR   | Unable to process your request. Try again after some time.    | Try again after some time.                                                      | 502      | ERROR   | Unable to process your request. Try again after some time.   | Try again after some time.                                                     |
+     * @summary PAN 360
+     * @param {PanAdvanceRequestSchema} PanAdvanceRequestSchema Find the request parameters to retrieve the PAN information
+     * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof PANApi
+     */
+    public static VrsPanAdvanceVerification(PanAdvanceRequestSchema: PanAdvanceRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+        if(Cashfree.XEnableErrorAnalytics) {
+        Sentry.init({
+            dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
+            // Performance Monitoring
+            tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
+            // Set sampling rate for profiling - this is relative to tracesSampleRate
+            profilesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!,
+            attachStacktrace: true,
+            enableTracing: true,
+            beforeSend: (event) => {
+                if(event.contexts){
+                    delete event.contexts.os;
+                    delete event.contexts.device;
+                }
+                else {
+                    // Handle the case where event.contexts is undefined
+                    console.warn('event.contexts is undefined. Check your Sentry event data.');
+                }
+                delete event.server_name;
+                if (event.exception && event.exception.values && event.exception.values.length && event.exception.values[0].stacktrace) {
+                            const stackTrace = event.exception.values[0].stacktrace;
+                            if (stackTrace && stackTrace.frames) {
+                                
+								const filteredDomains = stackTrace.frames.filter((x) => x.filename && x.filename.includes("cashfree-verification")).map((x) => x.filename);
+                                if (filteredDomains && filteredDomains[0] && filteredDomains[0].includes("cashfree-verification")) {
+                                    if(Cashfree.XEnableErrorAnalytics) {
+                                        return event;
+                                    }
+                                    return null;
+                                } 
+                            }
+                        }
+						return null;
+            },
+            });
+            Sentry.configureScope((scope) => {
+                if(Cashfree.XEnvironment == CFEnvironment.SANDBOX) {
+                    scope.setExtra('environment', 'sandbox');
+                } else {
+                    scope.setExtra('environment', 'production');
+                }
+                scope.setExtra('release', "1.0.1");
+            });
+        }
+        try {
+            return PANApiFp().vrsPanAdvanceVerification(PanAdvanceRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8702,7 +8656,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof PANApi
      */
-    public static VRSPANOCRVerification(verification_id: string, front_image: File, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsPanOcrVerification(verification_id: string, front_image: File, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -8744,75 +8698,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return PANApiFp().vRSPANOCRVerification(verification_id, front_image, x_api_version, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
-        } catch (error) {
-            if(Cashfree.XEnableErrorAnalytics) {
-                Sentry.captureException(error);
-            }
-            throw error;
-        }
-    }
-
-    /**
-     * Use this API to verify the PAN information of your customers. You can retrieve more information such as masked aadhaar number, contact information. etc, than just verifying if a given PAN exists. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#pan) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|    | 200      | SUCCESS | VALID                                                        | -                                                                               | 200      | SUCCESS | Invalid PAN                                                  | Enter a valid 10-character alphanumeric PAN identifier.                         | 400      | ERROR   | Enter valid PAN.                                             | Enter a valid 10-character alphanumeric PAN identifier in the correct format.   | 400      | ERROR   | pan is missing in the request.                               | Enter a valid 10-character alphanumeric PAN identifier in the request.          | 400      | ERROR   | x-client-id is missing in the request.                       | Enter all the header information in the API request.                            | 401      | ERROR   | Invalid clientId and clientSecret combination                | Enter valid client ID and secret key in the request.                            | 403      | ERROR   | IP not whitelisted                                           | Whitelist the IP address.                                                       | 409      | ERROR   | This Verification ID already exists. Provide a different ID. | Enter a unique verification ID to identify the API request.                     | 422      | ERROR   | Insufficient balance to process this request.                | Ensure you have sufficient balance and then process the request.                | 500      | ERROR   | Unable to process your request. Try again after some time.    | Try again after some time.                                                      | 502      | ERROR   | Unable to process your request. Try again after some time.   | Try again after some time.                                                     |
-     * @summary PAN 360
-     * @param {PanAdvanceRequestBodySchema} PanAdvanceRequestBodySchema Find the request parameters to retrieve the PAN information
-     * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PANApi
-     */
-    public static VRSPanAdvanceVerification(PanAdvanceRequestBodySchema: PanAdvanceRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
-        if(Cashfree.XEnableErrorAnalytics) {
-        Sentry.init({
-            dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
-            // Performance Monitoring
-            tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
-            // Set sampling rate for profiling - this is relative to tracesSampleRate
-            profilesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!,
-            attachStacktrace: true,
-            enableTracing: true,
-            beforeSend: (event) => {
-                if(event.contexts){
-                    delete event.contexts.os;
-                    delete event.contexts.device;
-                }
-                else {
-                    // Handle the case where event.contexts is undefined
-                    console.warn('event.contexts is undefined. Check your Sentry event data.');
-                }
-                delete event.server_name;
-                if (event.exception && event.exception.values && event.exception.values.length && event.exception.values[0].stacktrace) {
-                            const stackTrace = event.exception.values[0].stacktrace;
-                            if (stackTrace && stackTrace.frames) {
-                                
-								const filteredDomains = stackTrace.frames.filter((x) => x.filename && x.filename.includes("cashfree-verification")).map((x) => x.filename);
-                                if (filteredDomains && filteredDomains[0] && filteredDomains[0].includes("cashfree-verification")) {
-                                    if(Cashfree.XEnableErrorAnalytics) {
-                                        return event;
-                                    }
-                                    return null;
-                                } 
-                            }
-                        }
-						return null;
-            },
-            });
-            Sentry.configureScope((scope) => {
-                if(Cashfree.XEnvironment == CFEnvironment.SANDBOX) {
-                    scope.setExtra('environment', 'sandbox');
-                } else {
-                    scope.setExtra('environment', 'production');
-                }
-                scope.setExtra('release', "1.0.0");
-            });
-        }
-        try {
-            return PANApiFp().vRSPanAdvanceVerification(PanAdvanceRequestBodySchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return PANApiFp().vrsPanOcrVerification(verification_id, front_image, x_api_version, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8824,14 +8714,14 @@ export class Cashfree {
     /**
      * Use this API to verify if a given PAN exists. You will receive the name registered with the PAN and the PAN type (Individual or Business) in the response for a valid PAN. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#pan) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | VALID                                            | -                                                                             |   | 200      | SUCCESS | Invalid PAN                                            | Enter a valid 10-character alphanumeric PAN identifier.                       |   | 400      | ERROR   | Enter valid PAN.                                 | Enter a valid 10-character alphanumeric PAN identifier in the correct format. |   | 400      | ERROR   | pan is missing in the request.                   | Enter a valid 10-character alphanumeric PAN identifier in the request.        |   | 400      | ERROR   | x-client-id is missing in the request.           | Enter all the header information in the API request.                          |   | 401      | ERROR   | Invalid clientId and clientSecret combination    | Enter valid client ID and secret key in the request.                          |   | 403      | ERROR   | IP not whitelisted                               | Whitelist the IP address.                                                     |   | 422      | ERROR   | Insufficient balance to process this request.    | Ensure you have sufficient balance and then process the request.              |   | 500      | ERROR   | something went wrong, please try after some time | Try again after some time.                                                    |   | 500      | ERROR   | Unable to validate, please retry later           | Try again after some time.                                                    |
      * @summary Verify PAN Sync
-     * @param {PANRequestSchema} PANRequestSchema Find the request parameters to verify whether the PAN information is valid
+     * @param {PanRequestSchema} PanRequestSchema Find the request parameters to verify whether the PAN information is valid
      * @param {string} [x_api_version] It is the API version. To receive the aadhaar seeding status in the response, use any date after 2022-09-12
      * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PANApi
      */
-    public static VRSPanVerification(PANRequestSchema: PANRequestSchema, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsPanVerification(PanRequestSchema: PanRequestSchema, x_api_version?: string, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -8873,11 +8763,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return PANApiFp().vRSPanVerification(PANRequestSchema, x_api_version, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return PANApiFp().vrsPanVerification(PanRequestSchema, x_api_version, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8889,13 +8779,13 @@ export class Cashfree {
     /**
      * Use this API to fetch the list of GSTIN associated with the PAN information. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#fetch-gstin-with-pan) and use the information to trigger the validations. The test data are usable only in test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | Gstins List found                                      | -    | 200              | SUCCESS         | Gstin not found                  | No results found for the entered information. Enter the correct information in the request. | 400              | ERROR         | Enter valid PAN.                  | Enter the unique 10-character alphanumeric identifier issued by the Income Tax Department.  | 400              | ERROR         | pan is missing in the request.               | Enter the PAN information in the request to fetch the list of associated GSTIN.    | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists                                           | Enter a unique verification ID to identify the request.  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | verification attempt failed                      | Try again after some time. 
      * @summary Fetch GSTIN with PAN
-     * @param {PanToGstinRequestBodySchema} PanToGstinRequestBodySchema Find the request parameters to retrieve the list of GSTIN associated with a PAN
+     * @param {PanToGstinRequestSchema} PanToGstinRequestSchema Find the request parameters to retrieve the list of GSTIN associated with a PAN
      * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PANToGSTINApi
      */
-    public static VRSPANtoGSTINVerification(PanToGstinRequestBodySchema: PanToGstinRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsPanToGstinVerification(PanToGstinRequestSchema: PanToGstinRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -8937,11 +8827,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return PANToGSTINApiFp().vRSPANtoGSTINVerification(PanToGstinRequestBodySchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return PANToGSTINApiFp().vrsPanToGstinVerification(PanToGstinRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8953,13 +8843,13 @@ export class Cashfree {
     /**
      * Use this API to verify passport information and ensure the identity of your customer. Provide the passport file number in the request and we help you fetch the details. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#passport) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | VALID                                      | -    | 200              | SUCCESS         | INVALID                  | Enter the correct information in the request. | 400              | ERROR         | verification_id is missing in the request.                  | Enter a valid verification_id in the request.  | 400              | ERROR         | verification_id can include only alphanum, dot, hyphen, and underscores.               | Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.   | 400              | ERROR         | file_number is missing in the request.                  | Enter the file number in the request.   | 400              | ERROR         | dob is missing in the request.                  | Enter the date of birth of the passport holder in the request.   | 400              | ERROR         | dob should be of type YYYY-MM-DD.                  | Enter the DOB in the YYYY-MM-DD format    | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists                                           | Enter a unique verification ID to identify the request.  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | verification attempt failed                      | Try again after some time.  
      * @summary Verify Passport
-     * @param {PassportVerificationRequestBodySchema} PassportVerificationRequestBodySchema Find the request parameter to retrieve your customer\&#39;s passport information
+     * @param {PassportVerificationRequestSchema} PassportVerificationRequestSchema Find the request parameter to retrieve your customer\&#39;s passport information
      * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PassportApi
      */
-    public static VRSPassportVerification(PassportVerificationRequestBodySchema: PassportVerificationRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsPassportVerification(PassportVerificationRequestSchema: PassportVerificationRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -9001,11 +8891,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return PassportApiFp().vRSPassportVerification(PassportVerificationRequestBodySchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return PassportApiFp().vrsPassportVerification(PassportVerificationRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -9023,7 +8913,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof ReverseGeocodingApi
      */
-    public static VRSReverseGeocodingVerification(ReverseGeocodingRequestSchema: ReverseGeocodingRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsReverseGeocodingVerification(ReverseGeocodingRequestSchema: ReverseGeocodingRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -9065,11 +8955,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return ReverseGeocodingApiFp().vRSReverseGeocodingVerification(ReverseGeocodingRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return ReverseGeocodingApiFp().vrsReverseGeocodingVerification(ReverseGeocodingRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -9081,12 +8971,12 @@ export class Cashfree {
     /**
      * Use this API to create a reverse penny drop request. Reverse penny drop is a verification method for validating bank account information. Your customers/users deposit 1 rupee through a UPI based transaction and get the 1 rupee back once the verification is complete. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | -                                      | -    | 400              | ERROR         | verification_id is missing in the request.                  | Enter a valid verification_id in the request.   | 400              | ERROR         | verification_id already exists                  | Enter a unique verification_id.    | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | Unable to validate, please retry later                      | Try again after some time.  
      * @summary Create Reverse Penny Drop Request
-     * @param {CreateOrderRequestBodySchema} CreateOrderRequestBodySchema Find the request parameters to create a reverse penny drop request
+     * @param {CreateRequestRequestSchema} CreateRequestRequestSchema Find the request parameters to create a reverse penny drop request
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ReversePennyDropApi
      */
-    public static VRSReversePennyDropCreateRequest(CreateOrderRequestBodySchema: CreateOrderRequestBodySchema, options?: AxiosRequestConfig) {
+    public static VrsReversePennyDropCreateRequest(CreateRequestRequestSchema: CreateRequestRequestSchema, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -9128,11 +9018,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return ReversePennyDropApiFp().vRSReversePennyDropCreateRequest(CreateOrderRequestBodySchema, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return ReversePennyDropApiFp().vrsReversePennyDropCreateRequest(CreateRequestRequestSchema, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -9150,7 +9040,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof ReversePennyDropApi
      */
-    public static VRSReversePennyDropFetchStatus(ref_id?: string, verification_id?: string, options?: AxiosRequestConfig) {
+    public static VrsReversePennyDropFetchStatus(ref_id?: string, verification_id?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -9192,11 +9082,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return ReversePennyDropApiFp().vRSReversePennyDropFetchStatus(ref_id, verification_id, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return ReversePennyDropApiFp().vrsReversePennyDropFetchStatus(ref_id, verification_id, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -9208,13 +9098,13 @@ export class Cashfree {
     /**
      * Use this API to verify UPI information of your customers along with IFSC and the name as registered in the bank records. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | VALID                                      | -   | 200              | SUCCESS       | INVALID                                        | Enter a valid VPA in the request.  | 200              | SUCCESS       | Vpa has expired                                        | -   | 400              | ERROR         | vpa should be valid.               | Enter a valid VPA in the request.   | 400              | ERROR         | vpa is missing in the request.                  | Enter a value for vpa in the request.   | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.   | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | Unable to process your request. Try again after some time.            | Try again after some time. 
      * @summary UPI 360
-     * @param {UpiAdvanceRequestBodySchema} UpiAdvanceRequestBodySchema Find the request parameters to retrieve the UPI VPA information of your customer
+     * @param {UpiAdvanceRequestSchema} UpiAdvanceRequestSchema Find the request parameters to retrieve the UPI VPA information of your customer
      * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UPIApi
      */
-    public static VRSUPIAdvanceVerification(UpiAdvanceRequestBodySchema: UpiAdvanceRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsUpiAdvanceVerification(UpiAdvanceRequestSchema: UpiAdvanceRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -9256,11 +9146,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return UPIApiFp().vRSUPIAdvanceVerification(UpiAdvanceRequestBodySchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return UPIApiFp().vrsUpiAdvanceVerification(UpiAdvanceRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -9272,13 +9162,13 @@ export class Cashfree {
     /**
      * Use this API to fetch the account holder name along with the UPI VPA information of your customer by providing the phone number. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#upi) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes    | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | VALID                                         | -                                                                  | 200      | SUCCESS | No UPI ID found linked to the Mobile Number   | Enter a mobile number linked to at least one UPI VPA.              | 200      | SUCCESS | Unable to validate, please retry later        | Try again after some time.                                         | 400      | ERROR   | Mobile number entered is invalid.             | Enter a valid mobile number.                                       | 400      | ERROR   | mobile_number is missing in the request.      | Enter a valid mobile number in the API request.                    | 400      | ERROR   | x-client-id is missing in the request.        | Enter all the header information in the API request.               | 401      | ERROR   | Invalid clientId and clientSecret combination | Enter valid client ID and secret key in the request.               | 403      | ERROR   | IP not whitelisted                            | Whitelist the IP address.                                          | 409      | ERROR   | verification id already exists                | Create a unique verification ID to identify the request.           | 422      | ERROR   | Insufficient balance to process this request  | Ensure you have sufficient balance and then process the request.   | 500      | ERROR   | something went wrong                          | Try again after some time.                                       |   
      * @summary Get Multiple VPA from Phone Number.
-     * @param {UpiMobileRequestBodySchema} UpiMobileRequestBodySchema Find the request parameters to retrieve the list of UPI VPA associated with the mobile number
+     * @param {UpiMobileRequestSchema} UpiMobileRequestSchema Find the request parameters to retrieve the list of UPI VPA associated with the mobile number
      * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof UPIApi
      */
-    public static VRSUPIMobileVerification(UpiMobileRequestBodySchema: UpiMobileRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsUpiMobileVerification(UpiMobileRequestSchema: UpiMobileRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -9320,11 +9210,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return UPIApiFp().vRSUPIMobileVerification(UpiMobileRequestBodySchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return UPIApiFp().vrsUpiMobileVerification(UpiMobileRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -9336,13 +9226,13 @@ export class Cashfree {
     /**
      * Use this API to verify the authenticity of vehicle details. We help you find out the complete information of the vehicle including the owner, chassis number, registration date, registration number, and more.  View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#registration-certificate-vehicle) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | Valid                                      | -   | 200              | SUCCESS       | Invalid                                        | Enter a valid registration number of the vehicle   | 400              | ERROR         | vehicle-rc is invalid               | Enter a valid registration number of the vehicle.   | 400              | ERROR         | verification_id can include only alphanum, dot, hyphen, and underscores.                  | Enter a valid verification_id that includes only alphanumeric, period (.), hyphen (-), and underscore ( _ ).  | 400              | ERROR         | verification_id is missing in the request.               | Enter a valid verification ID in the request.   | 400              | ERROR         | verification_id can include a maximum of 50 characters.                  | Enter a valid verification_id that is withing 50 characters.    | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists  | Enter a unique verification_id that includes only alphanumeric, period (.), hyphen (-), and underscore ( _ ).  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | verification attempt failed            | Try again after some time. 
      * @summary Get Vehicle RC Details
-     * @param {VehicleRCRequestSchema} VehicleRCRequestSchema Find the request parameters to retrieve the information of a vehicle\&#39;s registration certificate
+     * @param {VehicleRcRequestSchema} VehicleRcRequestSchema Find the request parameters to retrieve the information of a vehicle\&#39;s registration certificate
      * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VehicleRCApi
      */
-    public static VRSVehicleRCVerification(VehicleRCRequestSchema: VehicleRCRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsVehicleRcVerification(VehicleRcRequestSchema: VehicleRcRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -9384,11 +9274,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return VehicleRCApiFp().vRSVehicleRCVerification(VehicleRCRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return VehicleRCApiFp().vrsVehicleRcVerification(VehicleRcRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -9400,13 +9290,13 @@ export class Cashfree {
     /**
      * Use this API to verify the authenticity of your customer\'s voter ID. You need to enter the Electoral Photo Identity Card (EPIC) number and we retrieve complete details including assembly and parliamentary constituency details. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#voter-id) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | Valid voter ID                                       | -   | 200              | SUCCESS       | Invalid voter ID                                        | -   | 400              | ERROR         | verification_id is missing in the request               | Enter a valid verification_id in the request.  | 400              | ERROR         | verification_id can include only alphanum, dot, hyphen, and underscores.                  | Enter a valid verification_id that includes only alphanumeric, period (.), hyphen (-), and underscore ( _ ).  | 400              | ERROR         | epic_number is missing in the request.                      | Enter a valid EPIC number which is the unique identification number assigned to each voter ID.  | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.  | 409              | ERROR         | verification id already exists  | Enter a unique verification_id that includes only alphanumeric, period (.), hyphen (-), and underscore ( _ ).  | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 500              | ERROR         | verification attempt failed            | Try again after some time. 
      * @summary Verify Voter ID
-     * @param {VoterIdRequestBodySchema} VoterIdRequestBodySchema Find the request parameters to fetch voter ID details
+     * @param {VoterIdRequestSchema} VoterIdRequestSchema Find the request parameters to fetch voter ID details
      * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof VoterIDApi
      */
-    public static VRSVoterIdVerification(VoterIdRequestBodySchema: VoterIdRequestBodySchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsVoterIdVerification(VoterIdRequestSchema: VoterIdRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -9448,11 +9338,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.0");
+                scope.setExtra('release', "1.0.1");
             });
         }
         try {
-            return VoterIDApiFp().vRSVoterIdVerification(VoterIdRequestBodySchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return VoterIDApiFp().vrsVoterIdVerification(VoterIdRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
