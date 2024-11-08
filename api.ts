@@ -3518,154 +3518,6 @@ export interface SplitAddressSchema {
     'address_line'?: string;
 }
 /**
- * Find the request parameters to verify UPI VPA information
- * @export
- * @interface UpiAdvanceRequestSchema
- */
-export interface UpiAdvanceRequestSchema {
-    /**
-     * It is the UPI VPA information. Only alphanumeric characters with period (.), hyphen (-), and underscore ( _ ), at the rate of (@) are allowed.
-     * @type {string}
-     * @memberof UpiAdvanceRequestSchema
-     */
-    'vpa': string;
-    /**
-     * It is the name of the UPI VPA account holder.
-     * @type {string}
-     * @memberof UpiAdvanceRequestSchema
-     */
-    'name'?: string;
-}
-/**
- * UPI 360 success response
- * @export
- * @interface UpiAdvanceResponseSchema
- */
-export interface UpiAdvanceResponseSchema {
-    /**
-     * It displays the unique ID created by Cashfree Payments for reference purposes.
-     * @type {number}
-     * @memberof UpiAdvanceResponseSchema
-     */
-    'reference_id'?: number;
-    /**
-     * It displays the status of the UPI VPA information.
-     * @type {string}
-     * @memberof UpiAdvanceResponseSchema
-     */
-    'status'?: string;
-    /**
-     * It displays details about the success or failure of the API request.
-     * @type {string}
-     * @memberof UpiAdvanceResponseSchema
-     */
-    'message'?: string;
-    /**
-     * It displays the IFSC information associated with the UPI VPA information.
-     * @type {string}
-     * @memberof UpiAdvanceResponseSchema
-     */
-    'ifsc'?: string;
-    /**
-     * It displays the UPI VPA information.
-     * @type {string}
-     * @memberof UpiAdvanceResponseSchema
-     */
-    'vpa'?: string;
-    /**
-     * It displays the name of the account holder as registered in the bank records.
-     * @type {string}
-     * @memberof UpiAdvanceResponseSchema
-     */
-    'name_at_bank'?: string;
-}
-/**
- * Find the request parameters to fetch the list of UPI VPA
- * @export
- * @interface UpiMobileRequestSchema
- */
-export interface UpiMobileRequestSchema {
-    /**
-     * It is the unique ID you create to identify the verification request. The maximum character limit is 50. Only alphaumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.
-     * @type {string}
-     * @memberof UpiMobileRequestSchema
-     */
-    'verification_id': string;
-    /**
-     * It is the mobile number of the UPI VPA account holder.
-     * @type {string}
-     * @memberof UpiMobileRequestSchema
-     */
-    'mobile_number': string;
-    /**
-     * It is the name of the account holder.
-     * @type {string}
-     * @memberof UpiMobileRequestSchema
-     */
-    'name'?: string;
-    /**
-     * It is the email ID of the account holder.
-     * @type {string}
-     * @memberof UpiMobileRequestSchema
-     */
-    'email'?: string;
-}
-/**
- * Success response
- * @export
- * @interface UpiMobileResponseSchema
- */
-export interface UpiMobileResponseSchema {
-    /**
-     * It displays the unique ID created by Cashfree Payments for reference purposes.
-     * @type {number}
-     * @memberof UpiMobileResponseSchema
-     */
-    'reference_id'?: number;
-    /**
-     * It displays the status of the API request.
-     * @type {string}
-     * @memberof UpiMobileResponseSchema
-     */
-    'status'?: string;
-    /**
-     * It displays the status of the UPI VPA information.
-     * @type {string}
-     * @memberof UpiMobileResponseSchema
-     */
-    'account_status'?: string;
-    /**
-     * It displays the unique ID you created to identify the verification request.
-     * @type {string}
-     * @memberof UpiMobileResponseSchema
-     */
-    'verification_id'?: string;
-    /**
-     * It displays the mobile number of the account holder.
-     * @type {string}
-     * @memberof UpiMobileResponseSchema
-     */
-    'mobile_number'?: string;
-    /**
-     * It displays the UPI VPA associated with the entered mobile number. If no primary UPI VPA is associated, tis field will be null.
-     * @type {string}
-     * @memberof UpiMobileResponseSchema
-     */
-    'vpa'?: string;
-    /**
-     * It displays the name of the account holder as registered in the bank. If no primary UPI VPA is associated, this field will be null.
-     * @type {string}
-     * @memberof UpiMobileResponseSchema
-     */
-    'name_at_bank'?: string;
-    /**
-     * It displays the list of additional UPI VPA associated with the mobile number. If no other UPI VPA is linked with the mobile number, this will be an empty array [].
-     * @type {Array<string>}
-     * @memberof UpiMobileResponseSchema
-     */
-    'additional_vpas'?: Array<string>;
-}
-/**
  * IP not found error response
  * @export
  * @interface V2ErrorResponse404SchemaIpVerification
@@ -4278,49 +4130,6 @@ export interface VoterIdResponseSchema {
     'polling_station'?: string;
 }
 /**
- * Internal error response
- * @export
- * @interface VpaFromPhone500Schema
- */
-export interface VpaFromPhone500Schema {
-    /**
-     * It displays the status of the API request.
-     * @type {string}
-     * @memberof VpaFromPhone500Schema
-     */
-    'status'?: string;
-    /**
-     * It displays the unique ID you created to identify the API request.
-     * @type {string}
-     * @memberof VpaFromPhone500Schema
-     */
-    'verification_id'?: string;
-    /**
-     * It displays details about the success or failure of the API request
-     * @type {string}
-     * @memberof VpaFromPhone500Schema
-     */
-    'message'?: string;
-    /**
-     * It displays the unique ID created by Cashfree Payments for reference purposes.
-     * @type {number}
-     * @memberof VpaFromPhone500Schema
-     */
-    'reference_id'?: number;
-    /**
-     * It displays the status of the account.
-     * @type {string}
-     * @memberof VpaFromPhone500Schema
-     */
-    'account_status'?: string;
-    /**
-     * It displays the mobile number of the individual.
-     * @type {string}
-     * @memberof VpaFromPhone500Schema
-     */
-    'mobile_number'?: string;
-}
-/**
  * 400 response schema for missing x-client-id
  * @export
  * @interface XClientIdMissing
@@ -4409,7 +4218,7 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4471,7 +4280,7 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4520,7 +4329,7 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4569,7 +4378,7 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4713,7 +4522,7 @@ const AdvancedEmploymentApiAxiosParamCreator = function (configuration?: Configu
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4807,7 +4616,7 @@ const CINApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4901,7 +4710,7 @@ const DigilockerApiAxiosParamCreator = function (configuration?: Configuration) 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4960,7 +4769,7 @@ const DigilockerApiAxiosParamCreator = function (configuration?: Configuration) 
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5014,7 +4823,7 @@ const DigilockerApiAxiosParamCreator = function (configuration?: Configuration) 
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5142,7 +4951,7 @@ const DrivingLicenseApiAxiosParamCreator = function (configuration?: Configurati
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5236,7 +5045,7 @@ const ESignApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5291,7 +5100,7 @@ const ESignApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5346,7 +5155,7 @@ const ESignApiAxiosParamCreator = function (configuration?: Configuration) {
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5511,7 +5320,7 @@ const FaceMatchApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5610,7 +5419,7 @@ const GSTINApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5702,7 +5511,7 @@ const IPApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5812,7 +5621,7 @@ const LivelinessApiAxiosParamCreator = function (configuration?: Configuration) 
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5908,7 +5717,7 @@ const NameMatchApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6003,7 +5812,7 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6063,7 +5872,7 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6112,7 +5921,7 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6161,7 +5970,7 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6224,7 +6033,7 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6275,7 +6084,7 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6456,7 +6265,7 @@ const PANToGSTINApiAxiosParamCreator = function (configuration?: Configuration) 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6550,7 +6359,7 @@ const PassportApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6644,7 +6453,7 @@ const ReverseGeocodingApiAxiosParamCreator = function (configuration?: Configura
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6737,7 +6546,7 @@ const ReversePennyDropApiAxiosParamCreator = function (configuration?: Configura
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6791,7 +6600,7 @@ const ReversePennyDropApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6855,166 +6664,6 @@ const ReversePennyDropApiFp = function(configuration?: Configuration) {
 
 
 /**
- * UPIApi - axios parameter creator
- * @export
- */
-const UPIApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * Use this API to verify UPI information of your customers along with IFSC and the name as registered in the bank records. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | VALID                                      | -   | 200              | SUCCESS       | INVALID                                        | Enter a valid VPA in the request.  | 200              | SUCCESS       | Vpa has expired                                        | -   | 400              | ERROR         | vpa should be valid.               | Enter a valid VPA in the request.   | 400              | ERROR         | vpa is missing in the request.                  | Enter a value for vpa in the request.   | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.   | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | Unable to process your request. Try again after some time.            | Try again after some time. 
-         * @summary UPI 360
-         
-         * @param {UpiAdvanceRequestSchema} UpiAdvanceRequestSchema Find the request parameters to retrieve the UPI VPA information of your customer
-         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         * 
-         */
-        vrsUpiAdvanceVerification: async (UpiAdvanceRequestSchema: UpiAdvanceRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'UpiAdvanceRequestSchema' is not null or undefined
-            assertParamExists('vrsUpiAdvanceVerification', 'UpiAdvanceRequestSchema', UpiAdvanceRequestSchema)
-            const localVarPath = `/upi/advance`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            var url = "https://sandbox.cashfree.com/verification";
-            if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
-                url = "https://api.cashfree.com/verification"
-            }
-            const localVarUrlObj = new URL(localVarPath, url);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication XClientSecret required
-            await setApiKeyToObject(localVarHeaderParameter, "x-client-secret")
-
-            // authentication XClientID required
-            await setApiKeyToObject(localVarHeaderParameter, "x-client-id")
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(UpiAdvanceRequestSchema, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * Use this API to fetch the account holder name along with the UPI VPA information of your customer by providing the phone number. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#upi) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes    | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | VALID                                         | -                                                                  | 200      | SUCCESS | No UPI ID found linked to the Mobile Number   | Enter a mobile number linked to at least one UPI VPA.              | 200      | SUCCESS | Unable to validate, please retry later        | Try again after some time.                                         | 400      | ERROR   | Mobile number entered is invalid.             | Enter a valid mobile number.                                       | 400      | ERROR   | mobile_number is missing in the request.      | Enter a valid mobile number in the API request.                    | 400      | ERROR   | x-client-id is missing in the request.        | Enter all the header information in the API request.               | 401      | ERROR   | Invalid clientId and clientSecret combination | Enter valid client ID and secret key in the request.               | 403      | ERROR   | IP not whitelisted                            | Whitelist the IP address.                                          | 409      | ERROR   | verification id already exists                | Create a unique verification ID to identify the request.           | 422      | ERROR   | Insufficient balance to process this request  | Ensure you have sufficient balance and then process the request.   | 500      | ERROR   | something went wrong                          | Try again after some time.                                       |   
-         * @summary Get Multiple VPA from Phone Number.
-         
-         * @param {UpiMobileRequestSchema} UpiMobileRequestSchema Find the request parameters to retrieve the list of UPI VPA associated with the mobile number
-         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         * 
-         */
-        vrsUpiMobileVerification: async (UpiMobileRequestSchema: UpiMobileRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'UpiMobileRequestSchema' is not null or undefined
-            assertParamExists('vrsUpiMobileVerification', 'UpiMobileRequestSchema', UpiMobileRequestSchema)
-            const localVarPath = `/upi/mobile`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            var url = "https://sandbox.cashfree.com/verification";
-            if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
-                url = "https://api.cashfree.com/verification"
-            }
-            const localVarUrlObj = new URL(localVarPath, url);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication XClientSecret required
-            await setApiKeyToObject(localVarHeaderParameter, "x-client-secret")
-
-            // authentication XClientID required
-            await setApiKeyToObject(localVarHeaderParameter, "x-client-id")
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(UpiMobileRequestSchema, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * UPIApi - functional programming interface
- * @export
- */
-const UPIApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = UPIApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * Use this API to verify UPI information of your customers along with IFSC and the name as registered in the bank records. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | VALID                                      | -   | 200              | SUCCESS       | INVALID                                        | Enter a valid VPA in the request.  | 200              | SUCCESS       | Vpa has expired                                        | -   | 400              | ERROR         | vpa should be valid.               | Enter a valid VPA in the request.   | 400              | ERROR         | vpa is missing in the request.                  | Enter a value for vpa in the request.   | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.   | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | Unable to process your request. Try again after some time.            | Try again after some time. 
-         * @summary UPI 360
-         * @param {UpiAdvanceRequestSchema} UpiAdvanceRequestSchema Find the request parameters to retrieve the UPI VPA information of your customer
-         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async vrsUpiAdvanceVerification(UpiAdvanceRequestSchema: UpiAdvanceRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpiAdvanceResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsUpiAdvanceVerification(UpiAdvanceRequestSchema, x_cf_signature, options);
-                var url = "https://sandbox.cashfree.com/verification";
-                if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
-                    url = "https://api.cashfree.com/verification"
-                }
-                return createRequestFunction(localVarAxiosArgs, globalAxios, url, configuration);
-        },
-        /**
-         * Use this API to fetch the account holder name along with the UPI VPA information of your customer by providing the phone number. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#upi) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes    | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | VALID                                         | -                                                                  | 200      | SUCCESS | No UPI ID found linked to the Mobile Number   | Enter a mobile number linked to at least one UPI VPA.              | 200      | SUCCESS | Unable to validate, please retry later        | Try again after some time.                                         | 400      | ERROR   | Mobile number entered is invalid.             | Enter a valid mobile number.                                       | 400      | ERROR   | mobile_number is missing in the request.      | Enter a valid mobile number in the API request.                    | 400      | ERROR   | x-client-id is missing in the request.        | Enter all the header information in the API request.               | 401      | ERROR   | Invalid clientId and clientSecret combination | Enter valid client ID and secret key in the request.               | 403      | ERROR   | IP not whitelisted                            | Whitelist the IP address.                                          | 409      | ERROR   | verification id already exists                | Create a unique verification ID to identify the request.           | 422      | ERROR   | Insufficient balance to process this request  | Ensure you have sufficient balance and then process the request.   | 500      | ERROR   | something went wrong                          | Try again after some time.                                       |   
-         * @summary Get Multiple VPA from Phone Number.
-         * @param {UpiMobileRequestSchema} UpiMobileRequestSchema Find the request parameters to retrieve the list of UPI VPA associated with the mobile number
-         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async vrsUpiMobileVerification(UpiMobileRequestSchema: UpiMobileRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UpiMobileResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsUpiMobileVerification(UpiMobileRequestSchema, x_cf_signature, options);
-                var url = "https://sandbox.cashfree.com/verification";
-                if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
-                    url = "https://api.cashfree.com/verification"
-                }
-                return createRequestFunction(localVarAxiosArgs, globalAxios, url, configuration);
-        },
-    }
-};
-
-/**
- * UPIApi - object-oriented interface
- * @export
- * @class UPIApi
- * @extends {BaseAPI}
- */
-
-
-
-/**
  * VehicleRCApi - axios parameter creator
  * @export
  */
@@ -7059,7 +6708,7 @@ const VehicleRCApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -7153,7 +6802,7 @@ const VoterIDApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-1.0.1';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-2.0.0';
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -7275,7 +6924,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -7340,7 +6989,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -7403,7 +7052,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -7466,7 +7115,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -7530,7 +7179,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -7594,7 +7243,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -7658,7 +7307,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -7724,7 +7373,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -7789,7 +7438,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -7853,7 +7502,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -7917,7 +7566,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -7981,7 +7630,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -8046,7 +7695,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -8116,7 +7765,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -8179,7 +7828,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -8242,7 +7891,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -8308,7 +7957,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -8372,7 +8021,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -8437,7 +8086,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -8503,7 +8152,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -8568,7 +8217,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -8632,7 +8281,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -8698,7 +8347,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -8763,7 +8412,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -8827,7 +8476,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -8891,7 +8540,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -8955,7 +8604,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -9018,7 +8667,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -9082,139 +8731,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
             return ReversePennyDropApiFp().vrsReversePennyDropFetchStatus(ref_id, verification_id, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
-        } catch (error) {
-            if(Cashfree.XEnableErrorAnalytics) {
-                Sentry.captureException(error);
-            }
-            throw error;
-        }
-    }
-    
-    /**
-     * Use this API to verify UPI information of your customers along with IFSC and the name as registered in the bank records. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes   | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200              | SUCCESS       | VALID                                      | -   | 200              | SUCCESS       | INVALID                                        | Enter a valid VPA in the request.  | 200              | SUCCESS       | Vpa has expired                                        | -   | 400              | ERROR         | vpa should be valid.               | Enter a valid VPA in the request.   | 400              | ERROR         | vpa is missing in the request.                  | Enter a value for vpa in the request.   | 400              | ERROR         | x-client-id is missing in the request.                      | Enter all the header information in the API request.   | 401              | ERROR         | Invalid clientId and clientSecret combination               | Ensure you enter valid x-client-id and x-client-secret information in the API request.  | 403              | ERROR         | IP not whitelisted                                           | Whitelist the IP address.   | 422              | ERROR         | Insufficient balance to process this request                | Try again with sufficient balance.  | 500              | ERROR         | something went wrong                      | Try again after some time.  | 502              | ERROR         | Unable to process your request. Try again after some time.            | Try again after some time. 
-     * @summary UPI 360
-     * @param {UpiAdvanceRequestSchema} UpiAdvanceRequestSchema Find the request parameters to retrieve the UPI VPA information of your customer
-     * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UPIApi
-     */
-    public static VrsUpiAdvanceVerification(UpiAdvanceRequestSchema: UpiAdvanceRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
-        if(Cashfree.XEnableErrorAnalytics) {
-        Sentry.init({
-            dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
-            // Performance Monitoring
-            tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
-            // Set sampling rate for profiling - this is relative to tracesSampleRate
-            profilesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!,
-            attachStacktrace: true,
-            enableTracing: true,
-            beforeSend: (event) => {
-                if(event.contexts){
-                    delete event.contexts.os;
-                    delete event.contexts.device;
-                }
-                else {
-                    // Handle the case where event.contexts is undefined
-                    console.warn('event.contexts is undefined. Check your Sentry event data.');
-                }
-                delete event.server_name;
-                if (event.exception && event.exception.values && event.exception.values.length && event.exception.values[0].stacktrace) {
-                            const stackTrace = event.exception.values[0].stacktrace;
-                            if (stackTrace && stackTrace.frames) {
-                                
-								const filteredDomains = stackTrace.frames.filter((x) => x.filename && x.filename.includes("cashfree-verification")).map((x) => x.filename);
-                                if (filteredDomains && filteredDomains[0] && filteredDomains[0].includes("cashfree-verification")) {
-                                    if(Cashfree.XEnableErrorAnalytics) {
-                                        return event;
-                                    }
-                                    return null;
-                                } 
-                            }
-                        }
-						return null;
-            },
-            });
-            Sentry.configureScope((scope) => {
-                if(Cashfree.XEnvironment == CFEnvironment.SANDBOX) {
-                    scope.setExtra('environment', 'sandbox');
-                } else {
-                    scope.setExtra('environment', 'production');
-                }
-                scope.setExtra('release', "1.0.1");
-            });
-        }
-        try {
-            return UPIApiFp().vrsUpiAdvanceVerification(UpiAdvanceRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
-        } catch (error) {
-            if(Cashfree.XEnableErrorAnalytics) {
-                Sentry.captureException(error);
-            }
-            throw error;
-        }
-    }
-
-    /**
-     * Use this API to fetch the account holder name along with the UPI VPA information of your customer by providing the phone number. View the [test data](https://docs.cashfree.com/docs/data-to-testintegration#upi) and use the information to trigger the validations. The test data are usable only in the test environments such as gamma and sandbox.   ### Response Codes    | Sub Code         |     Status    |    Message                                                  | Next Action   | ---------------- |---------------|-------------------------------------------------------------|-------------------------|   | 200      | SUCCESS | VALID                                         | -                                                                  | 200      | SUCCESS | No UPI ID found linked to the Mobile Number   | Enter a mobile number linked to at least one UPI VPA.              | 200      | SUCCESS | Unable to validate, please retry later        | Try again after some time.                                         | 400      | ERROR   | Mobile number entered is invalid.             | Enter a valid mobile number.                                       | 400      | ERROR   | mobile_number is missing in the request.      | Enter a valid mobile number in the API request.                    | 400      | ERROR   | x-client-id is missing in the request.        | Enter all the header information in the API request.               | 401      | ERROR   | Invalid clientId and clientSecret combination | Enter valid client ID and secret key in the request.               | 403      | ERROR   | IP not whitelisted                            | Whitelist the IP address.                                          | 409      | ERROR   | verification id already exists                | Create a unique verification ID to identify the request.           | 422      | ERROR   | Insufficient balance to process this request  | Ensure you have sufficient balance and then process the request.   | 500      | ERROR   | something went wrong                          | Try again after some time.                                       |   
-     * @summary Get Multiple VPA from Phone Number.
-     * @param {UpiMobileRequestSchema} UpiMobileRequestSchema Find the request parameters to retrieve the list of UPI VPA associated with the mobile number
-     * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UPIApi
-     */
-    public static VrsUpiMobileVerification(UpiMobileRequestSchema: UpiMobileRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
-        if(Cashfree.XEnableErrorAnalytics) {
-        Sentry.init({
-            dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
-            // Performance Monitoring
-            tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
-            // Set sampling rate for profiling - this is relative to tracesSampleRate
-            profilesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!,
-            attachStacktrace: true,
-            enableTracing: true,
-            beforeSend: (event) => {
-                if(event.contexts){
-                    delete event.contexts.os;
-                    delete event.contexts.device;
-                }
-                else {
-                    // Handle the case where event.contexts is undefined
-                    console.warn('event.contexts is undefined. Check your Sentry event data.');
-                }
-                delete event.server_name;
-                if (event.exception && event.exception.values && event.exception.values.length && event.exception.values[0].stacktrace) {
-                            const stackTrace = event.exception.values[0].stacktrace;
-                            if (stackTrace && stackTrace.frames) {
-                                
-								const filteredDomains = stackTrace.frames.filter((x) => x.filename && x.filename.includes("cashfree-verification")).map((x) => x.filename);
-                                if (filteredDomains && filteredDomains[0] && filteredDomains[0].includes("cashfree-verification")) {
-                                    if(Cashfree.XEnableErrorAnalytics) {
-                                        return event;
-                                    }
-                                    return null;
-                                } 
-                            }
-                        }
-						return null;
-            },
-            });
-            Sentry.configureScope((scope) => {
-                if(Cashfree.XEnvironment == CFEnvironment.SANDBOX) {
-                    scope.setExtra('environment', 'sandbox');
-                } else {
-                    scope.setExtra('environment', 'production');
-                }
-                scope.setExtra('release', "1.0.1");
-            });
-        }
-        try {
-            return UPIApiFp().vrsUpiMobileVerification(UpiMobileRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -9274,7 +8795,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
@@ -9338,7 +8859,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "1.0.1");
+                scope.setExtra('release', "2.0.0");
             });
         }
         try {
