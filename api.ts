@@ -28,6 +28,65 @@ import * as crypto from "crypto";
 import FormData from 'form-data';
 
 /**
+ * 
+ * @export
+ * @interface AadhaarDetails
+ */
+export interface AadhaarDetails {
+    /**
+     * 
+     * @type {string}
+     * @memberof AadhaarDetails
+     */
+    'last_verified_at': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AadhaarDetails
+     */
+    'care_of': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AadhaarDetails
+     */
+    'dob': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof AadhaarDetails
+     */
+    'gender': AadhaarDetailsGenderEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof AadhaarDetails
+     */
+    'name': string;
+    /**
+     * 
+     * @type {Address}
+     * @memberof AadhaarDetails
+     */
+    'split_address'?: Address;
+    /**
+     * 
+     * @type {string}
+     * @memberof AadhaarDetails
+     */
+    'photo_link': string;
+}
+
+export const AadhaarDetailsGenderEnum = {
+    M: 'M',
+    F: 'F',
+    O: 'O',
+    UNKNOWN_DEFAULT_OPEN_API: '11184809'
+} as const;
+
+export type AadhaarDetailsGenderEnum = typeof AadhaarDetailsGenderEnum[keyof typeof AadhaarDetailsGenderEnum];
+
+/**
  * Success response for Aadhaar Masking API
  * @export
  * @interface AadhaarMaskingResponseSchema
@@ -192,6 +251,104 @@ export interface Aadhaarmaskingrequestschema {
      * @memberof Aadhaarmaskingrequestschema
      */
     'verification_id': string;
+}
+/**
+ * 
+ * @export
+ * @interface AddUserRequestSchema
+ */
+export interface AddUserRequestSchema {
+    /**
+     * It is the unique ID you create to identify the user. The maximum character limit is 50. Only alphanumeric, period (.), hyphen (-), and underscore ( _ ) are allowed. **Auto-generated if not passed.**
+     * @type {string}
+     * @memberof AddUserRequestSchema
+     */
+    'user_id'?: string;
+    /**
+     * The phone number of the user.
+     * @type {string}
+     * @memberof AddUserRequestSchema
+     */
+    'phone': string;
+    /**
+     * The email address of the user.
+     * @type {string}
+     * @memberof AddUserRequestSchema
+     */
+    'email'?: string;
+    /**
+     * The name of the user.
+     * @type {string}
+     * @memberof AddUserRequestSchema
+     */
+    'name'?: string;
+    /**
+     * The address address of the user.
+     * @type {string}
+     * @memberof AddUserRequestSchema
+     */
+    'address'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface Address
+ */
+export interface Address {
+    /**
+     * 
+     * @type {string}
+     * @memberof Address
+     */
+    'country': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Address
+     */
+    'dist': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Address
+     */
+    'house': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Address
+     */
+    'pincode': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof Address
+     */
+    'po'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Address
+     */
+    'state': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Address
+     */
+    'street': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Address
+     */
+    'subdist'?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Address
+     */
+    'vtc'?: string;
 }
 /**
  * It contains the address information of the individual.
@@ -760,6 +917,25 @@ export interface AdvanceEmploymentResponseUanDetailsInnerEmploymentDetails {
     'employer_confidence_score'?: number;
 }
 /**
+ * 
+ * @export
+ * @interface AuthResponseSchema
+ */
+export interface AuthResponseSchema {
+    /**
+     * The timestamp (in IST) when the token will expire. A new token must be generated after this time.
+     * @type {string}
+     * @memberof AuthResponseSchema
+     */
+    'expiry'?: string;
+    /**
+     * The generated access token to be used for subsequent VKYC API calls.
+     * @type {string}
+     * @memberof AuthResponseSchema
+     */
+    'access_token'?: string;
+}
+/**
  * It contains information regarding any badges or emblems affixed to the vehicle. These badges could indicate various things such as the vehicle\'s model, trim level, special editions, or manufacturer-specific badges.
  * @export
  * @interface BadgeDetails
@@ -950,6 +1126,69 @@ export interface CinResponseSchemaDirectorDetailsInner {
      * @memberof CinResponseSchemaDirectorDetailsInner
      */
     'name'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface CreateAuthRequestSchema
+ */
+export interface CreateAuthRequestSchema {
+    /**
+     * It is the unique identifier for the OAuth application. This is used to authenticate and authorize the application making the request. **Note**: Please contact your Account Manager to create an `app_id` for the VKYC product. In the future, this will be self-serve via the Merchant Dashboard.
+     * @type {string}
+     * @memberof CreateAuthRequestSchema
+     */
+    'app_id': string;
+    /**
+     * The product for which the authentication token is generated. In this case, it should be \"VKYC\".
+     * @type {string}
+     * @memberof CreateAuthRequestSchema
+     */
+    'product': string;
+    /**
+     * 
+     * @type {CreateAuthRequestSchemaMetadata}
+     * @memberof CreateAuthRequestSchema
+     */
+    'metadata': CreateAuthRequestSchemaMetadata;
+    /**
+     * 
+     * @type {CreateAuthRequestSchemaAuthenticatedUser}
+     * @memberof CreateAuthRequestSchema
+     */
+    'authenticated_user': CreateAuthRequestSchemaAuthenticatedUser;
+}
+/**
+ * The identifier of the authenticated user.
+ * @export
+ * @interface CreateAuthRequestSchemaAuthenticatedUser
+ */
+export interface CreateAuthRequestSchemaAuthenticatedUser {
+    /**
+     * It defines the type of identifier used to identify the user.
+     * @type {string}
+     * @memberof CreateAuthRequestSchemaAuthenticatedUser
+     */
+    'identifier_type': string;
+    /**
+     * It is the value of the identifier used to identify the user.
+     * @type {string}
+     * @memberof CreateAuthRequestSchemaAuthenticatedUser
+     */
+    'identifier_value': string;
+}
+/**
+ * The metadata associated with the authentication token.
+ * @export
+ * @interface CreateAuthRequestSchemaMetadata
+ */
+export interface CreateAuthRequestSchemaMetadata {
+    /**
+     * It is the unique identifier for the VKYC request, used for associating the access token with a specific verification session.
+     * @type {string}
+     * @memberof CreateAuthRequestSchemaMetadata
+     */
+    'vkyc_request_id': string;
 }
 /**
  * Find the request parameters to create a reverse penny order request
@@ -2343,6 +2582,73 @@ export interface GetStatusRpdResponseSchema {
     'account_type'?: string;
 }
 /**
+ * 
+ * @export
+ * @interface GetVKYCLinkResponseSchema
+ */
+export interface GetVKYCLinkResponseSchema {
+    /**
+     * It displays the unique ID you created to identify the verification request.
+     * @type {string}
+     * @memberof GetVKYCLinkResponseSchema
+     */
+    'verification_id'?: string;
+    /**
+     * It displays the unique ID created by Cashfree Payments for reference purposes. format: `int64`
+     * @type {number}
+     * @memberof GetVKYCLinkResponseSchema
+     */
+    'reference_id'?: number;
+    /**
+     * It displays the status of the API request. Refer to [this link](https://www.cashfree.com/docs/api-reference/vrs/v2/video-kyc/vkyc-descriptions#status-substatus-mapping) for all possible values and their meanings.
+     * @type {string}
+     * @memberof GetVKYCLinkResponseSchema
+     */
+    'status'?: string;
+    /**
+     * It displays the sub status of the API request. Refer to [this link](https://www.cashfree.com/docs/api-reference/vrs/v2/video-kyc/vkyc-descriptions#status-substatus-mapping) for all possible values and their meanings.
+     * @type {string}
+     * @memberof GetVKYCLinkResponseSchema
+     */
+    'sub_status'?: string;
+    /**
+     * It displays the URL of the vKYC form.
+     * @type {string}
+     * @memberof GetVKYCLinkResponseSchema
+     */
+    'vkyc_link'?: string;
+    /**
+     * The date on which the vKYC link will expire.
+     * @type {string}
+     * @memberof GetVKYCLinkResponseSchema
+     */
+    'link_expiry'?: string;
+    /**
+     * The reference ID of the user for whom the VKYC link is generated.
+     * @type {string}
+     * @memberof GetVKYCLinkResponseSchema
+     */
+    'user_reference_id'?: string;
+    /**
+     * The user ID of the user for whom the VKYC link is generated.
+     * @type {string}
+     * @memberof GetVKYCLinkResponseSchema
+     */
+    'user_id'?: string;
+    /**
+     * The recording link of the VKYC for the request.
+     * @type {string}
+     * @memberof GetVKYCLinkResponseSchema
+     */
+    'recording_link'?: string;
+    /**
+     * The scheduled time for the VKYC meeting in UTC.
+     * @type {string}
+     * @memberof GetVKYCLinkResponseSchema
+     */
+    'meeting_schedule'?: string;
+}
+/**
  * Success response for Verify PAN Sync API
  * @export
  * @interface GetVerifyPanResponseSchema
@@ -3633,6 +3939,31 @@ export interface ReverseGeocodingResponseSchema {
     'status'?: string;
 }
 /**
+ * 
+ * @export
+ * @interface SecurityQuestion
+ */
+export interface SecurityQuestion {
+    /**
+     * 
+     * @type {number}
+     * @memberof SecurityQuestion
+     */
+    'order': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof SecurityQuestion
+     */
+    'question': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof SecurityQuestion
+     */
+    'answer': string;
+}
+/**
  * It containts the address information in individual components.
  * @export
  * @interface SplitAddress
@@ -3719,6 +4050,86 @@ export interface SplitAddressSchema {
     'address_line'?: string;
 }
 /**
+ * 
+ * @export
+ * @interface UpdateUserRequestSchema
+ */
+export interface UpdateUserRequestSchema {
+    /**
+     * It is the unique ID created by Cashfree Payments that you receive in the response of Create User for Secure ID API.
+     * @type {number}
+     * @memberof UpdateUserRequestSchema
+     */
+    'user_reference_id'?: number;
+    /**
+     * It is the unique ID you create to identify the user.
+     * @type {string}
+     * @memberof UpdateUserRequestSchema
+     */
+    'user_id'?: string;
+    /**
+     * It displays the email address of the user.
+     * @type {string}
+     * @memberof UpdateUserRequestSchema
+     */
+    'email'?: string;
+    /**
+     * It is the name of the user.
+     * @type {string}
+     * @memberof UpdateUserRequestSchema
+     */
+    'name'?: string;
+    /**
+     * It is the address of the user.
+     * @type {string}
+     * @memberof UpdateUserRequestSchema
+     */
+    'address'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UserResponseSchema
+ */
+export interface UserResponseSchema {
+    /**
+     * It is the unique ID you create to identify the user, or it is auto-generated by Cashfree if not provided in request.
+     * @type {string}
+     * @memberof UserResponseSchema
+     */
+    'user_id'?: string;
+    /**
+     * It displays the unique ID created by Cashfree Payments for reference purposes. format: `int64`
+     * @type {number}
+     * @memberof UserResponseSchema
+     */
+    'user_reference_id'?: number;
+    /**
+     * The phone number of the user.
+     * @type {string}
+     * @memberof UserResponseSchema
+     */
+    'phone'?: string;
+    /**
+     * The email address of the user.
+     * @type {string}
+     * @memberof UserResponseSchema
+     */
+    'email'?: string;
+    /**
+     * The name of the user.
+     * @type {string}
+     * @memberof UserResponseSchema
+     */
+    'name'?: string;
+    /**
+     * The address of the user.
+     * @type {string}
+     * @memberof UserResponseSchema
+     */
+    'address'?: string;
+}
+/**
  * IP not found error response
  * @export
  * @interface V2ErrorResponse404SchemaIpVerification
@@ -3742,6 +4153,263 @@ export interface V2ErrorResponse404SchemaIpVerification {
      * @memberof V2ErrorResponse404SchemaIpVerification
      */
     'message'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface VKYCLinkRequestSchema
+ */
+export interface VKYCLinkRequestSchema {
+    /**
+     * It is the unique ID you create to identify the verification request. The maximum character limit is 50. Only alphaumeric, period (.), hyphen (-), and underscore ( _ ) are allowed.
+     * @type {string}
+     * @memberof VKYCLinkRequestSchema
+     */
+    'verification_id': string;
+    /**
+     * It is the name of users vkyc template [more details](https://www.cashfree.com/docs/api-reference/vrs/v2/video-kyc/vkyc-descriptions#user-template-user-template).
+     * @type {string}
+     * @memberof VKYCLinkRequestSchema
+     */
+    'user_template'?: string;
+    /**
+     * It is the name of agents vkyc template [more details](https://www.cashfree.com/docs/api-reference/vrs/v2/video-kyc/vkyc-descriptions#agent-template-agent-template).
+     * @type {string}
+     * @memberof VKYCLinkRequestSchema
+     */
+    'agent_template'?: string;
+    /**
+     * It is the unique ID created by Cashfree Payments that you receive in the response of Create User for Secure ID API.
+     * @type {number}
+     * @memberof VKYCLinkRequestSchema
+     */
+    'user_reference_id'?: number;
+    /**
+     * It is the unique ID you create to identify the user in Create User for Secure ID API.
+     * @type {string}
+     * @memberof VKYCLinkRequestSchema
+     */
+    'user_id'?: string;
+    /**
+     * List of notification types that should be triggered for this request.
+     * @type {Array<string>}
+     * @memberof VKYCLinkRequestSchema
+     */
+    'notification_types'?: Array<string>;
+    /**
+     * 
+     * @type {AadhaarDetails}
+     * @memberof VKYCLinkRequestSchema
+     */
+    'aadhaar_details'?: AadhaarDetails;
+    /**
+     * 
+     * @type {SecurityQuestion}
+     * @memberof VKYCLinkRequestSchema
+     */
+    'security_questions'?: SecurityQuestion;
+}
+/**
+ * 
+ * @export
+ * @interface VKYCLinkResponseSchema
+ */
+export interface VKYCLinkResponseSchema {
+    /**
+     * It displays the unique ID you created to identify the verification request.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchema
+     */
+    'verification_id'?: string;
+    /**
+     * It displays the unique ID created by Cashfree Payments for reference purposes. format: `int64`
+     * @type {number}
+     * @memberof VKYCLinkResponseSchema
+     */
+    'reference_id'?: number;
+    /**
+     * It displays the status of the API request. Refer to [this link](https://www.cashfree.com/docs/api-reference/vrs/v2/video-kyc/vkyc-descriptions#status-substatus-mapping) for all possible values and their meanings.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchema
+     */
+    'status'?: string;
+    /**
+     * It displays the sub status of the API request. Refer to [this link](https://www.cashfree.com/docs/api-reference/vrs/v2/video-kyc/vkyc-descriptions#status-substatus-mapping) for all possible values and their meanings.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchema
+     */
+    'sub_status'?: string;
+    /**
+     * It displays the URL of the vKYC form to be filled by the user.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchema
+     */
+    'vkyc_link'?: string;
+    /**
+     * The date on which the vKYC link will expire.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchema
+     */
+    'link_expiry'?: string;
+    /**
+     * The reference ID of the user for whom the VKYC link is generated.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchema
+     */
+    'user_reference_id'?: string;
+    /**
+     * The user ID of the user for whom the VKYC link is generated.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchema
+     */
+    'user_id'?: string;
+    /**
+     * 
+     * @type {VKYCLinkResponseSchemaAadhaarDetails}
+     * @memberof VKYCLinkResponseSchema
+     */
+    'aadhaar_details'?: VKYCLinkResponseSchemaAadhaarDetails;
+    /**
+     * List of security questions and answers.
+     * @type {Array<VKYCLinkResponseSchemaSecurityQuestionsInner>}
+     * @memberof VKYCLinkResponseSchema
+     */
+    'security_questions'?: Array<VKYCLinkResponseSchemaSecurityQuestionsInner>;
+}
+/**
+ * Aadhaar information associated with the user.
+ * @export
+ * @interface VKYCLinkResponseSchemaAadhaarDetails
+ */
+export interface VKYCLinkResponseSchemaAadhaarDetails {
+    /**
+     * Timestamp when Aadhaar was last verified.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetails
+     */
+    'last_verified_at'?: string;
+    /**
+     * It displays the parent/guardian of the user.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetails
+     */
+    'care_of'?: string;
+    /**
+     * It displays the date of birth of the user.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetails
+     */
+    'dob'?: string;
+    /**
+     * It displays the gender of the user.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetails
+     */
+    'gender'?: string;
+    /**
+     * It displays the name of the user.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetails
+     */
+    'name'?: string;
+    /**
+     * It displays the URL to the image present in the aadhaar card.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetails
+     */
+    'photo_link'?: string;
+    /**
+     * 
+     * @type {VKYCLinkResponseSchemaAadhaarDetailsSplitAddress}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetails
+     */
+    'split_address'?: VKYCLinkResponseSchemaAadhaarDetailsSplitAddress;
+}
+/**
+ * Split address as extracted from Aadhaar.
+ * @export
+ * @interface VKYCLinkResponseSchemaAadhaarDetailsSplitAddress
+ */
+export interface VKYCLinkResponseSchemaAadhaarDetailsSplitAddress {
+    /**
+     * It displays the name of the country as present in the aadhaar card of user.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetailsSplitAddress
+     */
+    'country'?: string;
+    /**
+     * It displays the name of the dist as present in the aadhaar card of user.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetailsSplitAddress
+     */
+    'dist'?: string;
+    /**
+     * It displays the house name/number as present in the aadhaar card of user.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetailsSplitAddress
+     */
+    'house'?: string;
+    /**
+     * It displays the PIN code information as present in the aadhaar card of user.
+     * @type {number}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetailsSplitAddress
+     */
+    'pincode'?: number;
+    /**
+     * It displays the post office nearest to the address present in the aadhaar card of user.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetailsSplitAddress
+     */
+    'po'?: string;
+    /**
+     * It displays the name of the state as present in the aadhaar card of user.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetailsSplitAddress
+     */
+    'state'?: string;
+    /**
+     * It displays the name of the street as present in the aadhaar card of user.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetailsSplitAddress
+     */
+    'street'?: string;
+    /**
+     * It displays the name of the sub district as present in the aadhaar card of user.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetailsSplitAddress
+     */
+    'subdist'?: string;
+    /**
+     * It displays the village, town, city information as present in the aadhaar card of user.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaAadhaarDetailsSplitAddress
+     */
+    'vtc'?: string;
+}
+/**
+ * 
+ * @export
+ * @interface VKYCLinkResponseSchemaSecurityQuestionsInner
+ */
+export interface VKYCLinkResponseSchemaSecurityQuestionsInner {
+    /**
+     * Security question asked to the user.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaSecurityQuestionsInner
+     */
+    'question'?: string;
+    /**
+     * Answer provided by the user.
+     * @type {string}
+     * @memberof VKYCLinkResponseSchemaSecurityQuestionsInner
+     */
+    'answer'?: string;
+    /**
+     * Order of the security question.
+     * @type {number}
+     * @memberof VKYCLinkResponseSchemaSecurityQuestionsInner
+     */
+    'order'?: number;
 }
 /**
  * It contains the validity details.
@@ -4419,7 +5087,10 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4481,7 +5152,10 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4530,7 +5204,10 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4579,7 +5256,10 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4723,7 +5403,10 @@ const AdvancedEmploymentApiAxiosParamCreator = function (configuration?: Configu
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4767,6 +5450,107 @@ const AdvancedEmploymentApiFp = function(configuration?: Configuration) {
  * AdvancedEmploymentApi - object-oriented interface
  * @export
  * @class AdvancedEmploymentApi
+ * @extends {BaseAPI}
+ */
+
+
+
+/**
+ * AuthApi - axios parameter creator
+ * @export
+ */
+const AuthApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Use this API to generate an authentication token required to initialize the Cashfree SDK. Provide your **app_id**, and product name (such as Video KYC) in the request body. The API returns an **access_token** and its expiry details.
+         * @summary Create Auth Token to Initialise the SDK
+         
+         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+         * @param {CreateAuthRequestSchema} CreateAuthRequestSchema Request payload for create auth token to initialise the SDK.
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         * 
+         */
+        vrsGenerateAuthToken: async (x_api_version: string, CreateAuthRequestSchema: CreateAuthRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'x_api_version' is not null or undefined
+            assertParamExists('vrsGenerateAuthToken', 'x_api_version', x_api_version)
+            // verify required parameter 'CreateAuthRequestSchema' is not null or undefined
+            assertParamExists('vrsGenerateAuthToken', 'CreateAuthRequestSchema', CreateAuthRequestSchema)
+            const localVarPath = `/oauth/token`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            var url = "https://sandbox.cashfree.com/verification";
+            if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                url = "https://api.cashfree.com/verification"
+            }
+            const localVarUrlObj = new URL(localVarPath, url);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication XClientSecret required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-secret")
+
+            // authentication XClientID required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-id")
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(CreateAuthRequestSchema, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * AuthApi - functional programming interface
+ * @export
+ */
+const AuthApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = AuthApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Use this API to generate an authentication token required to initialize the Cashfree SDK. Provide your **app_id**, and product name (such as Video KYC) in the request body. The API returns an **access_token** and its expiry details.
+         * @summary Create Auth Token to Initialise the SDK
+         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+         * @param {CreateAuthRequestSchema} CreateAuthRequestSchema Request payload for create auth token to initialise the SDK.
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async vrsGenerateAuthToken(x_api_version: string, CreateAuthRequestSchema: CreateAuthRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsGenerateAuthToken(x_api_version, CreateAuthRequestSchema, x_cf_signature, options);
+                var url = "https://sandbox.cashfree.com/verification";
+                if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                    url = "https://api.cashfree.com/verification"
+                }
+                return createRequestFunction(localVarAxiosArgs, globalAxios, url, configuration);
+        },
+    }
+};
+
+/**
+ * AuthApi - object-oriented interface
+ * @export
+ * @class AuthApi
  * @extends {BaseAPI}
  */
 
@@ -4817,7 +5601,10 @@ const CINApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4911,7 +5698,10 @@ const DigilockerApiAxiosParamCreator = function (configuration?: Configuration) 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -4970,7 +5760,10 @@ const DigilockerApiAxiosParamCreator = function (configuration?: Configuration) 
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5024,7 +5817,10 @@ const DigilockerApiAxiosParamCreator = function (configuration?: Configuration) 
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5152,7 +5948,10 @@ const DrivingLicenseApiAxiosParamCreator = function (configuration?: Configurati
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5246,7 +6045,10 @@ const ESignApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5301,7 +6103,10 @@ const ESignApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5356,7 +6161,10 @@ const ESignApiAxiosParamCreator = function (configuration?: Configuration) {
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5497,7 +6305,10 @@ const FaceLivenessApiAxiosParamCreator = function (configuration?: Configuration
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5632,7 +6443,10 @@ const FaceMatchApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5731,7 +6545,10 @@ const GSTINApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5823,7 +6640,10 @@ const IPApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -5916,7 +6736,10 @@ const NameMatchApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6011,7 +6834,10 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6071,7 +6897,10 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6120,7 +6949,10 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6169,7 +7001,10 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6232,7 +7067,10 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6283,7 +7121,10 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6464,7 +7305,10 @@ const PANToGSTINApiAxiosParamCreator = function (configuration?: Configuration) 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6558,7 +7402,10 @@ const PassportApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6652,7 +7499,10 @@ const ReverseGeocodingApiAxiosParamCreator = function (configuration?: Configura
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6745,7 +7595,10 @@ const ReversePennyDropApiAxiosParamCreator = function (configuration?: Configura
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6799,7 +7652,10 @@ const ReversePennyDropApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -6863,6 +7719,437 @@ const ReversePennyDropApiFp = function(configuration?: Configuration) {
 
 
 /**
+ * UserApi - axios parameter creator
+ * @export
+ */
+const UserApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Use this API to create a new user profile for the Secure ID, which enables Video KYC (Know Your Customer) verification. The user profile includes basic details such as phone number, name, and address, and is required to initiate the KYC process.
+         * @summary Create User for Secure ID
+         
+         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+         * @param {AddUserRequestSchema} AddUserRequestSchema Request payload for creating a user for Video KYC.
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         * 
+         */
+        vrsCreateUser: async (x_api_version: string, AddUserRequestSchema: AddUserRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'x_api_version' is not null or undefined
+            assertParamExists('vrsCreateUser', 'x_api_version', x_api_version)
+            // verify required parameter 'AddUserRequestSchema' is not null or undefined
+            assertParamExists('vrsCreateUser', 'AddUserRequestSchema', AddUserRequestSchema)
+            const localVarPath = `/user`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            var url = "https://sandbox.cashfree.com/verification";
+            if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                url = "https://api.cashfree.com/verification"
+            }
+            const localVarUrlObj = new URL(localVarPath, url);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication XClientSecret required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-secret")
+
+            // authentication XClientID required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-id")
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(AddUserRequestSchema, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Use this API to retrieve the details of a user registered for Video KYC. You can fetch user information using either the **user_id** (provided by you) or the **user_reference_id** (generated by Cashfree).
+         * @summary Get User Detail
+         
+         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {string} [user_reference_id] This is the unique ID generated by Cashfree Payments and returned in the response of the Add User API.
+         * @param {string} [user_id] This is the unique ID you created to identify the user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         * user_id?: string, 
+         */
+        vrsGetUser: async (x_api_version: string,  x_cf_signature?: string, user_reference_id?: string, user_id?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'x_api_version' is not null or undefined
+            assertParamExists('vrsGetUser', 'x_api_version', x_api_version)
+            const localVarPath = `/user`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            var url = "https://sandbox.cashfree.com/verification";
+            if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                url = "https://api.cashfree.com/verification"
+            }
+            const localVarUrlObj = new URL(localVarPath, url);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication XClientSecret required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-secret")
+
+            // authentication XClientID required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-id")
+
+            if (user_reference_id !== undefined) {
+                localVarQueryParameter['user_reference_id'] = user_reference_id;
+            }
+
+            if (user_id !== undefined) {
+                localVarQueryParameter['user_id'] = user_id;
+            }
+
+
+    
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Update User Detail
+         * @summary Update User Detail
+         
+         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+         * @param {UpdateUserRequestSchema} UpdateUserRequestSchema Find the request for updating a user, phone number field cannot be updated.
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         * 
+         */
+        vrsUpdateUser: async (x_api_version: string, UpdateUserRequestSchema: UpdateUserRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'x_api_version' is not null or undefined
+            assertParamExists('vrsUpdateUser', 'x_api_version', x_api_version)
+            // verify required parameter 'UpdateUserRequestSchema' is not null or undefined
+            assertParamExists('vrsUpdateUser', 'UpdateUserRequestSchema', UpdateUserRequestSchema)
+            const localVarPath = `/user`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            var url = "https://sandbox.cashfree.com/verification";
+            if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                url = "https://api.cashfree.com/verification"
+            }
+            const localVarUrlObj = new URL(localVarPath, url);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication XClientSecret required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-secret")
+
+            // authentication XClientID required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-id")
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(UpdateUserRequestSchema, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * UserApi - functional programming interface
+ * @export
+ */
+const UserApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = UserApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Use this API to create a new user profile for the Secure ID, which enables Video KYC (Know Your Customer) verification. The user profile includes basic details such as phone number, name, and address, and is required to initiate the KYC process.
+         * @summary Create User for Secure ID
+         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+         * @param {AddUserRequestSchema} AddUserRequestSchema Request payload for creating a user for Video KYC.
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async vrsCreateUser(x_api_version: string, AddUserRequestSchema: AddUserRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsCreateUser(x_api_version, AddUserRequestSchema, x_cf_signature, options);
+                var url = "https://sandbox.cashfree.com/verification";
+                if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                    url = "https://api.cashfree.com/verification"
+                }
+                return createRequestFunction(localVarAxiosArgs, globalAxios, url, configuration);
+        },
+        /**
+         * Use this API to retrieve the details of a user registered for Video KYC. You can fetch user information using either the **user_id** (provided by you) or the **user_reference_id** (generated by Cashfree).
+         * @summary Get User Detail
+         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {string} [user_reference_id] This is the unique ID generated by Cashfree Payments and returned in the response of the Add User API.
+         * @param {string} [user_id] This is the unique ID you created to identify the user.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async vrsGetUser(x_api_version: string, x_cf_signature?: string, user_reference_id?: string, user_id?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsGetUser(x_api_version, x_cf_signature, user_reference_id, user_id, options);
+                var url = "https://sandbox.cashfree.com/verification";
+                if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                    url = "https://api.cashfree.com/verification"
+                }
+                return createRequestFunction(localVarAxiosArgs, globalAxios, url, configuration);
+        },
+        /**
+         * Update User Detail
+         * @summary Update User Detail
+         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+         * @param {UpdateUserRequestSchema} UpdateUserRequestSchema Find the request for updating a user, phone number field cannot be updated.
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async vrsUpdateUser(x_api_version: string, UpdateUserRequestSchema: UpdateUserRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsUpdateUser(x_api_version, UpdateUserRequestSchema, x_cf_signature, options);
+                var url = "https://sandbox.cashfree.com/verification";
+                if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                    url = "https://api.cashfree.com/verification"
+                }
+                return createRequestFunction(localVarAxiosArgs, globalAxios, url, configuration);
+        },
+    }
+};
+
+/**
+ * UserApi - object-oriented interface
+ * @export
+ * @class UserApi
+ * @extends {BaseAPI}
+ */
+
+
+
+/**
+ * VKYCApi - axios parameter creator
+ * @export
+ */
+const VKYCApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * Use this API to check the status of a Video KYC (vKYC) request. You can query the request using the **reference_id** (generated by Cashfree) or the **verification_id** (created by you). The response includes the current status, vKYC link, link expiry, and optional Aadhaar and security question details.
+         * @summary Get status of Video KYC
+         
+         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {string} [verification_id] It is the unique ID generated by the merchant to identify the verification request in the Initiate Video KYC Request API.
+         * @param {string} [reference_id] It is the unique ID created by Cashfree Payments that you receive in the response of Initiate Video KYC Request API.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         * reference_id?: string, 
+         */
+        vkycGetStatus: async (x_api_version: string,  x_cf_signature?: string, verification_id?: string, reference_id?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'x_api_version' is not null or undefined
+            assertParamExists('vkycGetStatus', 'x_api_version', x_api_version)
+            const localVarPath = `/vkyc`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            var url = "https://sandbox.cashfree.com/verification";
+            if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                url = "https://api.cashfree.com/verification"
+            }
+            const localVarUrlObj = new URL(localVarPath, url);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication XClientSecret required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-secret")
+
+            // authentication XClientID required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-id")
+
+            if (verification_id !== undefined) {
+                localVarQueryParameter['verification_id'] = verification_id;
+            }
+
+            if (reference_id !== undefined) {
+                localVarQueryParameter['reference_id'] = reference_id;
+            }
+
+
+    
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Use this API to initiate a Video KYC request for a user by generating a secure verification link. The link is sent through selected notification channels (SMS, email, or WhatsApp) and can be customised using user and agent templates.
+         * @summary Initiate Video KYC Request
+         
+         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+         * @param {VKYCLinkRequestSchema} VKYCLinkRequestSchema Request parameters to generate Video KYC link.
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         * 
+         */
+        vrsInitiateVKYC: async (x_api_version: string, VKYCLinkRequestSchema: VKYCLinkRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'x_api_version' is not null or undefined
+            assertParamExists('vrsInitiateVKYC', 'x_api_version', x_api_version)
+            // verify required parameter 'VKYCLinkRequestSchema' is not null or undefined
+            assertParamExists('vrsInitiateVKYC', 'VKYCLinkRequestSchema', VKYCLinkRequestSchema)
+            const localVarPath = `/vkyc`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            var url = "https://sandbox.cashfree.com/verification";
+            if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                url = "https://api.cashfree.com/verification"
+            }
+            const localVarUrlObj = new URL(localVarPath, url);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication XClientSecret required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-secret")
+
+            // authentication XClientID required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-id")
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(VKYCLinkRequestSchema, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * VKYCApi - functional programming interface
+ * @export
+ */
+const VKYCApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = VKYCApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * Use this API to check the status of a Video KYC (vKYC) request. You can query the request using the **reference_id** (generated by Cashfree) or the **verification_id** (created by you). The response includes the current status, vKYC link, link expiry, and optional Aadhaar and security question details.
+         * @summary Get status of Video KYC
+         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {string} [verification_id] It is the unique ID generated by the merchant to identify the verification request in the Initiate Video KYC Request API.
+         * @param {string} [reference_id] It is the unique ID created by Cashfree Payments that you receive in the response of Initiate Video KYC Request API.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async vkycGetStatus(x_api_version: string, x_cf_signature?: string, verification_id?: string, reference_id?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetVKYCLinkResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vkycGetStatus(x_api_version, x_cf_signature, verification_id, reference_id, options);
+                var url = "https://sandbox.cashfree.com/verification";
+                if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                    url = "https://api.cashfree.com/verification"
+                }
+                return createRequestFunction(localVarAxiosArgs, globalAxios, url, configuration);
+        },
+        /**
+         * Use this API to initiate a Video KYC request for a user by generating a secure verification link. The link is sent through selected notification channels (SMS, email, or WhatsApp) and can be customised using user and agent templates.
+         * @summary Initiate Video KYC Request
+         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+         * @param {VKYCLinkRequestSchema} VKYCLinkRequestSchema Request parameters to generate Video KYC link.
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async vrsInitiateVKYC(x_api_version: string, VKYCLinkRequestSchema: VKYCLinkRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VKYCLinkResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsInitiateVKYC(x_api_version, VKYCLinkRequestSchema, x_cf_signature, options);
+                var url = "https://sandbox.cashfree.com/verification";
+                if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                    url = "https://api.cashfree.com/verification"
+                }
+                return createRequestFunction(localVarAxiosArgs, globalAxios, url, configuration);
+        },
+    }
+};
+
+/**
+ * VKYCApi - object-oriented interface
+ * @export
+ * @class VKYCApi
+ * @extends {BaseAPI}
+ */
+
+
+
+/**
  * VehicleRCApi - axios parameter creator
  * @export
  */
@@ -6907,7 +8194,10 @@ const VehicleRCApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -7001,7 +8291,10 @@ const VoterIDApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-3.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
@@ -7123,7 +8416,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -7188,7 +8481,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -7251,7 +8544,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -7314,7 +8607,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -7378,11 +8671,76 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
             return AdvancedEmploymentApiFp().vrsAdvanceEmploymentVerification(AdvanceEmploymentRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+        } catch (error) {
+            if(Cashfree.XEnableErrorAnalytics) {
+                Sentry.captureException(error);
+            }
+            throw error;
+        }
+    }
+    
+    /**
+     * Use this API to generate an authentication token required to initialize the Cashfree SDK. Provide your **app_id**, and product name (such as Video KYC) in the request body. The API returns an **access_token** and its expiry details.
+     * @summary Create Auth Token to Initialise the SDK
+     * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+     * @param {CreateAuthRequestSchema} CreateAuthRequestSchema Request payload for create auth token to initialise the SDK.
+     * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthApi
+     */
+    public static VrsGenerateAuthToken(x_api_version: string, CreateAuthRequestSchema: CreateAuthRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+        if(Cashfree.XEnableErrorAnalytics) {
+        Sentry.init({
+            dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
+            // Performance Monitoring
+            tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
+            // Set sampling rate for profiling - this is relative to tracesSampleRate
+            profilesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!,
+            attachStacktrace: true,
+            enableTracing: true,
+            beforeSend: (event) => {
+                if(event.contexts){
+                    delete event.contexts.os;
+                    delete event.contexts.device;
+                }
+                else {
+                    // Handle the case where event.contexts is undefined
+                    console.warn('event.contexts is undefined. Check your Sentry event data.');
+                }
+                delete event.server_name;
+                if (event.exception && event.exception.values && event.exception.values.length && event.exception.values[0].stacktrace) {
+                            const stackTrace = event.exception.values[0].stacktrace;
+                            if (stackTrace && stackTrace.frames) {
+                                
+								const filteredDomains = stackTrace.frames.filter((x) => x.filename && x.filename.includes("cashfree-verification")).map((x) => x.filename);
+                                if (filteredDomains && filteredDomains[0] && filteredDomains[0].includes("cashfree-verification")) {
+                                    if(Cashfree.XEnableErrorAnalytics) {
+                                        return event;
+                                    }
+                                    return null;
+                                } 
+                            }
+                        }
+						return null;
+            },
+            });
+            Sentry.configureScope((scope) => {
+                if(Cashfree.XEnvironment == CFEnvironment.SANDBOX) {
+                    scope.setExtra('environment', 'sandbox');
+                } else {
+                    scope.setExtra('environment', 'production');
+                }
+                scope.setExtra('release', "4.0.0");
+            });
+        }
+        try {
+            return AuthApiFp().vrsGenerateAuthToken(x_api_version, CreateAuthRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -7442,7 +8800,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -7506,7 +8864,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -7572,7 +8930,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -7637,7 +8995,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -7701,7 +9059,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -7765,7 +9123,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -7829,7 +9187,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -7894,7 +9252,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -7960,7 +9318,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -8030,7 +9388,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -8093,7 +9451,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -8156,7 +9514,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -8220,7 +9578,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -8285,7 +9643,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -8351,7 +9709,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -8416,7 +9774,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -8480,7 +9838,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -8546,7 +9904,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -8611,7 +9969,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -8675,7 +10033,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -8739,7 +10097,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -8803,7 +10161,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -8866,7 +10224,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -8930,11 +10288,338 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
             return ReversePennyDropApiFp().vrsReversePennyDropFetchStatus(ref_id, verification_id, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+        } catch (error) {
+            if(Cashfree.XEnableErrorAnalytics) {
+                Sentry.captureException(error);
+            }
+            throw error;
+        }
+    }
+    
+    /**
+     * Use this API to create a new user profile for the Secure ID, which enables Video KYC (Know Your Customer) verification. The user profile includes basic details such as phone number, name, and address, and is required to initiate the KYC process.
+     * @summary Create User for Secure ID
+     * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+     * @param {AddUserRequestSchema} AddUserRequestSchema Request payload for creating a user for Video KYC.
+     * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    public static VrsCreateUser(x_api_version: string, AddUserRequestSchema: AddUserRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+        if(Cashfree.XEnableErrorAnalytics) {
+        Sentry.init({
+            dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
+            // Performance Monitoring
+            tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
+            // Set sampling rate for profiling - this is relative to tracesSampleRate
+            profilesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!,
+            attachStacktrace: true,
+            enableTracing: true,
+            beforeSend: (event) => {
+                if(event.contexts){
+                    delete event.contexts.os;
+                    delete event.contexts.device;
+                }
+                else {
+                    // Handle the case where event.contexts is undefined
+                    console.warn('event.contexts is undefined. Check your Sentry event data.');
+                }
+                delete event.server_name;
+                if (event.exception && event.exception.values && event.exception.values.length && event.exception.values[0].stacktrace) {
+                            const stackTrace = event.exception.values[0].stacktrace;
+                            if (stackTrace && stackTrace.frames) {
+                                
+								const filteredDomains = stackTrace.frames.filter((x) => x.filename && x.filename.includes("cashfree-verification")).map((x) => x.filename);
+                                if (filteredDomains && filteredDomains[0] && filteredDomains[0].includes("cashfree-verification")) {
+                                    if(Cashfree.XEnableErrorAnalytics) {
+                                        return event;
+                                    }
+                                    return null;
+                                } 
+                            }
+                        }
+						return null;
+            },
+            });
+            Sentry.configureScope((scope) => {
+                if(Cashfree.XEnvironment == CFEnvironment.SANDBOX) {
+                    scope.setExtra('environment', 'sandbox');
+                } else {
+                    scope.setExtra('environment', 'production');
+                }
+                scope.setExtra('release', "4.0.0");
+            });
+        }
+        try {
+            return UserApiFp().vrsCreateUser(x_api_version, AddUserRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+        } catch (error) {
+            if(Cashfree.XEnableErrorAnalytics) {
+                Sentry.captureException(error);
+            }
+            throw error;
+        }
+    }
+
+    /**
+     * Use this API to retrieve the details of a user registered for Video KYC. You can fetch user information using either the **user_id** (provided by you) or the **user_reference_id** (generated by Cashfree).
+     * @summary Get User Detail
+     * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+     * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+     * @param {string} [user_reference_id] This is the unique ID generated by Cashfree Payments and returned in the response of the Add User API.
+     * @param {string} [user_id] This is the unique ID you created to identify the user.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    public static VrsGetUser(x_api_version: string, x_cf_signature?: string, user_reference_id?: string, user_id?: string, options?: AxiosRequestConfig) {
+        if(Cashfree.XEnableErrorAnalytics) {
+        Sentry.init({
+            dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
+            // Performance Monitoring
+            tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
+            // Set sampling rate for profiling - this is relative to tracesSampleRate
+            profilesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!,
+            attachStacktrace: true,
+            enableTracing: true,
+            beforeSend: (event) => {
+                if(event.contexts){
+                    delete event.contexts.os;
+                    delete event.contexts.device;
+                }
+                else {
+                    // Handle the case where event.contexts is undefined
+                    console.warn('event.contexts is undefined. Check your Sentry event data.');
+                }
+                delete event.server_name;
+                if (event.exception && event.exception.values && event.exception.values.length && event.exception.values[0].stacktrace) {
+                            const stackTrace = event.exception.values[0].stacktrace;
+                            if (stackTrace && stackTrace.frames) {
+                                
+								const filteredDomains = stackTrace.frames.filter((x) => x.filename && x.filename.includes("cashfree-verification")).map((x) => x.filename);
+                                if (filteredDomains && filteredDomains[0] && filteredDomains[0].includes("cashfree-verification")) {
+                                    if(Cashfree.XEnableErrorAnalytics) {
+                                        return event;
+                                    }
+                                    return null;
+                                } 
+                            }
+                        }
+						return null;
+            },
+            });
+            Sentry.configureScope((scope) => {
+                if(Cashfree.XEnvironment == CFEnvironment.SANDBOX) {
+                    scope.setExtra('environment', 'sandbox');
+                } else {
+                    scope.setExtra('environment', 'production');
+                }
+                scope.setExtra('release', "4.0.0");
+            });
+        }
+        try {
+            return UserApiFp().vrsGetUser(x_api_version, x_cf_signature, user_reference_id, user_id, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+        } catch (error) {
+            if(Cashfree.XEnableErrorAnalytics) {
+                Sentry.captureException(error);
+            }
+            throw error;
+        }
+    }
+
+    /**
+     * Update User Detail
+     * @summary Update User Detail
+     * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+     * @param {UpdateUserRequestSchema} UpdateUserRequestSchema Find the request for updating a user, phone number field cannot be updated.
+     * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserApi
+     */
+    public static VrsUpdateUser(x_api_version: string, UpdateUserRequestSchema: UpdateUserRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+        if(Cashfree.XEnableErrorAnalytics) {
+        Sentry.init({
+            dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
+            // Performance Monitoring
+            tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
+            // Set sampling rate for profiling - this is relative to tracesSampleRate
+            profilesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!,
+            attachStacktrace: true,
+            enableTracing: true,
+            beforeSend: (event) => {
+                if(event.contexts){
+                    delete event.contexts.os;
+                    delete event.contexts.device;
+                }
+                else {
+                    // Handle the case where event.contexts is undefined
+                    console.warn('event.contexts is undefined. Check your Sentry event data.');
+                }
+                delete event.server_name;
+                if (event.exception && event.exception.values && event.exception.values.length && event.exception.values[0].stacktrace) {
+                            const stackTrace = event.exception.values[0].stacktrace;
+                            if (stackTrace && stackTrace.frames) {
+                                
+								const filteredDomains = stackTrace.frames.filter((x) => x.filename && x.filename.includes("cashfree-verification")).map((x) => x.filename);
+                                if (filteredDomains && filteredDomains[0] && filteredDomains[0].includes("cashfree-verification")) {
+                                    if(Cashfree.XEnableErrorAnalytics) {
+                                        return event;
+                                    }
+                                    return null;
+                                } 
+                            }
+                        }
+						return null;
+            },
+            });
+            Sentry.configureScope((scope) => {
+                if(Cashfree.XEnvironment == CFEnvironment.SANDBOX) {
+                    scope.setExtra('environment', 'sandbox');
+                } else {
+                    scope.setExtra('environment', 'production');
+                }
+                scope.setExtra('release', "4.0.0");
+            });
+        }
+        try {
+            return UserApiFp().vrsUpdateUser(x_api_version, UpdateUserRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+        } catch (error) {
+            if(Cashfree.XEnableErrorAnalytics) {
+                Sentry.captureException(error);
+            }
+            throw error;
+        }
+    }
+    
+    /**
+     * Use this API to check the status of a Video KYC (vKYC) request. You can query the request using the **reference_id** (generated by Cashfree) or the **verification_id** (created by you). The response includes the current status, vKYC link, link expiry, and optional Aadhaar and security question details.
+     * @summary Get status of Video KYC
+     * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+     * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+     * @param {string} [verification_id] It is the unique ID generated by the merchant to identify the verification request in the Initiate Video KYC Request API.
+     * @param {string} [reference_id] It is the unique ID created by Cashfree Payments that you receive in the response of Initiate Video KYC Request API.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VKYCApi
+     */
+    public static VkycGetStatus(x_api_version: string, x_cf_signature?: string, verification_id?: string, reference_id?: string, options?: AxiosRequestConfig) {
+        if(Cashfree.XEnableErrorAnalytics) {
+        Sentry.init({
+            dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
+            // Performance Monitoring
+            tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
+            // Set sampling rate for profiling - this is relative to tracesSampleRate
+            profilesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!,
+            attachStacktrace: true,
+            enableTracing: true,
+            beforeSend: (event) => {
+                if(event.contexts){
+                    delete event.contexts.os;
+                    delete event.contexts.device;
+                }
+                else {
+                    // Handle the case where event.contexts is undefined
+                    console.warn('event.contexts is undefined. Check your Sentry event data.');
+                }
+                delete event.server_name;
+                if (event.exception && event.exception.values && event.exception.values.length && event.exception.values[0].stacktrace) {
+                            const stackTrace = event.exception.values[0].stacktrace;
+                            if (stackTrace && stackTrace.frames) {
+                                
+								const filteredDomains = stackTrace.frames.filter((x) => x.filename && x.filename.includes("cashfree-verification")).map((x) => x.filename);
+                                if (filteredDomains && filteredDomains[0] && filteredDomains[0].includes("cashfree-verification")) {
+                                    if(Cashfree.XEnableErrorAnalytics) {
+                                        return event;
+                                    }
+                                    return null;
+                                } 
+                            }
+                        }
+						return null;
+            },
+            });
+            Sentry.configureScope((scope) => {
+                if(Cashfree.XEnvironment == CFEnvironment.SANDBOX) {
+                    scope.setExtra('environment', 'sandbox');
+                } else {
+                    scope.setExtra('environment', 'production');
+                }
+                scope.setExtra('release', "4.0.0");
+            });
+        }
+        try {
+            return VKYCApiFp().vkycGetStatus(x_api_version, x_cf_signature, verification_id, reference_id, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+        } catch (error) {
+            if(Cashfree.XEnableErrorAnalytics) {
+                Sentry.captureException(error);
+            }
+            throw error;
+        }
+    }
+
+    /**
+     * Use this API to initiate a Video KYC request for a user by generating a secure verification link. The link is sent through selected notification channels (SMS, email, or WhatsApp) and can be customised using user and agent templates.
+     * @summary Initiate Video KYC Request
+     * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+     * @param {VKYCLinkRequestSchema} VKYCLinkRequestSchema Request parameters to generate Video KYC link.
+     * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VKYCApi
+     */
+    public static VrsInitiateVKYC(x_api_version: string, VKYCLinkRequestSchema: VKYCLinkRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+        if(Cashfree.XEnableErrorAnalytics) {
+        Sentry.init({
+            dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
+            // Performance Monitoring
+            tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
+            // Set sampling rate for profiling - this is relative to tracesSampleRate
+            profilesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!,
+            attachStacktrace: true,
+            enableTracing: true,
+            beforeSend: (event) => {
+                if(event.contexts){
+                    delete event.contexts.os;
+                    delete event.contexts.device;
+                }
+                else {
+                    // Handle the case where event.contexts is undefined
+                    console.warn('event.contexts is undefined. Check your Sentry event data.');
+                }
+                delete event.server_name;
+                if (event.exception && event.exception.values && event.exception.values.length && event.exception.values[0].stacktrace) {
+                            const stackTrace = event.exception.values[0].stacktrace;
+                            if (stackTrace && stackTrace.frames) {
+                                
+								const filteredDomains = stackTrace.frames.filter((x) => x.filename && x.filename.includes("cashfree-verification")).map((x) => x.filename);
+                                if (filteredDomains && filteredDomains[0] && filteredDomains[0].includes("cashfree-verification")) {
+                                    if(Cashfree.XEnableErrorAnalytics) {
+                                        return event;
+                                    }
+                                    return null;
+                                } 
+                            }
+                        }
+						return null;
+            },
+            });
+            Sentry.configureScope((scope) => {
+                if(Cashfree.XEnvironment == CFEnvironment.SANDBOX) {
+                    scope.setExtra('environment', 'sandbox');
+                } else {
+                    scope.setExtra('environment', 'production');
+                }
+                scope.setExtra('release', "4.0.0");
+            });
+        }
+        try {
+            return VKYCApiFp().vrsInitiateVKYC(x_api_version, VKYCLinkRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8994,7 +10679,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {
@@ -9058,7 +10743,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "3.0.0");
+                scope.setExtra('release', "4.0.0");
             });
         }
         try {

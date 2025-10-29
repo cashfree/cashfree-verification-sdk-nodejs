@@ -27,6 +27,7 @@ import { Cashfree } from "cashfree-verification";
 Cashfree.XClientId = "<x-client-id>";
 Cashfree.XClientSecret = "<x-client-secret>";
 Cashfree.XEnvironment = Cashfree.Environment.SANDBOX;
+Cashfree.XApiVersion = "2024-12-01";
 ```
 
 Generate your API keys (x-client-id , x-client-secret) from [Cashfree Merchant Dashboard](https://merchant.cashfree.com/merchants/login)
