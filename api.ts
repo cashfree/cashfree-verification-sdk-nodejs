@@ -5087,7 +5087,7 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -5152,7 +5152,7 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -5204,7 +5204,7 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -5256,7 +5256,7 @@ const AadhaarApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -5403,7 +5403,7 @@ const AdvancedEmploymentApiAxiosParamCreator = function (configuration?: Configu
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -5472,11 +5472,11 @@ const AuthApiAxiosParamCreator = function (configuration?: Configuration) {
          * @throws {RequiredError}
          * 
          */
-        vrsGenerateAuthToken: async (x_api_version: string, CreateAuthRequestSchema: CreateAuthRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        vrsVkycGenerateAuthToken: async (x_api_version: string, CreateAuthRequestSchema: CreateAuthRequestSchema,  x_cf_signature?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'x_api_version' is not null or undefined
-            assertParamExists('vrsGenerateAuthToken', 'x_api_version', x_api_version)
+            assertParamExists('vrsVkycGenerateAuthToken', 'x_api_version', x_api_version)
             // verify required parameter 'CreateAuthRequestSchema' is not null or undefined
-            assertParamExists('vrsGenerateAuthToken', 'CreateAuthRequestSchema', CreateAuthRequestSchema)
+            assertParamExists('vrsVkycGenerateAuthToken', 'CreateAuthRequestSchema', CreateAuthRequestSchema)
             const localVarPath = `/oauth/token`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             var url = "https://sandbox.cashfree.com/verification";
@@ -5503,7 +5503,7 @@ const AuthApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -5536,8 +5536,8 @@ const AuthApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async vrsGenerateAuthToken(x_api_version: string, CreateAuthRequestSchema: CreateAuthRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsGenerateAuthToken(x_api_version, CreateAuthRequestSchema, x_cf_signature, options);
+        async vrsVkycGenerateAuthToken(x_api_version: string, CreateAuthRequestSchema: CreateAuthRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<AuthResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsVkycGenerateAuthToken(x_api_version, CreateAuthRequestSchema, x_cf_signature, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -5601,7 +5601,7 @@ const CINApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -5698,7 +5698,7 @@ const DigilockerApiAxiosParamCreator = function (configuration?: Configuration) 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -5760,7 +5760,7 @@ const DigilockerApiAxiosParamCreator = function (configuration?: Configuration) 
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -5817,7 +5817,7 @@ const DigilockerApiAxiosParamCreator = function (configuration?: Configuration) 
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -5948,7 +5948,7 @@ const DrivingLicenseApiAxiosParamCreator = function (configuration?: Configurati
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -6045,7 +6045,7 @@ const ESignApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -6103,7 +6103,7 @@ const ESignApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -6161,7 +6161,7 @@ const ESignApiAxiosParamCreator = function (configuration?: Configuration) {
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -6305,7 +6305,7 @@ const FaceLivenessApiAxiosParamCreator = function (configuration?: Configuration
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -6443,7 +6443,7 @@ const FaceMatchApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -6545,7 +6545,7 @@ const GSTINApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -6640,7 +6640,7 @@ const IPApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -6736,7 +6736,7 @@ const NameMatchApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -6834,7 +6834,7 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -6897,7 +6897,7 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -6949,7 +6949,7 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -7001,7 +7001,7 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -7067,7 +7067,7 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -7121,7 +7121,7 @@ const PANApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -7305,7 +7305,7 @@ const PANToGSTINApiAxiosParamCreator = function (configuration?: Configuration) 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -7402,7 +7402,7 @@ const PassportApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -7499,7 +7499,7 @@ const ReverseGeocodingApiAxiosParamCreator = function (configuration?: Configura
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -7595,7 +7595,7 @@ const ReversePennyDropApiAxiosParamCreator = function (configuration?: Configura
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -7652,7 +7652,7 @@ const ReversePennyDropApiAxiosParamCreator = function (configuration?: Configura
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -7766,7 +7766,7 @@ const UserApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -7827,7 +7827,7 @@ const UserApiAxiosParamCreator = function (configuration?: Configuration) {
 
 
     
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -7882,7 +7882,7 @@ const UserApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -7977,66 +7977,6 @@ const UserApiFp = function(configuration?: Configuration) {
 const VKYCApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * Use this API to check the status of a Video KYC (vKYC) request. You can query the request using the **reference_id** (generated by Cashfree) or the **verification_id** (created by you). The response includes the current status, vKYC link, link expiry, and optional Aadhaar and security question details.
-         * @summary Get status of Video KYC
-         
-         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
-         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
-         * @param {string} [verification_id] It is the unique ID generated by the merchant to identify the verification request in the Initiate Video KYC Request API.
-         * @param {string} [reference_id] It is the unique ID created by Cashfree Payments that you receive in the response of Initiate Video KYC Request API.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         * reference_id?: string, 
-         */
-        vkycGetStatus: async (x_api_version: string,  x_cf_signature?: string, verification_id?: string, reference_id?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'x_api_version' is not null or undefined
-            assertParamExists('vkycGetStatus', 'x_api_version', x_api_version)
-            const localVarPath = `/vkyc`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            var url = "https://sandbox.cashfree.com/verification";
-            if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
-                url = "https://api.cashfree.com/verification"
-            }
-            const localVarUrlObj = new URL(localVarPath, url);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication XClientSecret required
-            await setApiKeyToObject(localVarHeaderParameter, "x-client-secret")
-
-            // authentication XClientID required
-            await setApiKeyToObject(localVarHeaderParameter, "x-client-id")
-
-            if (verification_id !== undefined) {
-                localVarQueryParameter['verification_id'] = verification_id;
-            }
-
-            if (reference_id !== undefined) {
-                localVarQueryParameter['reference_id'] = reference_id;
-            }
-
-
-    
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
-            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
-                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
-            }
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * Use this API to initiate a Video KYC request for a user by generating a secure verification link. The link is sent through selected notification channels (SMS, email, or WhatsApp) and can be customised using user and agent templates.
          * @summary Initiate Video KYC Request
          
@@ -8078,7 +8018,7 @@ const VKYCApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -8086,6 +8026,66 @@ const VKYCApiAxiosParamCreator = function (configuration?: Configuration) {
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = serializeDataIfNeeded(VKYCLinkRequestSchema, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Use this API to check the status of a Video KYC (vKYC) request. You can query the request using the **reference_id** (generated by Cashfree) or the **verification_id** (created by you). The response includes the current status, vKYC link, link expiry, and optional Aadhaar and security question details.
+         * @summary Get status of Video KYC
+         
+         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {string} [verification_id] It is the unique ID generated by the merchant to identify the verification request in the Initiate Video KYC Request API.
+         * @param {string} [reference_id] It is the unique ID created by Cashfree Payments that you receive in the response of Initiate Video KYC Request API.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         * reference_id?: string, 
+         */
+        vrsVkycGetStatus: async (x_api_version: string,  x_cf_signature?: string, verification_id?: string, reference_id?: string,  options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'x_api_version' is not null or undefined
+            assertParamExists('vrsVkycGetStatus', 'x_api_version', x_api_version)
+            const localVarPath = `/vkyc`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            var url = "https://sandbox.cashfree.com/verification";
+            if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                url = "https://api.cashfree.com/verification"
+            }
+            const localVarUrlObj = new URL(localVarPath, url);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication XClientSecret required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-secret")
+
+            // authentication XClientID required
+            await setApiKeyToObject(localVarHeaderParameter, "x-client-id")
+
+            if (verification_id !== undefined) {
+                localVarQueryParameter['verification_id'] = verification_id;
+            }
+
+            if (reference_id !== undefined) {
+                localVarQueryParameter['reference_id'] = reference_id;
+            }
+
+
+    
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
+            if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
+                localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
+            }
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -8103,24 +8103,6 @@ const VKYCApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = VKYCApiAxiosParamCreator(configuration)
     return {
         /**
-         * Use this API to check the status of a Video KYC (vKYC) request. You can query the request using the **reference_id** (generated by Cashfree) or the **verification_id** (created by you). The response includes the current status, vKYC link, link expiry, and optional Aadhaar and security question details.
-         * @summary Get status of Video KYC
-         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
-         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
-         * @param {string} [verification_id] It is the unique ID generated by the merchant to identify the verification request in the Initiate Video KYC Request API.
-         * @param {string} [reference_id] It is the unique ID created by Cashfree Payments that you receive in the response of Initiate Video KYC Request API.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async vkycGetStatus(x_api_version: string, x_cf_signature?: string, verification_id?: string, reference_id?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetVKYCLinkResponseSchema>> {
-                const localVarAxiosArgs = await localVarAxiosParamCreator.vkycGetStatus(x_api_version, x_cf_signature, verification_id, reference_id, options);
-                var url = "https://sandbox.cashfree.com/verification";
-                if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
-                    url = "https://api.cashfree.com/verification"
-                }
-                return createRequestFunction(localVarAxiosArgs, globalAxios, url, configuration);
-        },
-        /**
          * Use this API to initiate a Video KYC request for a user by generating a secure verification link. The link is sent through selected notification channels (SMS, email, or WhatsApp) and can be customised using user and agent templates.
          * @summary Initiate Video KYC Request
          * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
@@ -8131,6 +8113,24 @@ const VKYCApiFp = function(configuration?: Configuration) {
          */
         async vrsInitiateVKYC(x_api_version: string, VKYCLinkRequestSchema: VKYCLinkRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<VKYCLinkResponseSchema>> {
                 const localVarAxiosArgs = await localVarAxiosParamCreator.vrsInitiateVKYC(x_api_version, VKYCLinkRequestSchema, x_cf_signature, options);
+                var url = "https://sandbox.cashfree.com/verification";
+                if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
+                    url = "https://api.cashfree.com/verification"
+                }
+                return createRequestFunction(localVarAxiosArgs, globalAxios, url, configuration);
+        },
+        /**
+         * Use this API to check the status of a Video KYC (vKYC) request. You can query the request using the **reference_id** (generated by Cashfree) or the **verification_id** (created by you). The response includes the current status, vKYC link, link expiry, and optional Aadhaar and security question details.
+         * @summary Get status of Video KYC
+         * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+         * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+         * @param {string} [verification_id] It is the unique ID generated by the merchant to identify the verification request in the Initiate Video KYC Request API.
+         * @param {string} [reference_id] It is the unique ID created by Cashfree Payments that you receive in the response of Initiate Video KYC Request API.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async vrsVkycGetStatus(x_api_version: string, x_cf_signature?: string, verification_id?: string, reference_id?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<GetVKYCLinkResponseSchema>> {
+                const localVarAxiosArgs = await localVarAxiosParamCreator.vrsVkycGetStatus(x_api_version, x_cf_signature, verification_id, reference_id, options);
                 var url = "https://sandbox.cashfree.com/verification";
                 if(Cashfree.XEnvironment == CFEnvironment.PRODUCTION) {
                     url = "https://api.cashfree.com/verification"
@@ -8194,7 +8194,7 @@ const VehicleRCApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -8291,7 +8291,7 @@ const VoterIDApiAxiosParamCreator = function (configuration?: Configuration) {
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
-            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.0';
+            localVarHeaderParameter['x-sdk-platform'] = 'nodejssdk-4.0.1';
             if (Cashfree.XApiVersion != null && Cashfree.XApiVersion != undefined) {
                 localVarHeaderParameter['x-api-version'] = Cashfree.XApiVersion;
             }
@@ -8416,7 +8416,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -8481,7 +8481,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -8544,7 +8544,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -8607,7 +8607,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -8671,7 +8671,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -8694,7 +8694,7 @@ export class Cashfree {
      * @throws {RequiredError}
      * @memberof AuthApi
      */
-    public static VrsGenerateAuthToken(x_api_version: string, CreateAuthRequestSchema: CreateAuthRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
+    public static VrsVkycGenerateAuthToken(x_api_version: string, CreateAuthRequestSchema: CreateAuthRequestSchema, x_cf_signature?: string, options?: AxiosRequestConfig) {
         if(Cashfree.XEnableErrorAnalytics) {
         Sentry.init({
             dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
@@ -8736,11 +8736,11 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
-            return AuthApiFp().vrsGenerateAuthToken(x_api_version, CreateAuthRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+            return AuthApiFp().vrsVkycGenerateAuthToken(x_api_version, CreateAuthRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -8800,7 +8800,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -8864,7 +8864,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -8930,7 +8930,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -8995,7 +8995,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -9059,7 +9059,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -9123,7 +9123,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -9187,7 +9187,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -9252,7 +9252,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -9318,7 +9318,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -9388,7 +9388,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -9451,7 +9451,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -9514,7 +9514,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -9578,7 +9578,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -9643,7 +9643,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -9709,7 +9709,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -9774,7 +9774,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -9838,7 +9838,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -9904,7 +9904,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -9969,7 +9969,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -10033,7 +10033,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -10097,7 +10097,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -10161,7 +10161,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -10224,7 +10224,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -10288,7 +10288,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -10353,7 +10353,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -10419,7 +10419,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -10484,7 +10484,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -10497,72 +10497,6 @@ export class Cashfree {
         }
     }
     
-    /**
-     * Use this API to check the status of a Video KYC (vKYC) request. You can query the request using the **reference_id** (generated by Cashfree) or the **verification_id** (created by you). The response includes the current status, vKYC link, link expiry, and optional Aadhaar and security question details.
-     * @summary Get status of Video KYC
-     * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
-     * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
-     * @param {string} [verification_id] It is the unique ID generated by the merchant to identify the verification request in the Initiate Video KYC Request API.
-     * @param {string} [reference_id] It is the unique ID created by Cashfree Payments that you receive in the response of Initiate Video KYC Request API.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof VKYCApi
-     */
-    public static VkycGetStatus(x_api_version: string, x_cf_signature?: string, verification_id?: string, reference_id?: string, options?: AxiosRequestConfig) {
-        if(Cashfree.XEnableErrorAnalytics) {
-        Sentry.init({
-            dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
-            // Performance Monitoring
-            tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
-            // Set sampling rate for profiling - this is relative to tracesSampleRate
-            profilesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!,
-            attachStacktrace: true,
-            enableTracing: true,
-            beforeSend: (event) => {
-                if(event.contexts){
-                    delete event.contexts.os;
-                    delete event.contexts.device;
-                }
-                else {
-                    // Handle the case where event.contexts is undefined
-                    console.warn('event.contexts is undefined. Check your Sentry event data.');
-                }
-                delete event.server_name;
-                if (event.exception && event.exception.values && event.exception.values.length && event.exception.values[0].stacktrace) {
-                            const stackTrace = event.exception.values[0].stacktrace;
-                            if (stackTrace && stackTrace.frames) {
-                                
-								const filteredDomains = stackTrace.frames.filter((x) => x.filename && x.filename.includes("cashfree-verification")).map((x) => x.filename);
-                                if (filteredDomains && filteredDomains[0] && filteredDomains[0].includes("cashfree-verification")) {
-                                    if(Cashfree.XEnableErrorAnalytics) {
-                                        return event;
-                                    }
-                                    return null;
-                                } 
-                            }
-                        }
-						return null;
-            },
-            });
-            Sentry.configureScope((scope) => {
-                if(Cashfree.XEnvironment == CFEnvironment.SANDBOX) {
-                    scope.setExtra('environment', 'sandbox');
-                } else {
-                    scope.setExtra('environment', 'production');
-                }
-                scope.setExtra('release', "4.0.0");
-            });
-        }
-        try {
-            return VKYCApiFp().vkycGetStatus(x_api_version, x_cf_signature, verification_id, reference_id, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
-        } catch (error) {
-            if(Cashfree.XEnableErrorAnalytics) {
-                Sentry.captureException(error);
-            }
-            throw error;
-        }
-    }
-
     /**
      * Use this API to initiate a Video KYC request for a user by generating a secure verification link. The link is sent through selected notification channels (SMS, email, or WhatsApp) and can be customised using user and agent templates.
      * @summary Initiate Video KYC Request
@@ -10615,11 +10549,77 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
             return VKYCApiFp().vrsInitiateVKYC(x_api_version, VKYCLinkRequestSchema, x_cf_signature, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
+        } catch (error) {
+            if(Cashfree.XEnableErrorAnalytics) {
+                Sentry.captureException(error);
+            }
+            throw error;
+        }
+    }
+
+    /**
+     * Use this API to check the status of a Video KYC (vKYC) request. You can query the request using the **reference_id** (generated by Cashfree) or the **verification_id** (created by you). The response includes the current status, vKYC link, link expiry, and optional Aadhaar and security question details.
+     * @summary Get status of Video KYC
+     * @param {string} x_api_version API version to be used. Format is in YYYY-MM-DD.
+     * @param {string} [x_cf_signature] Send the signature if IP is not whitelisted
+     * @param {string} [verification_id] It is the unique ID generated by the merchant to identify the verification request in the Initiate Video KYC Request API.
+     * @param {string} [reference_id] It is the unique ID created by Cashfree Payments that you receive in the response of Initiate Video KYC Request API.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof VKYCApi
+     */
+    public static VrsVkycGetStatus(x_api_version: string, x_cf_signature?: string, verification_id?: string, reference_id?: string, options?: AxiosRequestConfig) {
+        if(Cashfree.XEnableErrorAnalytics) {
+        Sentry.init({
+            dsn: 'https://63ead829c0a3afc78bb5801edcc8d7cf@o330525.ingest.sentry.io/4506812009021440',
+            // Performance Monitoring
+            tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
+            // Set sampling rate for profiling - this is relative to tracesSampleRate
+            profilesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!,
+            attachStacktrace: true,
+            enableTracing: true,
+            beforeSend: (event) => {
+                if(event.contexts){
+                    delete event.contexts.os;
+                    delete event.contexts.device;
+                }
+                else {
+                    // Handle the case where event.contexts is undefined
+                    console.warn('event.contexts is undefined. Check your Sentry event data.');
+                }
+                delete event.server_name;
+                if (event.exception && event.exception.values && event.exception.values.length && event.exception.values[0].stacktrace) {
+                            const stackTrace = event.exception.values[0].stacktrace;
+                            if (stackTrace && stackTrace.frames) {
+                                
+								const filteredDomains = stackTrace.frames.filter((x) => x.filename && x.filename.includes("cashfree-verification")).map((x) => x.filename);
+                                if (filteredDomains && filteredDomains[0] && filteredDomains[0].includes("cashfree-verification")) {
+                                    if(Cashfree.XEnableErrorAnalytics) {
+                                        return event;
+                                    }
+                                    return null;
+                                } 
+                            }
+                        }
+						return null;
+            },
+            });
+            Sentry.configureScope((scope) => {
+                if(Cashfree.XEnvironment == CFEnvironment.SANDBOX) {
+                    scope.setExtra('environment', 'sandbox');
+                } else {
+                    scope.setExtra('environment', 'production');
+                }
+                scope.setExtra('release', "4.0.1");
+            });
+        }
+        try {
+            return VKYCApiFp().vrsVkycGetStatus(x_api_version, x_cf_signature, verification_id, reference_id, options).then((request) => request(Cashfree.axios, Cashfree.basePath));
         } catch (error) {
             if(Cashfree.XEnableErrorAnalytics) {
                 Sentry.captureException(error);
@@ -10679,7 +10679,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
@@ -10743,7 +10743,7 @@ export class Cashfree {
                 } else {
                     scope.setExtra('environment', 'production');
                 }
-                scope.setExtra('release', "4.0.0");
+                scope.setExtra('release', "4.0.1");
             });
         }
         try {
